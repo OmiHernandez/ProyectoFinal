@@ -1,0 +1,9 @@
+section.titulo {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(135deg, #07858c, #861657); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/titulo.webp");
+    color: white;
+}
