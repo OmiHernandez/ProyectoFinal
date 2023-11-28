@@ -6,6 +6,7 @@
 .contenedorI img {
     width: 100%;
     display: block;
+    height: 800px;
 }
 
 .textoarriba {
@@ -19,3 +20,73 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.contenedorII {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+    display: grid;
+    grid-gap: 20px;
+    text-align: justify;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "parte1        parte2"
+                         "parte3        parte4"
+                         "parte5        parte6"
+                         "parte7        parte8";
+}
+
+.parte1{
+    grid-area: parte1;
+}
+
+.parte1 h1{
+    font-size: medium;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.parte1 p{
+    position: relative;
+    left: 30px;
+    font-size: small;
+    font-family: monospace;
+    font-style: italic;
+}
+
+.parte2{
+    grid-area: parte2;
+    position: relative;
+    left: 30px;
+}
+
+.parte3{
+    grid-area: parte3;
+}
+
+.parte4{
+    grid-area: parte4;
+}
+
+.parte4 h1{
+    font-size: larger;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.parte4 p{
+    font-size: medium;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.parte5{
+    grid-area: parte5;
+}
+
+.parte6{
+    grid-area: parte6;
+}
+
+.parte7{
+    grid-area: parte7;
+}
+
+.parte8{
+    grid-area: parte8;
+}

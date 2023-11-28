@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,7 +30,62 @@
         </div>
     </section>
 
+    <section>
+        <div class="contenedorII">
+            <div class="parte1">
+                <h1>En el año 2020, dimos vida a BOTANICAL GARDEN con la firme convicción de convertir a las plantas en
+                    el epicentro de la estética y vitalidad de cualquier espacio. Este proyecto nació con la promesa
+                    fundamental de ofrecer plantas de la más alta calidad y frescura, respaldadas por nuestro compromiso
+                    inquebrantable y colaboración directa con productores locales de confianza. Botanical Garden es más
+                    que un simple emprendimiento; es un compromiso de vida, marcado por la autenticidad, la
+                    transparencia y la proximidad genuina con cada uno de nuestros valiosos clientes.</h1>
+                <p>"La inspiración detrás de nuestro proyecto encuentra sus raíces en las experiencias personales, como
+                    la entrañable memoria de la abuela de nuestra fundadora, Naomi Hernandez Romo. Desde su infancia,
+                    Naomi fue testigo de cómo su abuela elevaba el espíritu de las plantas a través de melodías,
+                    infundiendo así un amor profundo por ellas. Su convicción de que las plantas son el complemento
+                    perfecto para convertir una casa en un verdadero hogar se convirtió en la fuerza impulsora detrás de
+                    Botanical Garden. Este legado de conexión emocional con las plantas se refleja en cada aspecto de
+                    nuestro proyecto, desde la selección meticulosa de las plantas más frescas hasta el compromiso
+                    continuo con la satisfacción de quienes confían en nosotros."</p>
+            </div>
 
+            <div class="parte2">
+                <img src="img/about_img_2.png" alt="imagen plantas" width="500px">
+            </div>
+
+            <div class="parte3">
+                <img src="" alt="imagen plantas">
+            </div>
+
+            <div class="parte4">
+                <h1>Trazando la Ruta Verde: Compromiso de Botanical Garden con la Sostenibilidad y la Calidad Local</h1>
+                <p>En Botanical Garden, nos sumergimos en la realización de nuestra visión al establecer colaboraciones
+                    estrechas con productores locales. Este compromiso nos impulsa a trabajar de la mano con
+                    agricultores de la región, con el objetivo de ofrecer a nuestros clientes plantas frescas y de la
+                    más alta calidad. En nuestra firme creencia de que "ser natural implica ser sostenible", no solo nos
+                    esforzamos por proporcionar productos excepcionales, sino que también nos dedicamos a contribuir al
+                    bienestar de las comunidades locales y a la preservación del medio ambiente. Este enfoque nos
+                    orienta en cada paso que damos, afianzando nuestra misión de fomentar la sostenibilidad a través de
+                    la conexión directa con aquellos que cultivan las plantas que embellecen su entorno.</p>
+            </div>
+
+            <div class="parte5">
+                <h1>HOLa</h1>
+            </div>
+
+            <div class="parte6">
+                <img src="" alt="imagen plantas">
+            </div>
+
+            <div class="parte7">
+                <img src="" alt="imagen plantas">
+            </div>
+
+            <div class="parte8">
+                <h1>HOLa</h1>
+            </div>
+        </div>
+    </section>
 
     <br>
     <footer>
