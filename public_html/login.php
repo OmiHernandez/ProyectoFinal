@@ -41,11 +41,17 @@ session_start();
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" >
+            <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="tienda.php">Tienda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="about.php">Sobre nosotros</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white;" href="contact.php">Contactános</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="about.php">Sobre nosotros...</a>
+                    <a class="nav-link" style="color: white;" href="ayuda.php">Ayuda</a>
                 </li>
             </ul>
 
