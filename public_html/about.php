@@ -24,17 +24,13 @@
     <section class="contenedorI">
         <img src="img/about_img_1.jpg" alt="Imagen de Fondo">
         <div class="textoarriba">
-        <h1>Textooooooooooooooooooo OWOWOWO</h1>
-        <p>mucho mas texto aestetiiiiiiiiiiiiiiiiik</p>
+            <h1>Las plantas que decoran tu vida</h1>
+            <p>“Inspiring homes with plants”</p>
         </div>
     </section>
-    <!-- <section class="seccion-1">
-        <div class="contenedor-1">
-            <img class="img-1" src="img/about_img_1.jpg"/>
-            <div class="txte-img-1">Texto</div>
-            <div class="txtc-img-1">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
-        </div>
-    </section> -->
+
+
+
     <br>
     <footer>
         <div class="foot">

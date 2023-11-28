@@ -16,27 +16,6 @@
     text-align: center;
     color: #fff;
     font-family: Arial, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* .contenedor-1 {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    height: auto;
-} */
-
-.img-1 {}
-
-.txte-img-1 {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-.txtc-img-1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
