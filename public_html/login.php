@@ -28,11 +28,11 @@ session_start();
 
 <header>
 
-    <nav class="navbar navbar-expand-lg" style="background: #31724c;">
+    <nav class="navbar navbar-expand-lg" style="background: #F7F2EE;">
         <a class="navbar-brand mb-0 h1" href="index.php">
             <img src="img/logo.png" width="90" height="90" class="d-inline-block align-top" alt="Logo de BotanicalG">
         </a>
-        <a class="navbar-brand mb-0 h1" href="index.php" style="color: white;">
+        <a class="navbar-brand mb-0 h1" href="index.php" style="color: #5e7e66;">
             BotanicalG
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,16 +42,16 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" >
             <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="tienda.php">Tienda</a>
+                    <a class="nav-link" style="color: black;" href="tienda.php">Tienda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="about.php">Sobre nosotros</a>
+                    <a class="nav-link" style="color: black;" href="about.php">Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="contact.php">Contactános</a>
+                    <a class="nav-link" style="color: black;" href="contact.php">Contactános</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="ayuda.php">Ayuda</a>
+                    <a class="nav-link" style="color: black;" href="ayuda.php">Ayuda</a>
                 </li>
             </ul>
 

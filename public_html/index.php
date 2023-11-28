@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="css/menu.css">
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="img/favicon.jpg">
+    <link rel="icon" type="image/x-icon" href="img/logoWF.png">
 
 </head>
 
@@ -63,13 +63,50 @@
             </button>
         </div>
     </section>
-    <br>
+    <br><br>
 
-    <!-- <section>
+    <section >
         <div class="Movie">
-            <h1>Creando tus ideas</h1>
+            <h1>Dale mas vida a tu espacio</h1>
+            <h5>Explora las opciones que hay para ti</h5>
         </div>
-        <div class="card-deck" id="tarjetas">
+        <div class="categorias">
+            <div class="categoria">
+                <a href="tienda.php">
+                    <img src="img/card1.jpg" alt="Categoría 1">
+                    <p>Flores</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="tienda.php">
+                    <img src="img/card2.jpg" alt="Categoría 2">
+                    <p>Suculentas</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="tienda.php">
+                    <img src="img/card3.jpg" alt="Categoría 3">
+                    <p>Cactus</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="tienda.php">
+                    <img src="img/card4.jpg" alt="Categoría 4">
+                    <p>Aromáticas</p>
+                </a>
+            </div>
+            <div class="categoria">
+                <a href="tienda.php">
+                    <img src="img/card5.jpg" alt="Categoría 5">
+                    <p>Arbustos</p>
+                </a>
+            </div>
+        </div>
+        
+        <!-- <div class="card-deck" id="tarjetas">
+            <div class="card" id="tar">
+                <img src="img/card1.jpg" class="card-img-top" alt="...">
+            </div>
             <div class="card" id="tar">
                 <img src="img/card2menu.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -79,40 +116,25 @@
                         en las tiendas de aplicaciones, trabajamos en estrecha colaboración contigo para crear
                         aplicaciones móviles intuitivas y funcionales que resuelvan problemas y atraigan a tu
                         audiencia.</p>
-                    <div style="text-align: center">
-                        <button type="button" class="btn btn-lg text-white" id="boton">Navegar aplicaciones</button>
-                    </div>
+                </div>
+            </div>
+            <div class="card" id="tar">
+                <img src="img/card2menu.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Aplicaciones Móviles de Vanguardia</h5>
+                    <p class="card-text text-justify">Diseñamos y desarrollamos aplicaciones móviles innovadoras
+                        para plataformas iOS y Android. Desde la concepción de la idea hasta la publicación
+                        en las tiendas de aplicaciones, trabajamos en estrecha colaboración contigo para crear
+                        aplicaciones móviles intuitivas y funcionales que resuelvan problemas y atraigan a tu
+                        audiencia.</p>
                 </div>
             </div>
             <div class="card" id="tar">
                 <img src="img/card3menu.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Desarrollo de Software Personalizado</h5>
-                    <p class="card-text text-justify">En nuestra empresa, nos especializamos en el desarrollo
-                        de software a medida para abordar tus necesidades específicas. Ya sea que
-                        busques una solución empresarial personalizada, una aplicación móvil única
-                        o software de gestión, nuestro equipo de desarrolladores expertos puede crear
-                        soluciones de software adaptadas a tus requisitos precisos.</p>
-                    <div style="text-align: center">
-                        <button type="button" class="btn btn-lg text-white" id="boton">Descubrir</button>
-                    </div>
-                </div>
+                
             </div>
-            <div class="card" id="tar">
-                <img src="img/card1menu.png" class="card-img-top" alt="..." height="175px" width="auto">
-                <div class="card-body">
-                    <h5 class="card-title">Integración de Sistemas y Automatización de Procesos</h5>
-                    <p class="card-text text-justify">Nuestra experiencia en la integración de sistemas y la automatización
-                        de procesos empresariales te permite mejorar la eficiencia operativa. Creamos soluciones
-                        que conectan sistemas dispares y automatizan tareas manuales, lo que aumenta la productividad
-                        y reduce los costos operativos en tu empresa.</p>
-                    <div style="text-align: center">
-                        <button type="button" class="btn btn-lg text-white" id="boton">Revisar sistemas</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
+        </div> -->
+    </section>
     <br>
     <!-- <section>
         <div class="Movie">
@@ -215,19 +237,19 @@
             <div class="row">
                 <div class="col-sm-6"></div>
                 <div class="col-sm-6">
-                    <div style="display:flex;justify-content:center;"><img src="img/logob.png" alt="Logo BotanicalG" height="90" width="90"></div>
+                    <div style="display:flex;justify-content:center;"><img src="img/logoWF.png" alt="Logo BotanicalG" height="90" width="90"></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6"></div>
                 <div class="col-sm-6">
-                    <h1 style="text-align:center;color:white;">Where Technology Meets Imagination.</h1>
+                    <h1 style="text-align:center;color:white;">La esencia de la naturaleza, capturada en Bocanical Garden</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6"></div>
                 <div class="col-sm-6">
-                    <p style="text-align:center;color:white;">No esperes más para desbloquear tu potencial. Únete a nosotros y déjanos impulsar tu innovación, eficiencia y crecimiento.</p>
+                    <p style="text-align:center;color:white;">Sumérgete en un mundo donde la frescura del aire se mezcla con la exuberancia de las hojas y el perfume de las flores. </p>
                 </div>
             </div>
             <!-- <div class="row">
@@ -245,7 +267,7 @@
         <div class="foot">
             <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
                 <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
-                    <img src="img/logob.png" alt="Logo de BotanicalG" height="130" width="130">
+                    <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
                 </a>
                 <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
                 <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contactanos</a>
