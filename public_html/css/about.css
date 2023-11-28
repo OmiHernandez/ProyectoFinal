@@ -1,0 +1,24 @@
+.seccion-1 {}
+
+.contenedor-1 {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+.img-1 {}
+
+.txte-img-1 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.txtc-img-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
