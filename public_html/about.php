@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MHVWare</title>
+    <title>Botanical Garden</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -12,7 +12,6 @@
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/custom.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.jpg">
 </head>
 
@@ -21,14 +20,22 @@
     include("login.php");
     ?>
 
-    <section class="seccion-1">
+
+    <section class="contenedorI">
+        <img src="img/about_img_1.jpg" alt="Imagen de Fondo">
+        <div class="textoarriba">
+        <h1>Textooooooooooooooooooo OWOWOWO</h1>
+        <p>mucho mas texto aestetiiiiiiiiiiiiiiiiik</p>
+        </div>
+    </section>
+    <!-- <section class="seccion-1">
         <div class="contenedor-1">
             <img class="img-1" src="img/about_img_1.jpg"/>
             <div class="txte-img-1">Texto</div>
             <div class="txtc-img-1">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
         </div>
-    </section>
-
+    </section> -->
+    <br>
     <footer>
         <div class="foot">
             <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">

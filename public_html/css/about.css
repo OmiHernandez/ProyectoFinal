@@ -1,12 +1,30 @@
-.seccion-1 {}
+.contenedorI {
+    position: relative;
+    width: 100%;
+}
 
-.contenedor-1 {
+.contenedorI img {
+    width: 100%;
+    display: block;
+}
+
+.textoarriba {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* .contenedor-1 {
     position: relative;
     display: inline-block;
     text-align: center;
     width: 100%;
     height: auto;
-}
+} */
 
 .img-1 {}
 
