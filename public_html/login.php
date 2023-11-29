@@ -33,7 +33,7 @@ session_start();
             <img src="img/logo.png" width="90" height="90" class="d-inline-block align-top" alt="Logo de BotanicalG">
         </a>
         <a class="navbar-brand mb-0 h1" href="index.php" style="color: #5e7e66;">
-            BotanicalG
+            Botanical Garden
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

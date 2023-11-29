@@ -29,7 +29,7 @@ div.categorias {
 }
 
 .categoria:hover {
-    transform: translateY(-10px); /* Levanta el elemento 10 píxeles hacia arriba en hover */
+    transform: translateY(-10px);
 }
 
 .categoria img {
@@ -45,6 +45,11 @@ div.categorias {
 .categoria a {
     text-decoration: none;
     color: inherit;
+}
+
+.productos div {
+    text-align: center;
+    padding: 10px;
 }
 
 .Movie {
@@ -78,17 +83,6 @@ div.categorias {
     height: 100%;
     padding-top: 50px;
     background-color: #5e7e66;
-}
-
-#tar{
-    box-shadow: 1px 1px 2px black;
-    border-radius: 15px;
-    overflow: hidden;
-    transition: box-shadow 0.2s ease-in-out;
-}
-
-#tar:hover{
-    box-shadow: 5px 5px 10px black;
 }
 
 #navfoot {
