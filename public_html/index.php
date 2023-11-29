@@ -102,38 +102,6 @@
                 </a>
             </div>
         </div>
-        
-        <!-- <div class="card-deck" id="tarjetas">
-            <div class="card" id="tar">
-                <img src="img/card1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card" id="tar">
-                <img src="img/card2menu.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Aplicaciones Móviles de Vanguardia</h5>
-                    <p class="card-text text-justify">Diseñamos y desarrollamos aplicaciones móviles innovadoras
-                        para plataformas iOS y Android. Desde la concepción de la idea hasta la publicación
-                        en las tiendas de aplicaciones, trabajamos en estrecha colaboración contigo para crear
-                        aplicaciones móviles intuitivas y funcionales que resuelvan problemas y atraigan a tu
-                        audiencia.</p>
-                </div>
-            </div>
-            <div class="card" id="tar">
-                <img src="img/card2menu.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Aplicaciones Móviles de Vanguardia</h5>
-                    <p class="card-text text-justify">Diseñamos y desarrollamos aplicaciones móviles innovadoras
-                        para plataformas iOS y Android. Desde la concepción de la idea hasta la publicación
-                        en las tiendas de aplicaciones, trabajamos en estrecha colaboración contigo para crear
-                        aplicaciones móviles intuitivas y funcionales que resuelvan problemas y atraigan a tu
-                        audiencia.</p>
-                </div>
-            </div>
-            <div class="card" id="tar">
-                <img src="img/card3menu.png" class="card-img-top" alt="...">
-                
-            </div>
-        </div> -->
     </section>
     <br>
     <!-- <section>
