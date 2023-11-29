@@ -1,0 +1,35 @@
+div.filtro {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    padding: 15px;
+    margin-left: 60px;
+}
+
+.filtro div {
+    width: 200px;
+    margin: 10px;
+    border: 1px solid #c4ae9c;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.filtro div:hover {
+    transform: translateY(-10px);
+}
+
+.filtro>div img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.filtro p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.filtro a {
+    text-decoration: none;
+    color: inherit;
+}

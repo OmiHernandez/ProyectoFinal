@@ -19,6 +19,7 @@
     <title>Botanical Garden</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/tienda.css">
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f097015f8a.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="img/logoWF.png">
@@ -34,50 +35,30 @@
 
     <section >
         <div class="Movie">
-            <h1>Dale mas vida a tu espacio</h1>
-            <h5>Explora las opciones que hay para ti</h5>
+            <h1>Nuevos Productos</h1>
+            <h5>Productos nuevos cada semana</h5>
         </div>
-        <div class="categorias">
-            <div class="categoria">
-                <a href="tienda.php">
-                    <img src="img/card1.jpg" alt="Categoría 1">
-                    <p>Flores</p>
-                </a>
+        <div class="separacion"></div>
+        <div class="filtro">
+            <div>
+                <p>Filtrar por categoría:</p>
             </div>
-            <div class="categoria">
+            <div>
                 <a href="tienda.php">
                     <img src="img/card2.jpg" alt="Categoría 2">
                     <p>Suculentas</p>
                 </a>
             </div>
-            <div class="categoria">
+            <div>
                 <a href="tienda.php">
                     <img src="img/card3.jpg" alt="Categoría 3">
                     <p>Cactus</p>
                 </a>
             </div>
-            <div class="categoria">
-                <a href="tienda.php">
-                    <img src="img/card4.jpg" alt="Categoría 4">
-                    <p>Aromáticas</p>
-                </a>
-            </div>
-            <div class="categoria">
-                <a href="tienda.php">
-                    <img src="img/card5.jpg" alt="Categoría 5">
-                    <p>Arbustos</p>
-                </a>
-            </div>
         </div>
     </section>
-    <br><br>
+    <br>
     <section class="productos">
-        <div class="Movie">
-            <h1>Nuevos Productos</h1>
-            <h5>Productos nuevos cada semana</h5>
-        </div>
-        <div class="separacion"></div>
-        <br><br>
         <div>
             <div class="container"> 
                 <div class="row">
@@ -136,11 +117,6 @@
                 ?>
                 </div>
             </div>
-        </div>
-        <div>
-            <button type="button" class="btn" id="botontienda">
-                <a href="tienda.php">Ver más productos</a>
-            </button>
         </div>
     </section>
 
