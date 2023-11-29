@@ -192,14 +192,29 @@ h4.precio p{
     background-size: cover;
 }
 
-#tarjetas {
-    padding: 30px;
+.compromiso {
+    background: #cfe2d4;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
-
-#boton {
-    background: rgb(20, 27, 65);
-    background: linear-gradient(135deg, rgba(20, 27, 65, 1) 0%, rgba(124, 116, 228, 1) 52%, rgba(134, 22, 87, 1) 100%);
-    border-radius: 30px;
+.comp {
+    color: #3e6347;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.compTitulo {
+    color: #203525;
+    font-weight: bold;
+    top: -100px;
+    text-decoration: underline;
+    text-decoration-color: #5e7e66;
+} 
+.comp div {
+    width: 20%;
+    margin: 2%;
+    text-align: center;
 }
 
 .foot {

@@ -117,6 +117,38 @@
         </div>
     </section>
     <br><br>
+    <section class="compromiso">
+        <div class="compTitulo">
+            <h1>Nuestro compromiso</h1>
+        </div>
+        <div class="comp">
+            <div>
+                <i class="fa-solid fa-house fa-2xl" style="color: #5e7e66;"></i>
+                <br><br>
+                <h3>Decoración para el hogar</h3>
+                <p>Encuentra las mejores plantas que les dara vida a tu hogar</p>
+            </div>
+            <div>
+                <i class="fa-brands fa-pagelines fa-2xl" style="color: #5e7e66;"></i>
+                <br><br>
+                <h3>Plantas sanas y frescas</h3>
+                <p>Comprometidos con la vida de nuestras plantas</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-star fa-2xl" style="color: #5e7e66;"></i>
+                <br><br>
+                <h3>Pedidos personalizados</h3>
+                <p>Encuentra la planta ideal para ti</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-headset fa-2xl" style="color: #5e7e66;"></i>
+                <br><br>
+                <h3>Siempre cerca de ti</h3>
+                <p>Estamos atentos a cualquiera de tus preguntas</p>
+            </div>
+        </div>
+    </section>
+    <br><br><br><br>
     <section class="productos">
         <div class="Movie">
             <h1>Nuevos Productos</h1>
