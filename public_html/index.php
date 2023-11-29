@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="css/menu.css">
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f097015f8a.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="img/logoWF.png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -142,16 +143,23 @@
                         array.push("<?php echo $nombre ?>");
                     </script>
                     
-                    <div class="col-md-3 col-sm-6 product">
-                        <a href="#">
-                            <img class="img-fluid" width="240" height="240" src="img/<?php echo $imagen ?>">
-                        </a>
-                        <p class="titulo"><?php echo $nombre ?></p>
+                    <div class="product"><!-- col-md-3 col-sm-6  -->
+                        <div class="separacion2"></div>
+                        <div class="efecto">
+                            <a href="#" class="">
+                                <img class="img-fluid image" width="240" height="240" src="img/<?php echo $imagen ?>">
+                            </a>
+                            <div class="overlay"></div>
+                        </div>
+                        <h5 class="titulo"><?php echo $nombre ?></h5>
                         <p class="cate"><?php echo $catego ?></p>
-                        <p class="precio">$<?php echo $precio ?></p>
+                        <h4 class="precio">$<?php echo $precio ?></h4>
+                        <br>
                         <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
+                            <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
                             Añadir al carrito
                         </button>
+                        <br><br>
                     </div>
                 <?php
                         $numPro = $numPro+1;
@@ -161,10 +169,17 @@
                         }
                     }//fin while
                 ?>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn" id="botontienda">
+                <a href="tienda.php">Ver más productos</a>
+            </button>
         </div>
     </section>
 
-    <br>
+    <br><br><br><br><br>
     <section>
         <div class="parallax">
             <br><br>
