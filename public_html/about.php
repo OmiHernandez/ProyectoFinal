@@ -54,7 +54,7 @@
             </div>
 
             <div class="parte3">
-                <img src="" alt="imagen plantas">
+                <img src="img/about_img_3.jpeg" alt="imagen plantas" width="500px">
             </div>
 
             <div class="parte4">
@@ -70,19 +70,40 @@
             </div>
 
             <div class="parte5">
-                <h1>HOLa</h1>
+                <h1>Verde en Crecimiento</h1>
+                <p>En el contexto actual de transformación hacia prácticas empresariales más sostenibles y comprometidas
+                    con la preservación del medio ambiente, Botanical Garden se destaca al impulsar un cultivo más
+                    sostenible y reforzar su dedicación a la protección del entorno. Nuestros cultivadores están
+                    respaldados por la certificación de sostenibilidad MPS, resultado de sus esfuerzos por desarrollar
+                    técnicas de cultivo respetuosas con el medio ambiente, y cuentan con la certificación de agricultura
+                    ecológica, enfocada en el cultivo basado en productos orgánicos. Adicionalmente, el 90% de nuestros
+                    envases son reciclables, y nuestros cartones provienen de bosques gestionados de manera sostenible y
+                    responsable.
+                    <br>
+                    Trabajamos de manera constante para mejorar la ecoeficiencia de nuestros productos, diseñando
+                    etiquetas y materiales de embalaje más amigables con el medio ambiente. Contamos con los
+                    prestigiosos sellos PEFC y FSC, respaldando así nuestro compromiso con la gestión forestal
+                    sostenible. En Botanical Garden, no solo nos dedicamos a ofrecer productos de excelencia, sino que
+                    también nos esforzamos por liderar el camino hacia un futuro más sostenible y responsable.
+                </p>
             </div>
 
             <div class="parte6">
-                <img src="" alt="imagen plantas">
+                <img src="img/about_img_4.png" alt="imagen plantas" width="700px">
             </div>
 
             <div class="parte7">
-                <img src="" alt="imagen plantas">
+                <img src="img/about_img_5.jpg" alt="imagen plantas" width="500px">
             </div>
 
             <div class="parte8">
-                <h1>HOLa</h1>
+                <h1>Hogares Floridos</h1>
+                <p>Nos conformamos como un equipo apasionado y diverso que trabaja con integridad, creatividad y energía
+                    para alcanzar metas asombrosas, edificando así una empresa con visión de sostenibilidad a largo
+                    plazo. Nuestra misión es motivar a nuestros clientes a convertir cada rincón en un hogar exquisito,
+                    rebosante de vida y la frescura de la naturaleza. ¿Estás preparado para sumergirte en la experiencia
+                    Botanical Garden?</p>
+                    <a href="tienda.php">Conoce Mas</a>
             </div>
         </div>
     </section>

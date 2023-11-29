@@ -29,21 +29,21 @@
     text-align: justify;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "parte1        parte2"
-                         "parte3        parte4"
-                         "parte5        parte6"
-                         "parte7        parte8";
+        "parte3        parte4"
+        "parte5        parte6"
+        "parte7        parte8";
 }
 
-.parte1{
+.parte1 {
     grid-area: parte1;
 }
 
-.parte1 h1{
+.parte1 h1 {
     font-size: medium;
     font-family: 'Montserrat', sans-serif;
 }
 
-.parte1 p{
+.parte1 p {
     position: relative;
     left: 30px;
     font-size: small;
@@ -51,42 +51,76 @@
     font-style: italic;
 }
 
-.parte2{
+.parte2 {
     grid-area: parte2;
     position: relative;
     left: 30px;
 }
 
-.parte3{
+.parte3 {
+    padding: 60px;
     grid-area: parte3;
 }
 
-.parte4{
+.parte4 {
     grid-area: parte4;
-}
-
-.parte4 h1{
-    font-size: larger;
+    padding: 60px;
+    width: 600px;
+    display: grid;
+    place-items: center;
     font-family: 'Montserrat', sans-serif;
 }
 
-.parte4 p{
+.parte4 h1 {
+    font-size: x-large;
+    color: green;
+}
+
+.parte4 p {
     font-size: medium;
+}
+
+.parte5 {
+    grid-area: parte5;
+    padding: 60px;
+    display: grid;
+    place-items: center;
     font-family: 'Montserrat', sans-serif;
 }
 
-.parte5{
-    grid-area: parte5;
+.parte5 h1 {
+    font-size: x-large;
+    color: green;
 }
 
-.parte6{
+.parte5 p {
+    font-size: medium;
+}
+
+.parte6 {
     grid-area: parte6;
+    padding: 60px;
 }
 
-.parte7{
+.parte7 {
     grid-area: parte7;
+    padding: 60px;
 }
 
-.parte8{
+.parte8 {
     grid-area: parte8;
+    padding: 60px;
+    width: 600px;
+    display: grid;
+    place-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.parte8 h1 {
+    font-size: x-large;
+    color: green;
+}
+
+.parte8 p {
+    font-size: medium;
 }
