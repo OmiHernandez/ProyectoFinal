@@ -70,6 +70,18 @@ div.categorias {
     top: 0;
     left: 0;
 }
+.descuent {
+    position: absolute;
+    height: 40px;
+    width: 25%;
+    background: #0c2210;
+    color: white;
+    z-index: 5 !important;
+    top: 50px;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
 .product {
     position: relative;
     margin-bottom: 40px !important;
@@ -131,6 +143,14 @@ div.categorias {
     color: #5e7e66;
     padding: 2px;
     text-decoration: underline;
+}
+h4.precio {
+    height: 70px !important;
+}
+h4.precio p{
+    font-size: 18px;
+    color: gray;
+    text-decoration: line-through;
 }
 
 #botontienda {

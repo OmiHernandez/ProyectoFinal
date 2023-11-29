@@ -138,6 +138,8 @@
                             $nombre = $fila['Nombre'];
                             $catego = $fila['Categoria'];
                             $precio = $fila['Precio'];
+                            $precioN =$fila['PrecioN'];
+                            $desc = $fila['Descuento'];
                     ?>
                     <script>
                         array.push("<?php echo $nombre ?>");
@@ -145,6 +147,11 @@
                     
                     <div class="product"><!-- col-md-3 col-sm-6  -->
                         <div class="separacion2"></div>
+                        <?php 
+                            if($desc!=0) {
+                                echo '<div class="descuent">'.$desc.'%</div>';
+                            }
+                        ?>
                         <div class="efecto">
                             <a href="#" class="">
                                 <img class="img-fluid image" width="240" height="240" src="img/<?php echo $imagen ?>">
@@ -153,7 +160,16 @@
                         </div>
                         <h5 class="titulo"><?php echo $nombre ?></h5>
                         <p class="cate"><?php echo $catego ?></p>
-                        <h4 class="precio">$<?php echo $precio ?></h4>
+                        <h4 class="precio">
+                            <?php
+                                if($desc!=0) {
+                                     echo "<p>$".$precio."</p>";
+                                     echo "$".$precioN; 
+                                } else {
+                                     echo "<br>$".$precioN.""; 
+                                }
+                            ?>
+                        </h4>
                         <br>
                         <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
                             <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
