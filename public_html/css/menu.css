@@ -29,7 +29,7 @@ div.categorias {
 }
 
 .categoria:hover {
-    transform: translateY(-10px); /* Levanta el elemento 10 píxeles hacia arriba en hover */
+    transform: translateY(-10px);
 }
 
 .categoria img {
@@ -45,6 +45,115 @@ div.categorias {
 .categoria a {
     text-decoration: none;
     color: inherit;
+}
+/* .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.productos div {
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.separacion {
+    height: 15px;
+    background: #968475;
+    margin: 0% 7%;
+}
+.separacion2 {
+    position: absolute;
+    height: 15px;
+    width: 100%;
+    background: #ccb6a5;
+    z-index: 3 !important;
+    top: 0;
+    left: 0;
+}
+.product {
+    position: relative;
+    margin-bottom: 40px !important;
+    width: 24% !important;
+    padding: 20px !important;
+    margin: 0.5%;
+    border: 1px solid #968475;
+    font-family: 'Montserrat', sans-serif;
+}
+/*efecto sobre imagenes en el producto*/
+.efecto {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    /* height: 100%; */
+}
+
+.overlay {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background-color: #96847562;
+    overflow: hidden !important;
+    width: 100%;
+    height:0;
+    transition: .5s ease;
+}
+
+.efecto:hover .overlay {
+    bottom: 0;
+    height: 100%;
+}
+
+
+.product button {
+    width: 100%;
+    background-color: #968475;
+    color: white;
+    border: none;
+    padding: 15px;
+    transition: .5s ease;
+}
+.product button:hover {
+    background-color: #3b342e;
+}
+
+
+.titulo {
+    font-weight: bold;
+}
+.cate {
+    margin-top: -8px;
+    font-weight: bolder;
+    color: #5e7e66;
+    padding: 2px;
+    text-decoration: underline;
+}
+
+#botontienda {
+    background: #ccb6a5;
+    color: #968475;
+    width: 550px;
+    padding: 10px;
+    transition: .5s ease;
+}
+#botontienda:hover {
+    background: #968475;
+    color: #ccb6a5;
+}
+#botontienda a {
+    color: #3a332d;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .5s ease;
+}
+#botontienda a:hover {
+    color: #ccb6a5;
 }
 
 .Movie {
@@ -78,17 +187,6 @@ div.categorias {
     height: 100%;
     padding-top: 50px;
     background-color: #5e7e66;
-}
-
-#tar{
-    box-shadow: 1px 1px 2px black;
-    border-radius: 15px;
-    overflow: hidden;
-    transition: box-shadow 0.2s ease-in-out;
-}
-
-#tar:hover{
-    box-shadow: 5px 5px 10px black;
 }
 
 #navfoot {

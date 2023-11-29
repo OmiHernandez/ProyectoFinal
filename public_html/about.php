@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon.jpg">
+    <link rel="icon" type="image/x-icon" href="img/logoWF.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 

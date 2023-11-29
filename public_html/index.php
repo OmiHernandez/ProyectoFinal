@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="es_mx">
 
+<?php
+    $servidor='localhost:33065';
+    $cuenta='root';
+    $password='';
+    $bd='botanical';
+
+    $conexion = new mysqli($servidor,$cuenta,$password,$bd);
+
+    $sql = 'select * from productos order by ID desc';
+    $resultado = $conexion -> query($sql);
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +20,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="css/menu.css">
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f097015f8a.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="img/logoWF.png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -103,102 +116,70 @@
             </div>
         </div>
     </section>
-    <br>
-    <!-- <section>
+    <br><br>
+    <section class="productos">
         <div class="Movie">
-            <h1>Servicios</h1>
+            <h1>Nuevos Productos</h1>
+            <h5>Productos nuevos cada semana</h5>
         </div>
-        <div class="row" style="padding:40px;">
-            <div class="col-md-4">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Software personalizado</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">CONTPAQ i®</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Servidores virtuales</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Soluciones en la nube</a>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+        <div class="separacion"></div>
+        <br><br>
+        <div>
+            <div class="container"> 
+                <div class="row">
+                    <?php
+                        $numPro = 0;
+                        $new=0;
+                    ?>
+                    <script> var array=[];</script>
+                    <?php
+                        while( $fila = $resultado ->  fetch_assoc()){
+                            $imagen = $fila['imagen'];
+                            $nombre = $fila['Nombre'];
+                            $catego = $fila['Categoria'];
+                            $precio = $fila['Precio'];
+                    ?>
+                    <script>
+                        array.push("<?php echo $nombre ?>");
+                    </script>
+                    
+                    <div class="product"><!-- col-md-3 col-sm-6  -->
+                        <div class="separacion2"></div>
+                        <div class="efecto">
+                            <a href="#" class="">
+                                <img class="img-fluid image" width="240" height="240" src="img/<?php echo $imagen ?>">
+                            </a>
+                            <div class="overlay"></div>
+                        </div>
+                        <h5 class="titulo"><?php echo $nombre ?></h5>
+                        <p class="cate"><?php echo $catego ?></p>
+                        <h4 class="precio">$<?php echo $precio ?></h4>
                         <br>
-                        <h4 id="list-item-1"><i class="fa-solid fa-window-restore fa-lg"></i> Software personalizado</h4>
-                        <p class="text-justify">En BotanicalG, entendemos que cada negocio es único, con necesidades y desafíos específicos que
-                            requieren soluciones igualmente excepcionales. Es por eso que nos enorgullece ofrecer
-                            servicios de desarrollo de software personalizado diseñados exclusivamente para ti. <br>
-                            Nuestro enfoque en el software personalizado es simple pero poderoso: creamos aplicaciones
-                            y sistemas que se adaptan perfectamente a tus requerimientos, mejorando la eficiencia,
-                            la productividad y la competitividad de tu empresa. Ya sea que estés buscando una solución
-                            empresarial completa, una aplicación móvil innovadora o una plataforma de comercio electrónico
-                            personalizada, nuestro equipo de desarrolladores altamente calificados y experimentados está
-                            aquí para convertir tus ideas en realidad. <br>
-                        </p>
-                        <h3>¿Por qué elegir nuestro software personalizado?</h3>
-                        <ul class="text-justify">
-                            <li><b>Adaptado a tus necesidades:</b> En lugar de soluciones genéricas, creamos software que se alinea con tus procesos y objetivos específicos.</li>
-                            <li><b>Mayor eficiencia:</b> Elimina tareas manuales y procesos ineficientes con software diseñado para automatizar y optimizar.</li>
-                            <li><b>Ventaja competitiva:</b> Nuestras soluciones personalizadas te permiten destacar en tu industria y ofrecer experiencias excepcionales a tus clientes.</li>
-                            <li><b>Soporte continuo:</b> No te dejamos solo después del desarrollo. Brindamos actualizaciones, mantenimiento y soporte para garantizar que tu software siga funcionando sin problemas.</li>
-                        </ul>
+                        <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
+                            <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+                            Añadir al carrito
+                        </button>
+                        <br><br>
                     </div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                        <br>
-                        <h4 id="list-item-2"><img src="img/contpaqi.png" alt="Contpaq i" height="30" width="30"> CONTPAQ i®</h4>
-                        <p class="text-justify">CONTPAQ i es una suite de software de contabilidad y finanzas ampliamente reconocida
-                            por su capacidad para simplificar tareas contables, mejorar la toma de decisiones y garantizar el
-                            cumplimiento de las normativas fiscales. Este software ofrece un conjunto de herramientas y módulos
-                            integrales que abordan todas las necesidades contables de tu empresa, desde la facturación y el control
-                            de inventario hasta la generación de informes y el cumplimiento fiscal.</p>
-                        <h3>Ventajas de CONTPAQ i</h3>
-                        <ul class="text-justify">
-                            <li><b>Eficiencia y Productividad:</b> CONTPAQ i automatiza procesos contables y financieros, lo que ahorra tiempo y recursos valiosos para tu empresa.</li>
-                            <li><b>Toma de Decisiones Informadas:</b> Accede a datos en tiempo real y análisis detallados para tomar decisiones estratégicas con confianza.</li>
-                            <li><b>Cumplimiento Fiscal:</b> Mantén el cumplimiento de las regulaciones fiscales y reduce los riesgos de sanciones con herramientas de cumplimiento incorporadas.</li>
-                            <li><b>Personalización:</b> CONTPAQ i se adapta a las necesidades específicas de tu empresa, garantizando una solución contable que funciona para ti.</li>
-                        </ul>
-                        <br><br><br>
-                    </div>
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-                        <br>
-                        <h4 id="list-item-3"><i class="fa-solid fa-server fa-lg"></i> Servidores virtuales</h4>
-                        <p class="text-justify">En un mundo empresarial cada vez más digital, la elección de la infraestructura adecuada es crucial. Los servidores
-                            virtuales, alojados en la nube, representan una solución escalable y versátil para satisfacer las demandas de
-                            tu empresa. En BotanicalG, nos enorgullece ofrecer soluciones de servidores virtuales de alto
-                            rendimiento que te permiten llevar tu negocio al siguiente nivel.</p>
-                        <h3>Ventajas de Nuestros Servidores Virtuales</h3>
-                        <ul class="text-justify">
-                            <li><b>Escalabilidad:</b> Aumenta o disminuye recursos en función de las necesidades cambiantes de tu empresa.</li>
-                            <li><b>Rendimiento:</b> Nuestros servidores virtuales ofrecen un rendimiento de primera categoría, asegurando una experiencia
-                                sin interrupciones para tus aplicaciones y sitios web.</li>
-                            <li><b>Seguridad:</b> Implementamos rigurosas medidas de seguridad para proteger tus datos y garantizar la continuidad del
-                                negocio.</li>
-                            <li><b>Respaldo y Recuperación:</b> Realizamos copias de seguridad automáticas y ofrecemos soluciones de recuperación de
-                                desastres para proteger tus datos críticos.</li>
-                            <li><b>Acceso Remoto:</b> Administra tus servidores virtuales desde cualquier lugar con acceso seguro en línea.</li>
-                        </ul>
-                        <br><br><br><br>
-                    </div>
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                        <br>
-                        <h4 id="list-item-4"><i class="fa-solid fa-cloud fa-lg"></i> Soluciones en la nube</h4>
-                        <p class="text-justify">Las soluciones en la nube, o cloud computing, permiten acceder a recursos informáticos esenciales a través
-                            de internet. Esto incluye servidores, almacenamiento, bases de datos, aplicaciones y más. En lugar de
-                            invertir en costosas infraestructuras físicas, las empresas pueden aprovechar la nube para escalar recursos
-                            de manera eficiente y centrarse en su core business.</p>
-                        <h3>Ventajas de Nuestras Soluciones en la Nube</h3>
-                        <ul class="text-justify">
-                            <li><b>Escalabilidad:</b> Aumenta o disminuye tus recursos en la nube según las demandas cambiantes de tu negocio.</li>
-                            <li><b>Eficiencia:</b> La nube optimiza los costos y reduce la necesidad de mantenimiento físico.</li>
-                            <li><b>Acceso Universal:</b> Trabaja desde cualquier lugar y en cualquier momento con acceso seguro a tus aplicaciones y datos en la nube.</li>
-                            <li><b>Seguridad y Confiabilidad:</b> Implementamos medidas de seguridad avanzadas y mantenemos la disponibilidad para garantizar la integridad de tus datos.</li>
-                            <li><b>Colaboración Mejorada:</b> Facilita la colaboración en equipo con herramientas en la nube que permiten compartir y editar documentos en tiempo real.</li>
-                        </ul>
-                        <br><br><br><br>
-                    </div>
+                <?php
+                        $numPro = $numPro+1;
+                        $new = $new+1;
+                        if($new==8) {
+                            break;
+                        }
+                    }//fin while
+                ?>
                 </div>
             </div>
         </div>
-    </section> -->
-    <br>
+        <div>
+            <button type="button" class="btn" id="botontienda">
+                <a href="tienda.php">Ver más productos</a>
+            </button>
+        </div>
+    </section>
+
+    <br><br><br><br><br>
     <section>
         <div class="parallax">
             <br><br>
@@ -282,7 +263,16 @@
             <br>
         </div>
     </footer>
-
+    
+    <script>
+        console.log(array);    
+        
+        function agregar(id){
+            var indice = parseInt(id);
+            console.log(`Elegiste ${array[indice]}`);       
+            
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
