@@ -115,41 +115,50 @@
             </div>
         </div>
     </section>
-    <br>
+    <br><br>
     <section class="productos">
         <div class="Movie">
             <h1>Nuevos Productos</h1>
             <h5>Productos nuevos cada semana</h5>
         </div>
+        <div class="separacion"></div>
+        <br><br>
         <div>
-            <div class="container"> <br><br>
+            <div class="container"> 
                 <div class="row">
                     <?php
                         $numPro = 0;
+                        $new=0;
                     ?>
                     <script> var array=[];</script>
                     <?php
                         while( $fila = $resultado ->  fetch_assoc()){
                             $imagen = $fila['imagen'];
                             $nombre = $fila['Nombre'];
+                            $catego = $fila['Categoria'];
                             $precio = $fila['Precio'];
                     ?>
                     <script>
                         array.push("<?php echo $nombre ?>");
                     </script>
                     
-                    <div class="col-md-3 col-sm-6 ">
+                    <div class="col-md-3 col-sm-6 product">
                         <a href="#">
-                            <img class="img-fluid" width="250" height="250" src="img/<?php echo $imagen ?>">
+                            <img class="img-fluid" width="240" height="240" src="img/<?php echo $imagen ?>">
                         </a>
-                        <p><?php echo $nombre ?></p>
-                        <p>$<?php echo $precio ?></p>
+                        <p class="titulo"><?php echo $nombre ?></p>
+                        <p class="cate"><?php echo $catego ?></p>
+                        <p class="precio">$<?php echo $precio ?></p>
                         <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
-                            <img class="img-fluid" src="img/carrito_.png" alt="" width="50" height="15">
+                            Añadir al carrito
                         </button>
                     </div>
                 <?php
                         $numPro = $numPro+1;
+                        $new = $new+1;
+                        if($new==8) {
+                            break;
+                        }
                     }//fin while
                 ?>
         </div>

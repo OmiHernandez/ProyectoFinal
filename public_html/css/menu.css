@@ -46,12 +46,21 @@ div.categorias {
     text-decoration: none;
     color: inherit;
 }
-
 .productos div {
     text-align: center;
     padding: 10px;
+    overflow: hidden;
 }
-
+.separacion {
+    height: 15px;
+    background: #968475;
+    margin: 0% 10%;
+}
+.product {
+    background: #43a36b;
+    margin-bottom: 25px;
+    padding: 20px !important;
+}
 .Movie {
     text-align: center;
 }
