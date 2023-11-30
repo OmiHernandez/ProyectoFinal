@@ -35,8 +35,8 @@
 
     <section >
         <div class="Movie">
-            <h1>Nuevos Productos</h1>
-            <h5>Productos nuevos cada semana</h5>
+            <h1>Conoce todos nuestros productos</h1>
+            <h5>Encuentra tu planta ideal para darle mas vida a tu hogar</h5>
         </div>
         <div class="separacion"></div>
         <div class="filtro">

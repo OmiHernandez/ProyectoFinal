@@ -48,7 +48,7 @@ session_start();
                     <a class="nav-link" style="color: black;" href="about.php">Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: black;" href="contact.php">Contactános</a>
+                    <a class="nav-link" style="color: black;" href="contact.php">Contáctanos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="ayuda.php">Ayuda</a>
