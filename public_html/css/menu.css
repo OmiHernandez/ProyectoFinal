@@ -152,6 +152,9 @@ h4.precio p{
     color: gray;
     text-decoration: line-through;
 }
+button.agotado {
+    background-color: #3b342e;
+}
 
 #botontienda {
     background: #ccb6a5;

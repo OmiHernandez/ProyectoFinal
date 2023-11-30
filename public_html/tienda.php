@@ -74,6 +74,13 @@
                             $precio = $fila['Precio'];
                             $precioN =$fila['PrecioN'];
                             $desc = $fila['Descuento'];
+                            $cantidad = $fila['Cantidad'];
+
+
+                            $agotado=false;
+                            if($cantidad==0) {
+                                $agotado=true;
+                            }
                     ?>
                     <script>
                         array.push("<?php echo $nombre ?>");
@@ -93,7 +100,7 @@
                             <div class="overlay"></div>
                         </div>
                         <h5 class="titulo"><?php echo $nombre ?></h5>
-                        <p class="cate"><?php echo $catego ?></p>
+                        <p class="cate"><?php echo "- $catego -"; ?></p>
                         <h4 class="precio">
                             <?php
                                 if($desc!=0) {
@@ -105,10 +112,24 @@
                             ?>
                         </h4>
                         <br>
-                        <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
-                            <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
-                            Añadir al carrito
-                        </button>
+                        <?php
+                        if($agotado) {
+                        ?>
+                            <button id="<?php echo $numPro ?>" class="agotado" disabled>
+                                <i class="fa-solid fa-circle-exclamation" style="color: #ffffff;"></i>
+                                Producto agotado
+                            </button>
+                        <?php
+                        } else {
+                        ?> 
+                            <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
+                                <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+                                Añadir al carrito
+                            </button>
+                        <?php
+                        }
+                        ?>
+                        
                         <br><br>
                     </div>
                 <?php

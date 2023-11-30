@@ -172,6 +172,13 @@
                             $precio = $fila['Precio'];
                             $precioN =$fila['PrecioN'];
                             $desc = $fila['Descuento'];
+                            $cantidad = $fila['Cantidad'];
+
+
+                            $agotado=false;
+                            if($cantidad==0) {
+                                $agotado=true;
+                            }
                     ?>
                     <script>
                         array.push("<?php echo $nombre ?>");
@@ -191,7 +198,7 @@
                             <div class="overlay"></div>
                         </div>
                         <h5 class="titulo"><?php echo $nombre ?></h5>
-                        <p class="cate"><?php echo $catego ?></p>
+                        <p class="cate"><?php echo "- $catego -"; ?></p>
                         <h4 class="precio">
                             <?php
                                 if($desc!=0) {
@@ -203,10 +210,24 @@
                             ?>
                         </h4>
                         <br>
-                        <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
-                            <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
-                            Añadir al carrito
-                        </button>
+                        <?php
+                        if($agotado) {
+                        ?>
+                            <button id="<?php echo $numPro ?>" class="agotado" disabled>
+                                <i class="fa-solid fa-circle-exclamation" style="color: #ffffff;"></i>
+                                Producto agotado
+                            </button>
+                        <?php
+                        } else {
+                        ?> 
+                            <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
+                                <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+                                Añadir al carrito
+                            </button>
+                        <?php
+                        }
+                        ?>
+                        
                         <br><br>
                     </div>
                 <?php
@@ -249,14 +270,6 @@
                     <p style="text-align:center;color:white;">Sumérgete en un mundo donde la frescura del aire se mezcla con la exuberancia de las hojas y el perfume de las flores. </p>
                 </div>
             </div>
-            <!-- <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <div style="text-align: center">
-                        <button type="button" class="btn btn-lg" id="boton"><a class="text-white" href="contact.php">¡Contactanos!</a></button>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </section>
 
@@ -313,13 +326,13 @@
     </footer>
     
     <script>
-        console.log(array);    
+        console.log(array); 
         
-        function agregar(id){
+        function agregar(id) {
             var indice = parseInt(id);
-            console.log(`Elegiste ${array[indice]}`);       
-            
+            console.log(`Elegiste ${array[indice]}`);
         }
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
