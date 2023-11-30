@@ -35,8 +35,12 @@
         </div>
     </section>
 
-    <section>
+    <section class="Mega">
         <div class="contenedorII">
+            <img src="img/contact_img_1.png" alt="Imagen de Contacto" width="500px" height="500p´x">
+        </div>
+
+        <div class="contenedorIII">
             <form action="">
                 <div class="form-row">
                     <div class="form-group col-md-6">

@@ -28,11 +28,28 @@
     border-radius: 5px !important;
 }
 
-.contenedorII {
-    grid-area: parte2;
+.Mega {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
     display: grid;
-    place-items: center;
-    margin: 50px 0px;
+    grid-gap: 20px;
+    text-align: justify;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "parte1        parte2";
+}
+
+
+.contenedorII {
+    grid-area: parte1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contenedorIII {
+    grid-area: parte2;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 5px 5px 10px 5px #c9c9c9;
