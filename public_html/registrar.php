@@ -8,7 +8,7 @@
 <?php
 
 
-$servidor = 'localhost:3029';
+$servidor='localhost:33063';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -121,6 +121,46 @@ if ($_POST["metodo"] == "registrar") {
 } else if ($_POST["metodo"] == "iniciar") {
     $usuario = $_POST["usuario"];
     $contra = $_POST["contraseña"];
+
+    $sql = 'SELECT usuario, correo, contraseña, bloqueo FROM cuenta';
+    $resultado = $conexion -> query($sql);
+
+    if ($resultado -> num_rows) { //Si la consulta genera registros
+        while($fila = $resultado->fetch_assoc()){ //Recorremos los registros obtenidos de la tabla
+            if($usuario===$fila['usuario'] || $usuario===$fila['correo']) {
+
+                if($fila['bloqueo']<3){
+                    if($contra === $fila['contraseña']){ //Contraseña correcta
+                        $_SESSION["nombre"] = $fila['usuario'];
+                        $_SESSION["correo"] = $fila['correo'];
+                        header("refresh:6;url=index.php");
+                        exit();
+                    }
+                    else{
+                        $insertarBloqueo = $fila['bloqueo'] + 1;
+                        $sql = "UPDATE cuenta SET bloqueo='$insertarBloqueo' WHERE usuario='$usuario' OR correo='$usuario'";
+                        $conexion->query($sql); 
+                    }
+                }
+                else{
+                    ?>
+
+                    <div class="alert alert-danger" role="alert" id="alerta">
+                    <h4 class="alert-heading">Cuenta Bloqueada</h4>
+                    <p>Error. Su cuenta ha sido bloqueada.</p>
+                    <hr>
+                    <h6 class="mb-0">Esta siendo redireccionado.</h6>
+                    </div>
+
+                    <?php
+                    header("refresh:6;url=index.php");
+                    exit();
+                }   
+            }
+        }
+    }
+}
+    /*
     $handle = fopen("text/cuentas.txt", "r");
     if ($handle === false) {
         die('No se pudo abrir el archivo.');
@@ -549,3 +589,4 @@ if ($_POST["metodo"] == "registrar") {
     exit();
 }
 ?>
+*/
