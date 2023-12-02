@@ -47,6 +47,11 @@ session_start();
             }
         }
     }
+
+    function CambiarImage(){
+        document.querySelector(".captcha-image").src = 'captcha.php?' + Date.now();
+    }
+
 </script>
 
 <header>
@@ -102,6 +107,14 @@ session_start();
                                             <input type="password" name="contraseña" class="form-control" id="recipient-name" required>
                                         </div>
                                         <input type="text" value="iniciar" name="metodo" hidden>
+                                        <div class="elem-group">
+                                            <label for="captcha">Ingresa el siguiente captcha: </label>
+                                            <br>
+                                            <img src="captcha.php" alt="CAPTCHA" class="captcha-image"> <i class="fas fa-redo refresh-captcha" onclick="CambiarImage();" style="font-size:30px;"></i>
+                                            <br><br>
+                                            <input type="text" id="captcha" class="form-control" name="respcaptcha" pattern="[A-Z]{6}" style="width:50%;">
+                                            <br>
+                                        </div>
                                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                                     </form>
                                 </div>
