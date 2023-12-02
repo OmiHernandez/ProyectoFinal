@@ -249,15 +249,32 @@ if ($_POST["metodo"] == "registrar") {
 
     $sql = 'SELECT usuario, correo, contraseña, bloqueo FROM cuenta';
     $resultado = $conexion -> query($sql);
+    $existeCuenta = false;
 
     if ($resultado -> num_rows) { //Si la consulta genera registros
         while($fila = $resultado->fetch_assoc()){ //Recorremos los registros obtenidos de la tabla
             if($usuario===$fila['usuario'] || $usuario===$fila['correo']) {
+                $existeUsuario=true;
 
                 if($fila['bloqueo']<3){
-                    if($contra === $fila['contraseña']){ //Contraseña correcta
+                    //if($contra === $fila['contraseña']){ 
+                    if (password_verify($contra, $fila['contraseña'])) { //Contraseña correcta
+
                         $_SESSION["nombre"] = $fila['usuario'];
                         $_SESSION["correo"] = $fila['correo'];
+
+                        $sql = "UPDATE cuenta SET bloqueo=0 WHERE usuario='$usuario' OR correo='$usuario'";
+                        $conexion->query($sql); 
+                        ?>
+
+                        <div class="alert alert-success" role="alert" id="alerta">
+                            <h4 class="alert-heading">Inicio de sesión exitoso.</h4>
+                            <p>Bienvenido de nuevo</p>
+                            <hr>
+                            <h6 class="mb-0">Esta siendo redireccionado.</h6>
+                        </div>
+
+                        <?php
                         header("refresh:6;url=index.php");
                         exit();
                     }
@@ -265,6 +282,16 @@ if ($_POST["metodo"] == "registrar") {
                         $insertarBloqueo = $fila['bloqueo'] + 1;
                         $sql = "UPDATE cuenta SET bloqueo='$insertarBloqueo' WHERE usuario='$usuario' OR correo='$usuario'";
                         $conexion->query($sql); 
+                        ?>
+
+                        <div class="alert alert-danger" role="alert" id="alerta">
+                        <h4 class="alert-heading">Contraseña incorrecta</h4>
+                        <p>Vuelve a intentar.</p>
+                        <hr>
+                        <h6 class="mb-0">Esta siendo redireccionado.</h6>
+                        </div>
+
+                        <?php
                         header("refresh:6;url=index.php");
                         exit();
                     }
@@ -274,7 +301,7 @@ if ($_POST["metodo"] == "registrar") {
 
                     <div class="alert alert-danger" role="alert" id="alerta">
                     <h4 class="alert-heading">Cuenta Bloqueada</h4>
-                    <p>Error. Su cuenta ha sido bloqueada.</p>
+                    <p>Se ha alcanzado el límite de intentos.</p>
                     <hr>
                     <h6 class="mb-0">Esta siendo redireccionado.</h6>
                     </div>
@@ -285,8 +312,23 @@ if ($_POST["metodo"] == "registrar") {
                 }   
             }
         }
+        if(!$existeCuenta) {
+            ?>
+
+            <div class="alert alert-danger" role="alert" id="alerta">
+            <h4 class="alert-heading">Cuenta no registrada</h4>
+            <p>La cuenta no existe, favor de registrarse.</p>
+            <hr>
+            <h6 class="mb-0">Esta siendo redireccionado.</h6>
+            </div>
+
+            <?php
+            header("refresh:6;url=index.php");
+            exit();
+        }
     }
 }
+
     /*
     $handle = fopen("text/cuentas.txt", "r");
     if ($handle === false) {
