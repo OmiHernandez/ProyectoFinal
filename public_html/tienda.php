@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-    $servidor='localhost:33065';
+    $servidor='localhost';
     $cuenta='root';
     $password='';
     $bd='botanical';
@@ -11,6 +11,19 @@
 
     $sql = 'select * from productos';
     $resultado = $conexion -> query($sql);
+
+
+    if (isset($_POST['submit']) && $_POST['metodo'] == "Filtrar") {
+        $Campo = $_POST['FiltrarCate'];
+
+        if($Campo=="todo") {
+            $sql = 'select * from productos';
+        } else {
+            $sql = 'select * from productos where Categoria="'.$Campo.'"';//hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
+        }
+        $resultado = $conexion->query($sql); //aplicamos sentencia
+    }
+
 ?>
 
 <head>
@@ -56,13 +69,13 @@
          -->
 
         <div>
-            <form action="" class="filtro">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="filtro">
                 <div>
                     <p>Filtrar por categoría:</p>
                 </div>
                 <div>
                     <select id="FiltrarCate" placeholder="" name="FiltrarCate">
-                        <option selected disabled value="">Elegir categoría</option>
+                        <option selected value="todo">Mostrar todo</option>
                         <option value="Sombra">Sombra</option>
                         <option value="Sol">Sol</option>
                     </select>
@@ -156,12 +169,12 @@
                         
                         <br><br>
                     </div>
-                <?php
-                        $numPro = $numPro+1;
-                    }//fin while
-                ?>
-                </div>
-            </div>
+                    <?php
+                            $numPro = $numPro+1;
+                        }//fin while
+                    ?>
+                </div> <!--div row-->
+            </div> <!--div cointaier-->
         </div>
     </section>
 

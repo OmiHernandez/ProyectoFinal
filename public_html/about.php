@@ -58,7 +58,7 @@
             </div>
 
             <div class="parte4">
-                <h1>Trazando la Ruta Verde: Compromiso de Botanical Garden con la Sostenibilidad y la Calidad Local</h1>
+                <h1>Visión</h1>
                 <p>En Botanical Garden, nos sumergimos en la realización de nuestra visión al establecer colaboraciones
                     estrechas con productores locales. Este compromiso nos impulsa a trabajar de la mano con
                     agricultores de la región, con el objetivo de ofrecer a nuestros clientes plantas frescas y de la
@@ -70,7 +70,7 @@
             </div>
 
             <div class="parte5">
-                <h1>Verde en Crecimiento</h1>
+                <h1>Objetivo</h1>
                 <p>En el contexto actual de transformación hacia prácticas empresariales más sostenibles y comprometidas
                     con la preservación del medio ambiente, Botanical Garden se destaca al impulsar un cultivo más
                     sostenible y reforzar su dedicación a la protección del entorno. Nuestros cultivadores están
@@ -97,7 +97,7 @@
             </div>
 
             <div class="parte8">
-                <h1>Hogares Floridos</h1>
+                <h1>Mision</h1>
                 <p>Nos conformamos como un equipo apasionado y diverso que trabaja con integridad, creatividad y energía
                     para alcanzar metas asombrosas, edificando así una empresa con visión de sostenibilidad a largo
                     plazo. Nuestra misión es motivar a nuestros clientes a convertir cada rincón en un hogar exquisito,

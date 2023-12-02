@@ -28,28 +28,75 @@
                     a 18h y viernes de 9 a 14h.</p>
                 <p>Dias en los que no podras contactarnos: 11 de septiembre, 25 de septiembre, 12 de octubre, 1 de
                     noviembre, 6 y 8 de diciembre, 25 y 26 de diciembre. </p>
-                <p>Si quieres recibir <b>novedades y descuentos</b> April puedes suscribirte <a class="verde"
+                <p>Si quieres recibir <b>novedades y descuentos</b> Botanical Garden puedes suscribirte <a class="verde"
                         href="#">haciendo clic
                         aquí</a></p>
             </div>
         </div>
     </section>
 
+    <?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    require 'plugins/phpmailer/PHPMailer-6.8.1/src/PHPMailer.php';
+    require 'plugins/phpmailer/PHPMailer-6.8.1/src/SMTP.php';
+    require 'plugins/phpmailer/PHPMailer-6.8.1/src/Exception.php';
+    if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+        $nombre = $_POST["nombre"];
+        $correo = $_POST["correo"];
+
+        $mail = new PHPMailer(true);
+
+        try {
+
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'botanicalgarden000@gmail.com';
+            $mail->Password = 'fiqzpjzbeokolpop';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+
+            $mail->setFrom('botanicalgarden000@gmail.com', 'Botanical Garden');
+            $mail->addAddress($correo, $nombre);
+
+            $mail->isHTML(true);
+
+            $mail->Subject = "Gracias por contactarnos";
+
+            $mail->Body = "Tu mensaje esta siendo procesado por nuestro excelente equipo";
+
+            $mail->send();
+
+            echo '<div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">¡Nuevo correo recibido!</h4>
+            <p>Has recibido un nuevo correo electrónico. Revisa tu bandeja de entrada para estar al tanto de las últimas novedades.</p>
+            <hr>
+            <p class="mb-0">Recuerda revisar tu correo regularmente para no perderte información importante.</p>
+        </div>';
+        } catch (Exception $e) {
+            echo 'Error: ' . $mail->ErrorInfo;
+        }
+    }
+    ?>
+  
     <section class="Mega">
         <div class="contenedorII">
             <img src="img/contact_img_1.png" alt="Imagen de Contacto" width="500px" height="500p´x">
         </div>
 
         <div class="contenedorIII">
-            <form action="">
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="NombreForm">Nombre</label>
-                        <input id="NombreForm" class="form-control" type="text">
+                        <input id="NombreForm" class="form-control" type="text" name="nombre">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="CorreoForm">Correo electrónico</label>
-                        <input id="CorreoForm" class="form-control" type="email">
+                        <input id="CorreoForm" class="form-control" type="email" name="correo">
                     </div>
                 </div>
 
