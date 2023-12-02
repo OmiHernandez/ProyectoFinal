@@ -13,7 +13,7 @@
         die('Error en la conexion');
     }
       
-    if (isset($_POST['submit']) && $_POST['metodo']=="AltaProducto" && isset($_FILES["foto"]) && !(empty($_FILES["foto"]["tmp_name"]))) {
+    if (isset($_POST['submit']) && $_POST['metodo']=="AltaProducto" && isset($_FILES['foto']) && !(empty($_FILES['foto']['tmp_name']))) {
         /*Nombre -
 	    Descripcion	-
 	    Categoria -
@@ -22,7 +22,7 @@
 	    Descuento -
 	    imagen -
 	    PrecioN*/
-        $targetDir = "img/";  // Directorio donde se guardarán las imágenes
+        $targetDir = "img/productos/";  // Directorio donde se guardarán las imágenes
         $Imagen = basename($_FILES["foto"]["name"]);
         $targetFile = $targetDir . $Imagen;
 
@@ -50,10 +50,7 @@
             }
         }
         
-      } else {
-        echo "NO ENTROOOOOOOOOOOOOOOOOOO AH";
       }
-
 ?>
 
 <head>
@@ -76,7 +73,7 @@
 
     <br><br>
 
-    <section >
+    <section>
         <div class="Movie">
             <h1>Bienvenido Admin</h1>
             <h5>Panel de control productos</h5>
@@ -104,11 +101,12 @@
     </section>
 
     <section class="altas">
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="formulario">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="formulario" enctype="multipart/form-data">
         <legend>
             <h1>Agregar producto nuevo</h1>
         </legend>
-        <table>
+        <hr>
+        <table style="width:100%;">
             <tr>
             <td class="form-group">
                 <label for="NombreP">Nombre del producto:</label>
@@ -123,7 +121,7 @@
             </td>
             <td class="form-group">
                 <label for="foto">Imagen</label>
-                <input type="file" class="form-control subirfoto" id="foto" name="foto" required>
+                <input type="file" class="form-control subirfile" id="foto" name="foto" required>
             </td>
             </tr>
             <tr>
