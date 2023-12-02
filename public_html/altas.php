@@ -13,7 +13,7 @@
         die('Error en la conexion');
     }
       
-    if (isset($_POST['submit']) && $_POST['metodo']=="AltaProducto" && isset($_FILES["foto"]) && !(empty($_FILES["foto"]["tmp_name"]))) {
+    if (isset($_POST['submit']) && $_POST['metodo']=="AltaProducto" && isset($_FILES['foto']) && !(empty($_FILES['foto']['tmp_name']))) {
         /*Nombre -
 	    Descripcion	-
 	    Categoria -
@@ -106,7 +106,7 @@
     </section>
 
     <section class="altas">
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="formulario">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="formulario" enctype="multipart/form-data">
         <legend>
             <h1>Agregar producto nuevo</h1>
         </legend>
