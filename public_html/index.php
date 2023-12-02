@@ -180,7 +180,7 @@
                             $agotado=false;
                             if($cantidad==0) {
                                 $agotado=true;
-                            }
+                        }
                     ?>
                     <script>
                         array.push("<?php echo $nombre ?>");

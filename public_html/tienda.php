@@ -38,23 +38,40 @@
             <h1>Conoce todos nuestros productos</h1>
             <h5>Encuentra tu planta ideal para darle mas vida a tu hogar</h5>
         </div>
+
         <div class="separacion"></div>
-        <div class="filtro">
-            <div>
-                <p>Filtrar por categoría:</p>
-            </div>
-            <div>
-                <a href="tienda.php">
-                    <img src="img/card2.jpg" alt="Categoría 2">
-                    <p>Suculentas</p>
-                </a>
-            </div>
-            <div>
-                <a href="tienda.php">
-                    <img src="img/card3.jpg" alt="Categoría 3">
-                    <p>Cactus</p>
-                </a>
-            </div>
+
+
+        <!--
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="formulario fmodif consulta">
+        <table class="ancho">
+          <tr>
+            <td colspan="3" style="text-align: center;">
+              <input type="text" name="metodo" value="BuscarAlumno" hidden>
+              <button type="submit" class="btn botonbuscar" name="submit">Buscar</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+         -->
+
+        <div>
+            <form action="" class="filtro">
+                <div>
+                    <p>Filtrar por categoría:</p>
+                </div>
+                <div>
+                    <select id="FiltrarCate" placeholder="" name="FiltrarCate">
+                        <option selected disabled value="">Elegir categoría</option>
+                        <option value="Sombra">Sombra</option>
+                        <option value="Sol">Sol</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="text" name="metodo" value="Filtrar" hidden>
+                    <button type="submit" id="btnfiltro" name="submit">Aplicar filtro</button>
+                </div>
+            </form>
         </div>
     </section>
     <br>
