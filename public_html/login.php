@@ -1,11 +1,21 @@
 <?php
+
+$servidor = 'localhost:33065';
+$cuenta = 'root';
+$password = '';
+$bd = 'botanical';
+
+$conexion = new mysqli($servidor, $cuenta, $password, $bd);
+
+$resultado = $conexion->query($sql);
+
 date_default_timezone_set('America/Mexico_City');
 
 $horaActual = date("G");
 session_start();
 
 ?>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     function AbrirModal1() {
         $('#modal1').modal('show');
@@ -24,6 +34,21 @@ session_start();
         $('#modal2').modal('hide');
         $('#modal1').modal('show');
     }
+
+    function Validaciones() {
+        $contra1 = document.getElementById('cons').value;
+        $contra2 = document.getElementById('recons').value;
+        if ($contra1.length < 8) {
+            swal("Error", "La contraseña es muy debil (minimo 8 caracteres)", "error");
+        } else {
+            if ($contra1 == $contra2) {
+                let formulario = document.getElementById('formularioregistro');
+                formulario.submit();
+            } else {
+                swal("Error", "Las contraseñas no coinciden", "error");
+            }
+        }
+    }
 </script>
 
 <header>
@@ -40,8 +65,8 @@ session_start();
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" >
-            <li class="nav-item">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="tienda.php">Tienda</a>
                 </li>
                 <li class="nav-item">
@@ -90,28 +115,78 @@ session_start();
                         </div>
                     </div>
 
-                    <div id="modal2" class="modal fade" role="dialog" style="overflow-y: hidden;">
+                    <div id="modal2" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-tittle">Registrarse</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="registrar.php" method="POST">
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">Usuario:</label>
-                                            <input type="text" name="usuario" class="form-control" id="recipient-name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">Correo:</label>
-                                            <input type="email" name="correo" class="form-control" id="recipient-name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label">Contraseña:</label>
-                                            <input type="password" name="contraseña" class="form-control" id="recipient-name" required>
-                                        </div>
-                                        <input type="text" value="registrar" name="metodo" hidden>
-                                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                                    <form action="registrar.php" method="POST" id="formularioregistro">
+                                        <table>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Nombre:</label>
+                                                        <input type="text" name="nombre" class="form-control" id="recipient-name" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Usuario:</label>
+                                                        <input type="text" name="usuario" class="form-control" id="recipient-name idr1" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Correo:</label>
+                                                        <input type="email" name="correo" class="form-control" id="recipient-name" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Contraseña:</label>
+                                                        <input type="password" name="contraseña" class="form-control" id="cons" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Pregunta de seguridad:</label>
+                                                        <select name="pregunta" class="custom-select">
+                                                            <option value="¿Nombre de tu primera mascota?">¿Nombre de tu primera mascota?</option>
+                                                            <option value="¿Lugar de nacimiento de tu madre?">¿Lugar de nacimiento de tu madre?</option>
+                                                            <option value="¿Nombre de tu abuelo paterno?">¿Nombre de tu abuelo paterno?</option>
+                                                            <option value="¿Ciudad donde estudiaste la primaria?">¿Ciudad donde estudiaste la primaria?</option>
+                                                            <option value="¿Nombre del primer colegio al que asististe?">¿Nombre del primer colegio al que asististe?</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Repetir contraseña:</label>
+                                                        <input type="password" name="repcontraseña" class="form-control" id="recons" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Respuesta:</label>
+                                                        <input type="text" name="respuesta" class="form-control" id="recipient-name" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" value="registrar" name="metodo" hidden>
+                                                    <button type="button" class="btn btn-primary" onclick="Validaciones();">Registrarse</button>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -124,103 +199,35 @@ session_start();
 
 
                 </div>
-                <?php
-            } else {
-                $examen = 0;
-
-                $handle = fopen("text/access.txt", "r");
-                if ($handle === false) {
-                    die('No se pudo abrir el archivo.');
-                }
-
-                while (!feof($handle)) {
-                    $palabra = fscanf($handle, "%s%s");
-                    if ($palabra) {
-                        if ($_SESSION["nombre"] == $palabra[0]) {
-                            $examen = 1;
-                        }
-                    }
-                }
-                fclose($handle);
-
-                if ($examen == 1) {
-                ?>
-                    <div class="nav-item dropdown my-2 my-lg-0">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <?php switch ($horaActual) {
-                                case ($horaActual >= 18 || $horaActual <= 5): {
-                                        echo "¡Buenas noches ";
-                                        break;
-                                    }
-                                case ($horaActual >= 6 && $horaActual <= 11): {
-                                        echo "¡Buenos dias ";
-                                        break;
-                                    }
-                                case ($horaActual >= 12 && $horaActual <= 17): {
-                                        echo "¡Buenas tardes ";
-                                        break;
-                                    }
-                            }
-                            echo $_SESSION["nombre"] . "!"; ?>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="formulario.php">Vacantes</a>
-                            <button type="button" id="btnModal3" class="dropdown-item" onclick="AbrirModal3()">Aplicar examen</button>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
-                        </div>
-                        <div id="modal3" class="modal fade" role="dialog" style="overflow-y: hidden;">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-tittle">Aplicar examen</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <form action="registrar.php" method="POST">
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Código de examen</label>
-                                                <input type="text" name="excode" class="form-control" id="recipient-name" required>
-                                            </div>
-                                            <input type="text" value="examen" name="metodo" hidden>
-                                            <button type="submit" class="btn btn-primary">Ingresar</button>
-                                        </form>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                } else {
-                ?>
-                    <div class="nav-item dropdown my-2 my-lg-0">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <?php switch ($horaActual) {
-                                case ($horaActual >= 18 || $horaActual <= 5): {
-                                        echo "¡Buenas noches ";
-                                        break;
-                                    }
-                                case ($horaActual >= 6 && $horaActual <= 11): {
-                                        echo "¡Buenos dias ";
-                                        break;
-                                    }
-                                case ($horaActual >= 12 && $horaActual <= 17): {
-                                        echo "¡Buenas tardes ";
-                                        break;
-                                    }
-                            }
-                            echo $_SESSION["nombre"] . "!"; ?>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="formulario.php">Vacantes</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
-                        </div>
-
-                    </div>
             <?php
-                }
+            } else {
+            ?>
+                <div class="nav-item dropdown my-2 my-lg-0">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        <?php switch ($horaActual) {
+                            case ($horaActual >= 18 || $horaActual <= 5): {
+                                    echo "¡Buenas noches ";
+                                    break;
+                                }
+                            case ($horaActual >= 6 && $horaActual <= 11): {
+                                    echo "¡Buenos dias ";
+                                    break;
+                                }
+                            case ($horaActual >= 12 && $horaActual <= 17): {
+                                    echo "¡Buenas tardes ";
+                                    break;
+                                }
+                        }
+                        echo $_SESSION["nombre"] . "!"; ?>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="formulario.php">Vacantes</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                    </div>
+
+                </div>
+            <?php
             }
             ?>
 

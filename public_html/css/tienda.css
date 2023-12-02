@@ -1,4 +1,4 @@
-div.filtro {
+form.filtro {
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
@@ -15,16 +15,32 @@ div.filtro {
     overflow: hidden;
     transition: transform 0.3s ease;
 }
-.filtro div:hover {
+/* .filtro div:hover {
     transform: translateY(-10px);
+} */
+select#FiltrarCate {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    outline: none;
+    appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
 }
-
 .filtro>div img {
     width: 100%;
     border-radius: 10px;
 }
-
-.filtro p {
+#btnfiltro {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    border: none;
+    background: none;
+}
+.filtro p, #FiltrarCate, #btnfiltro {
     font-weight: bold;
     margin-top: 10px;
 }

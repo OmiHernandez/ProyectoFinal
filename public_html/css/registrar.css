@@ -1,0 +1,14 @@
+
+body{
+overflow-y: hidden;
+}
+
+#alerta{
+    width: 50%;
+    margin: auto;
+}
+
+.log{
+    display: flex;
+    justify-content: center;
+}

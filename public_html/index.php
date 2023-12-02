@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-    $servidor='localhost';
+    $servidor='localhost:3029';
     $cuenta='root';
     $password='';
     $bd='botanical';
@@ -180,7 +180,7 @@
                             $agotado=false;
                             if($cantidad==0) {
                                 $agotado=true;
-                            }
+                        }
                     ?>
                     <script>
                         array.push("<?php echo $nombre ?>");

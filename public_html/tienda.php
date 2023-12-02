@@ -11,6 +11,19 @@
 
     $sql = 'select * from productos';
     $resultado = $conexion -> query($sql);
+
+
+    if (isset($_POST['submit']) && $_POST['metodo'] == "Filtrar") {
+        $Campo = $_POST['FiltrarCate'];
+
+        if($Campo=="todo") {
+            $sql = 'select * from productos';
+        } else {
+            $sql = 'select * from productos where Categoria="'.$Campo.'"';//hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
+        }
+        $resultado = $conexion->query($sql); //aplicamos sentencia
+    }
+
 ?>
 
 <head>
@@ -38,23 +51,40 @@
             <h1>Conoce todos nuestros productos</h1>
             <h5>Encuentra tu planta ideal para darle mas vida a tu hogar</h5>
         </div>
+
         <div class="separacion"></div>
-        <div class="filtro">
-            <div>
-                <p>Filtrar por categoría:</p>
-            </div>
-            <div>
-                <a href="tienda.php">
-                    <img src="img/card2.jpg" alt="Categoría 2">
-                    <p>Suculentas</p>
-                </a>
-            </div>
-            <div>
-                <a href="tienda.php">
-                    <img src="img/card3.jpg" alt="Categoría 3">
-                    <p>Cactus</p>
-                </a>
-            </div>
+
+
+        <!--
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="formulario fmodif consulta">
+        <table class="ancho">
+          <tr>
+            <td colspan="3" style="text-align: center;">
+              <input type="text" name="metodo" value="BuscarAlumno" hidden>
+              <button type="submit" class="btn botonbuscar" name="submit">Buscar</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+         -->
+
+        <div>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="filtro">
+                <div>
+                    <p>Filtrar por categoría:</p>
+                </div>
+                <div>
+                    <select id="FiltrarCate" placeholder="" name="FiltrarCate">
+                        <option selected value="todo">Mostrar todo</option>
+                        <option value="Sombra">Sombra</option>
+                        <option value="Sol">Sol</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="text" name="metodo" value="Filtrar" hidden>
+                    <button type="submit" id="btnfiltro" name="submit">Aplicar filtro</button>
+                </div>
+            </form>
         </div>
     </section>
     <br>
@@ -139,12 +169,12 @@
                         
                         <br><br>
                     </div>
-                <?php
-                        $numPro = $numPro+1;
-                    }//fin while
-                ?>
-                </div>
-            </div>
+                    <?php
+                            $numPro = $numPro+1;
+                        }//fin while
+                    ?>
+                </div> <!--div row-->
+            </div> <!--div cointaier-->
         </div>
     </section>
 
