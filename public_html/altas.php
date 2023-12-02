@@ -13,11 +13,7 @@
         die('Error en la conexion');
     }
       
-    if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FILES["Imagen"]) && !(empty($_FILES["Imagen"]["tmp_name"]))) {
-        $nac = date("Y", strtotime($_POST['Nacimiento']));
-        $Actual = date('Y');
-        $edad = $Actual - $nac;
-
+    if (isset($_POST['submit']) && $_POST['metodo']=="AltaProducto" && isset($_FILES["foto"]) && !(empty($_FILES["foto"]["tmp_name"]))) {
         /*Nombre -
 	    Descripcion	-
 	    Categoria -
@@ -26,28 +22,38 @@
 	    Descuento -
 	    imagen -
 	    PrecioN*/
-
-        $Nombre = $_POST['Nombre'];
-        $Descripcion = $_POST['Descripcion'];
-        $Categoria = $_POST['Categoria'];
-        $Cantidad =  $_POST['Cantidad'];
-        $Precio = $_POST['Precio'];
-        $Descuento = $_POST['Descuento'];
-
         $targetDir = "img/";  // Directorio donde se guardarán las imágenes
-        $Imagen = $targetDir . basename($_FILES["Imagen"]["name"]);
+        $Imagen = basename($_FILES["foto"]["name"]);
+        $targetFile = $targetDir . $Imagen;
 
-        if($Descuento!=0) {
-            $aux=$Precio*($Descuento/100);
-            $PrecioN=$Precio-$aux;
-        } else {
-            $PrecioN=$Precio;
+        $check = getimagesize($_FILES["foto"]["tmp_name"]);
+        if ($check !== false) {
+            if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFile)) {
+                $Nombre = $_POST['Nombre'];
+                $Descripcion = $_POST['Descripcion'];
+                $Categoria = $_POST['Categoria'];
+                $Cantidad =  $_POST['Cantidad'];
+                $Precio = $_POST['Precio'];
+                $Descuento = $_POST['Descuento'];
+
+                
+
+                if($Descuento!=0) {
+                    $aux=$Precio*($Descuento/100);
+                    $PrecioN=$Precio-$aux;
+                } else {
+                    $PrecioN=$Precio;
+                }
+                
+                $sql = "INSERT INTO productos
+                        VALUES(default, '$Nombre', '$Descripcion', '$Categoria', $Cantidad, $Precio, 
+                        $Descuento, '$Imagen', $PrecioN)";
+                $resultado = $conexion->query($sql); //aplicamos sentencia
+            }
         }
         
-        $sql = "INSERT INTO productos
-                VALUES(default, '$Nombre', '$Descripcion', '$Categoria', $Cantidad, $Precio, 
-                $Descuento, '$Imagen', $PrecioN)";
-        $resultado = $conexion->query($sql); //aplicamos sentencia
+      } else {
+        echo "NO ENTROOOOOOOOOOOOOOOOOOO AH";
       }
 
 ?>
@@ -118,8 +124,8 @@
                 </select>
             </td>
             <td class="form-group">
-                <label for="ImagenP">Imagen</label>
-                <input type="file" class="form-control subirfoto" id="ImagenP" name="Imagen" required>
+                <label for="foto">Imagen</label>
+                <input type="file" class="form-control subirfoto" id="foto" name="foto" required>
             </td>
             </tr>
             <tr>
