@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:33065
--- Tiempo de generación: 29-11-2023 a las 17:22:57
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: localhost:3029
+-- Tiempo de generación: 02-12-2023 a las 06:37:25
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `botanical`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuenta`
+--
+
+CREATE TABLE `cuenta` (
+  `ID` int(11) NOT NULL,
+  `Usuario` varchar(20) DEFAULT NULL,
+  `Correo` varchar(50) DEFAULT NULL,
+  `Contraseña` varchar(255) DEFAULT NULL,
+  `Pregunta` varchar(50) DEFAULT NULL,
+  `Respuesta` varchar(255) DEFAULT NULL,
+  `Nombre` varchar(60) DEFAULT NULL,
+  `Bloqueo` int(2) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `cuenta`
+--
+
+INSERT INTO `cuenta` (`ID`, `Usuario`, `Correo`, `Contraseña`, `Pregunta`, `Respuesta`, `Nombre`, `Bloqueo`) VALUES
+(1, 'BryanM', 'jalkemmorales@gmail.com', 'owo', '¿Nombre de tu primera mascota?', 'Rufi', 'Bryan Misael Morales Martin', 0);
 
 -- --------------------------------------------------------
 
@@ -59,6 +83,12 @@ INSERT INTO `productos` (`ID`, `Nombre`, `Descripcion`, `Categoria`, `Cantidad`,
 --
 
 --
+-- Indices de la tabla `cuenta`
+--
+ALTER TABLE `cuenta`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -67,6 +97,12 @@ ALTER TABLE `productos`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `cuenta`
+--
+ALTER TABLE `cuenta`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
