@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-    $servidor='localhost';
+    $servidor='localhost:33065';
     $cuenta='root';
     $password='';
     $bd='botanical';
@@ -127,7 +127,7 @@
                         ?>
                         <div class="efecto">
                             <a href="#" class="">
-                                <img class="img-fluid image" width="240" height="240" src="img/<?php echo $imagen ?>">
+                                <img class="img-fluid image" width="240" height="240" src="img/productos/<?php echo $imagen ?>">
                             </a>
                             <div class="overlay">
                                 <div class="textDesc">

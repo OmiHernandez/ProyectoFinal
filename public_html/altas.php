@@ -22,7 +22,7 @@
 	    Descuento -
 	    imagen -
 	    PrecioN*/
-        $targetDir = "img/";  // Directorio donde se guardarán las imágenes
+        $targetDir = "img/productos/";  // Directorio donde se guardarán las imágenes
         $Imagen = basename($_FILES["foto"]["name"]);
         $targetFile = $targetDir . $Imagen;
 
@@ -52,10 +52,7 @@
             }
         }
         
-      } else {
-        echo "NO ENTROOOOOOOOOOOOOOOOOOO AH";
       }
-
 ?>
 
 <head>
@@ -78,7 +75,7 @@
 
     <br><br>
 
-    <section >
+    <section>
         <div class="Movie">
             <h1>Bienvenido Admin</h1>
             <h5>Panel de control productos</h5>
@@ -110,7 +107,8 @@
         <legend>
             <h1>Agregar producto nuevo</h1>
         </legend>
-        <table>
+        <hr>
+        <table style="width:100%;">
             <tr>
             <td class="form-group">
                 <label for="NombreP">Nombre del producto:</label>
