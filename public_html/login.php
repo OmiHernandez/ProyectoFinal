@@ -1,13 +1,11 @@
 <?php
 
-$servidor='localhost:33063';
+$servidor='localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
 
 $conexion = new mysqli($servidor, $cuenta, $password, $bd);
-
-$resultado = $conexion->query($sql);
 
 date_default_timezone_set('America/Mexico_City');
 

@@ -13,11 +13,7 @@
         die('Error en la conexion');
     }
       
-    if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FILES["Imagen"]) && !(empty($_FILES["Imagen"]["tmp_name"]))) {
-        $nac = date("Y", strtotime($_POST['Nacimiento']));
-        $Actual = date('Y');
-        $edad = $Actual - $nac;
-
+    if (isset($_POST['submit']) && $_POST['metodo']=="AltaProducto" && isset($_FILES["foto"]) && !(empty($_FILES["foto"]["tmp_name"]))) {
         /*Nombre -
 	    Descripcion	-
 	    Categoria -
@@ -26,28 +22,38 @@
 	    Descuento -
 	    imagen -
 	    PrecioN*/
-
-        $Nombre = $_POST['Nombre'];
-        $Descripcion = $_POST['Descripcion'];
-        $Categoria = $_POST['Categoria'];
-        $Cantidad =  $_POST['Cantidad'];
-        $Precio = $_POST['Precio'];
-        $Descuento = $_POST['Descuento'];
-
         $targetDir = "img/";  // Directorio donde se guardarán las imágenes
-        $Imagen = $targetDir . basename($_FILES["Imagen"]["name"]);
+        $Imagen = basename($_FILES["foto"]["name"]);
+        $targetFile = $targetDir . $Imagen;
 
-        if($Descuento!=0) {
-            $aux=$Precio*($Descuento/100);
-            $PrecioN=$Precio-$aux;
-        } else {
-            $PrecioN=$Precio;
+        $check = getimagesize($_FILES["foto"]["tmp_name"]);
+        if ($check !== false) {
+            if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFile)) {
+                $Nombre = $_POST['Nombre'];
+                $Descripcion = $_POST['Descripcion'];
+                $Categoria = $_POST['Categoria'];
+                $Cantidad =  $_POST['Cantidad'];
+                $Precio = $_POST['Precio'];
+                $Descuento = $_POST['Descuento'];
+
+                
+
+                if($Descuento!=0) {
+                    $aux=$Precio*($Descuento/100);
+                    $PrecioN=$Precio-$aux;
+                } else {
+                    $PrecioN=$Precio;
+                }
+                
+                $sql = "INSERT INTO productos
+                        VALUES(default, '$Nombre', '$Descripcion', '$Categoria', $Cantidad, $Precio, 
+                        $Descuento, '$Imagen', $PrecioN)";
+                $resultado = $conexion->query($sql); //aplicamos sentencia
+            }
         }
         
-        $sql = "INSERT INTO productos
-                VALUES(default, '$Nombre', '$Descripcion', '$Categoria', $Cantidad, $Precio, 
-                $Descuento, '$Imagen', $PrecioN)";
-        $resultado = $conexion->query($sql); //aplicamos sentencia
+      } else {
+        echo "NO ENTROOOOOOOOOOOOOOOOOOO AH";
       }
 
 ?>
@@ -118,8 +124,8 @@
                 </select>
             </td>
             <td class="form-group">
-                <label for="ImagenP">Imagen</label>
-                <input type="file" class="form-control subirfoto" id="ImagenP" name="Imagen" required>
+                <label for="foto">Imagen</label>
+                <input type="file" class="form-control subirfoto" id="foto" name="foto" required>
             </td>
             </tr>
             <tr>
@@ -155,89 +161,7 @@
     <section class="productos">
         <div>
             <div class="container"> 
-                <div class="row">
-                    <?php
-                        $numPro = 0;
-                    ?>
-                    <script> var array=[];</script>
-                    <?php
-                        while( $fila = $resultado ->  fetch_assoc()){
-                            $imagen = $fila['imagen'];
-                            $nombre = $fila['Nombre'];
-                            $id = $fila['ID'];
-                            $descrip = $fila['Descripcion'];
-                            $catego = $fila['Categoria'];
-                            $precio = $fila['Precio'];
-                            $precioN =$fila['PrecioN'];
-                            $desc = $fila['Descuento'];
-                            $cantidad = $fila['Cantidad'];
-
-
-                            $agotado=false;
-                            if($cantidad==0) {
-                                $agotado=true;
-                            }
-                    ?>
-                    <script>
-                        array.push("<?php echo $nombre ?>");
-                    </script>
-                    
-                    <div class="product"><!-- col-md-3 col-sm-6  -->
-                        <div class="separacion2"></div>
-                        <?php 
-                            if($desc!=0) {
-                                echo '<div class="descuent">'.$desc.'%</div>';
-                            }
-                        ?>
-                        <div class="efecto">
-                            <a href="#" class="">
-                                <img class="img-fluid image" width="240" height="240" src="img/<?php echo $imagen ?>">
-                            </a>
-                            <div class="overlay">
-                                <div class="textDesc">
-                                    <?php echo "<span>ID: $id </span><br><br>$descrip"; ?>
-                                </div>
-                            </div>
-                        </div>
-                        <h5 class="titulo"><?php echo $nombre ?></h5>
-                        <p class="cate"><?php echo "- $catego -"; ?></p>
-                        <h4 class="precio">
-                            <?php
-                                if($desc!=0) {
-                                     echo "<p>$".$precio."</p>";
-                                     echo "$".$precioN; 
-                                } else {
-                                     echo "<br>$".$precioN.""; 
-                                }
-                            ?>
-                        </h4>
-                        <br>
-                        <p class="cantidad"><?php echo "Existencia: $cantidad"; ?></p>
-                        <?php
-                        if($agotado) {
-                        ?>
-                            <button id="<?php echo $numPro ?>" class="agotado" disabled>
-                                <i class="fa-solid fa-circle-exclamation" style="color: #ffffff;"></i>
-                                Producto agotado
-                            </button>
-                        <?php
-                        } else {
-                        ?> 
-                            <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
-                                <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
-                                Añadir al carrito
-                            </button>
-                        <?php
-                        }
-                        ?>
-                        
-                        <br><br>
-                    </div>
-                    <?php
-                            $numPro = $numPro+1;
-                        }//fin while
-                    ?>
-                </div> <!--div row-->
+                
             </div> <!--div cointaier-->
         </div>
     </section>
