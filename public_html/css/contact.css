@@ -59,3 +59,9 @@
     max-width: 1200px;
     margin: 20px auto;
 }
+
+
+.alert-success {
+    margin: 0 auto;
+   width: 500px;
+}
