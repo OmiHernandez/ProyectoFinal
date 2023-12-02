@@ -8,7 +8,7 @@
 <?php
 
 
-$servidor='localhost:33063';
+$servidor='localhost:3029';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -246,6 +246,73 @@ if ($_POST["metodo"] == "registrar") {
 } else if ($_POST["metodo"] == "iniciar") {
     $usuario = $_POST["usuario"];
     $contra = $_POST["contraseña"];
+
+    if(!isset($_POST['respcaptcha']) || $_POST['respcaptcha'] != $_SESSION['captcha_text']){
+        $_SESSION['captcha_text'] = ""
+        ?>
+        <div class="alert alert-danger" role="alert" id="alerta">
+            <h4 class="alert-heading">Error.</h4>
+            <p>Captcha incorrecto.</p>
+            <hr>
+            <h6 class="mb-0">Esta siendo redireccionado.</h6>
+        </div>
+        <br>
+        <footer>
+            <div class="foot">
+                <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+                    <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
+                        <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
+                    </a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contactanos</a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Sobre nosotros...</a>
+                </nav>
+                <div class="redes">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="derechos">
+                    <nav class="navbar">
+                        <a class="navbar-brand text-white">Empresa BotanicalG | Todos los derechos reservados &copy;</a>
+                        <span class="badge badge-info">
+                            <?php
+                            date_default_timezone_set('America/Mexico_City');
+                            echo "Ultima modificación: " . date("d/m/Y H:i:s.", getlastmod());
+                            ?>
+                        </span>
+                        <p class="navbar-item my-2 my-lg-0 text-white">Al utilizar nuestro sitio indicas que aceptas nuestro <a class="text-white-50" href="#">aviso de privacidad</a></p>
+                    </nav>
+                </div>
+                <br>
+            </div>
+        </footer>
+        <?php
+        header("refresh:6;url=index.php");
+        exit();
+    }
+
 
     $sql = 'SELECT usuario, correo, contraseña, bloqueo FROM cuenta';
     $resultado = $conexion -> query($sql);
