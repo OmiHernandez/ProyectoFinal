@@ -125,7 +125,7 @@
             </td>
             <td class="form-group">
                 <label for="foto">Imagen</label>
-                <input type="file" class="form-control subirfoto" id="foto" name="foto" required>
+                <input type="file" class="form-control subirfile" id="foto" name="foto" required>
             </td>
             </tr>
             <tr>
