@@ -265,6 +265,8 @@ if ($_POST["metodo"] == "registrar") {
                         $insertarBloqueo = $fila['bloqueo'] + 1;
                         $sql = "UPDATE cuenta SET bloqueo='$insertarBloqueo' WHERE usuario='$usuario' OR correo='$usuario'";
                         $conexion->query($sql); 
+                        header("refresh:6;url=index.php");
+                        exit();
                     }
                 }
                 else{
