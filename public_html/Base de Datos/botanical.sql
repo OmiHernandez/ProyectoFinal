@@ -76,7 +76,16 @@ INSERT INTO `productos` (`ID`, `Nombre`, `Descripcion`, `Categoria`, `Cantidad`,
 (6, 'Hibisco', 'De la familia de las malváceas, es una planta procedente de Asia', 'Sol', 12, 215, 15, 'hibisco.jpg', 182.75),
 (7, 'Tulipán', 'El hermoso tulipán, ideal para darle una vista elegante a tu jardín', 'Sol', 27, 120, 0, 'tulipan.jpg', 120),
 (8, 'Echeveria elegans', 'Es una especie de planta suculenta de la familia de las crasuláceas', 'Sombra', 20, 140, 0, 'suculenta.jpg', 140),
-(9, 'Pensamiento', 'Perfecta para decorar jardines por su gran colorido y resistencia al clima', 'Sol', 13, 165, 8, 'pensamiento.jpg', 151.8);
+(9, 'Pensamiento', 'Perfecta para decorar jardines por su gran colorido y resistencia al clima', 'Sol', 13, 165, 8, 'pensamiento.jpg', 151.8),
+(12, 'Begonia Híbrida', 'Cultivada en el interior, planta de origen tropical, no tolera bien el frio.', 'Sombra', 25, 175, 12, 'begonia.jpg', 154),
+(13, 'Hortensia', 'Hermosa planta nativas del sur y el este de Asia​ y de América', 'Sombra', 31, 235, 10, 'hortensia.jpg', 211.5),
+(14, 'Rosal', 'El rosal es una de las plantas más populares de los jardines, perfecta para el hogar', 'Sol', 15, 210, 0, 'rosal.jpg', 210),
+(15, 'Citronelas', 'La citronela es una planta natural de Sri Lanka y la costa Malabar.', 'Sol', 10, 240, 17, 'citronela.jpg', 199.2),
+(16, 'Astilbe', 'El astilbe florece en verano llenando de color esta estación', 'Sombra', 14, 315, 0, 'astilbe.jpg', 315),
+(17, 'Buganvilla', 'Una de las flores más bonitas y vistosas para elegir en verano', 'Sol', 32, 280, 0, 'bougainvillea.jpg', 280),
+(18, 'Cactus', 'Son plantas muy demandadas, fáciles de cuidar, de especies muy variadas', 'Sol', 27, 250, 0, 'cactus.jpg', 250),
+(19, 'Petunia', 'Flor famosa debido a sus hermosas flores multicolores en forma de trompeta', 'Sombra', 25, 95, 0, 'petunia.jpg', 95),
+(20, 'Ficus', 'Una de las plantas más bonitas para decorar el hogar.', 'Sombra', 23, 235, 7, 'ficus.jpg', 218.55);
 
 --
 -- Índices para tablas volcadas
