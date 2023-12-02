@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-    $servidor='localhost:33065';
+    $servidor='localhost:3029';
     $cuenta='root';
     $password='';
     $bd='botanical';
@@ -35,8 +35,6 @@
                 $Cantidad =  $_POST['Cantidad'];
                 $Precio = $_POST['Precio'];
                 $Descuento = $_POST['Descuento'];
-
-                
 
                 if($Descuento!=0) {
                     $aux=$Precio*($Descuento/100);
