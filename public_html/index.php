@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-    $servidor='localhost';
+    $servidor='localhost:33065';
     $cuenta='root';
     $password='';
     $bd='botanical';
@@ -168,6 +168,8 @@
                         while( $fila = $resultado ->  fetch_assoc()){
                             $imagen = $fila['imagen'];
                             $nombre = $fila['Nombre'];
+                            $id = $fila['ID'];
+                            $descrip = $fila['Descripcion'];
                             $catego = $fila['Categoria'];
                             $precio = $fila['Precio'];
                             $precioN =$fila['PrecioN'];
@@ -195,7 +197,11 @@
                             <a href="#" class="">
                                 <img class="img-fluid image" width="240" height="240" src="img/<?php echo $imagen ?>">
                             </a>
-                            <div class="overlay"></div>
+                            <div class="overlay">
+                                <div class="textDesc">
+                                    <?php echo "<span>ID: $id </span><br><br>$descrip"; ?>
+                                </div>
+                            </div>
                         </div>
                         <h5 class="titulo"><?php echo $nombre ?></h5>
                         <p class="cate"><?php echo "- $catego -"; ?></p>
@@ -210,6 +216,7 @@
                             ?>
                         </h4>
                         <br>
+                        <p class="cantidad"><?php echo "Existencia: $cantidad"; ?></p>
                         <?php
                         if($agotado) {
                         ?>
