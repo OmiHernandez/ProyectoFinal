@@ -411,7 +411,7 @@ if ($_POST["metodo"] == "registrar") {
         while ($fila = $resultado->fetch_assoc()) {
             if ($pregunta === $fila["pregunta"] && $respuesta === $fila["respuesta"]) {
 
-                $sql = 'UPDATE cuenta SET contraseña="' . $hash . '" WHERE usuario="' . $usuario . '"';
+                $sql = 'UPDATE cuenta SET contraseña="' . $hash . '", bloqueo=0 WHERE usuario="' . $usuario . '"';
                 $resultado = $conexion->query($sql);
             ?>
                 <div class="alert alert-success" role="alert" id="alerta">
