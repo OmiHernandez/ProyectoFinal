@@ -340,7 +340,7 @@ session_start();
                     ?>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="ABC.php">Administrar productos</a>
-                            <a class="dropdown-item" href="altas.php">Categorias</a>
+                            <a class="dropdown-item" href="tienda.php">Categorias</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 
@@ -353,7 +353,7 @@ session_start();
             <?php
                     } else { ?>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Categorias</a>
+                    <a class="dropdown-item" href="tienda.php">Categorias</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
                 </div>
