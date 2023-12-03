@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es_mx">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -269,10 +270,14 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 'success') {
-                        Swal.fire('Éxito', 'Los datos fueron enviados correctamente', 'success');
-                        window.location.reload();
+                        Swal.fire('Éxito', 'Los datos fueron enviados correctamente', 'success')
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.reload();
+                                }
+                            });
                     } else {
-                        Swal.fire('Error', data.message , 'error');
+                        Swal.fire('Error', data.message, 'error');
                     }
                 })
                 .catch(error => {
@@ -299,7 +304,7 @@
                     xhr.open("POST", "procesarBaja.php", true);
                     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                    // Definir la función de devolución de ll   amada cuando la solicitud se complete
+                    // Definir la función de devolución de llamada cuando la solicitud se complete
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === XMLHttpRequest.DONE) {
                             // Procesar la respuesta del servidor
@@ -307,11 +312,15 @@
                                 var response = JSON.parse(xhr.responseText);
                                 if (response.success) {
                                     Swal.fire({
-                                        title: "Eliminado",
-                                        text: "El producto con ID " + id + " ha sido eliminado.",
-                                        icon: "success"
-                                    });
-                                    window.location.reload();
+                                            title: "Eliminado",
+                                            text: "El producto con ID " + id + " ha sido eliminado.",
+                                            icon: "success"
+                                        })
+                                        .then((result) => {
+                                            if (result.isConfirmed) {
+                                                window.location.reload();
+                                            }
+                                        });
                                 } else {
                                     Swal.fire({
                                         title: "Error",
@@ -332,63 +341,87 @@
         }
 
         function modificar(id) {
-            // Crear un formulario HTML
-            var formularioHTML = `
-        <form id="modificarForm">
-            <label for="NombreP">Nombre del producto:</label>
-            <input type="text" class="form-control" id="NombreP" name="NombreP" required>
-            <br>
-            <label for="CategoriaP">Categoría:</label>
-            <select class="form-control" id="CategoriaP" name="CategoriaP" required>
-                <option value="Sombra">Sombra</option>
-                <option value="Sol">Sol</option>
-            </select>
-            <br>
-            <label for="fotoMod">Imagen:</label>
-            <input type="file" class="form-control subirfile" id="fotoMod" name="fotoMod" required>
-            <br>
-            <label for="CantidadP">Cantidad:</label>
-            <input type="number" class="form-control" id="CantidadP" name="CantidadP" min="0" max="999" required>
-            <br>
-            <label for="PrecioP">Precio:</label>
-            <input type="number" class="form-control" id="PrecioP" name="PrecioP" min="0" max="999" required>
-            <br>
-            <label for="DescuentoP">Descuento:</label>
-            <input type="number" class="form-control" id="DescuentoP" name="DescuentoP" min="0" max="100" required>
-            <br>
-            <label for="DescripcionP">Descripción:</label>
-            <textarea class="form-control" id="DescripcionP" name="DescripcionP" rows="2" required></textarea>
-        </form>
-    `;
+            // Crear una instancia de XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            // Configurar la solicitud
+            xhr.open("POST", "obtenerProducto.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // Definir la función de devolución de llamada cuando la solicitud se complete
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    // Procesar la respuesta del servidor
+                    if (xhr.status === 200) {
+                        var producto = JSON.parse(xhr.responseText);
+                        // Crear un formulario HTML
+                        var formularioHTML = `
+                                <form id="modificarForm">
+                                    <input type="hidden" name="id" value="${id}">
+                                    <label for="NombreP">Nombre del producto:</label>
+                                    <input type="text" class="form-control" id="NombreP" name="NombreP" value="${producto.Nombre}" required>
+                                    <br>
+                                    <label for="CategoriaP">Categoría:</label>
+                                    <select class="form-control" id="CategoriaP" name="CategoriaP" required>
+                                        <option value="Sombra" ${producto.Categoria === 'Sombra' ? 'selected' : ''}>Sombra</option>
+                                        <option value="Sol" ${producto.Categoria === 'Sol' ? 'selected' : ''}>Sol</option>
+                                    </select>
+                                    <br>
+                                    <label for="fotoMod">Imagen actual:</label>
+                                    <br>
+                                    <img src="img/productos/${producto.imagen}" alt="${producto.imagen}" width="100" height="100">
+                                    <br>
+                                    <label for="fotoMod">Nueva imagen:</label>
+                                    <input type="file" class="form-control subirfile" id="fotoMod" name="fotoMod" required>
+                                    <br>
+                                    <label for="CantidadP">Cantidad:</label>
+                                    <input type="number" class="form-control" id="CantidadP" name="CantidadP" value="${producto.Cantidad}" min="0" max="999" required>
+                                    <br>
+                                    <label for="PrecioP">Precio:</label>
+                                    <input type="number" class="form-control" id="PrecioP" name="PrecioP" value="${producto.Precio}" min="0" max="999" required>
+                                    <br>
+                                    <label for="DescuentoP">Descuento:</label>
+                                    <input type="number" class="form-control" id="DescuentoP" name="DescuentoP" value="${producto.Descuento}" min="0" max="100" required>
+                                    <br>
+                                    <label for="DescripcionP">Descripción:</label>
+                                    <textarea class="form-control" id="DescripcionP" name="DescripcionP" rows="2" required>${producto.Descripcion}</textarea>
+                                </form>
+                            `;
 
-            // Mostrar una alerta con SweetAlert que contiene el formulario
-            Swal.fire({
-                title: 'Modificación de producto nuevo',
-                html: formularioHTML,
-                showCancelButton: true,
-                confirmButtonText: 'Enviar',
-                cancelButtonText: 'Cancelar',
-                showLoaderOnConfirm: true,
-                preConfirm: () => {
-
-                    var form = document.querySelector('#modificarForm');
-                    var formData = new FormData(form);
-
-                    fetch('procesarModificacion.php', {
-                            method: 'POST',
-                            body: formData, // Envía el objeto FormData
-                        })
-                        .then(data => {
-                            Swal.fire('Éxito', 'Los datos fueron enviados correctamente', 'success');
-                            window.location.reload();
-                        })
-                        .catch(error => {
-                            console.error(error);
-                            Swal.fire('Error', 'Hubo un error al procesar la solicitud', 'error');
+                        // Mostrar una alerta con SweetAlert que contiene el formulario
+                        Swal.fire({
+                            title: 'Modificación de producto nuevo',
+                            html: formularioHTML,
+                            showCancelButton: true,
+                            confirmButtonText: 'Enviar',
+                            cancelButtonText: 'Cancelar',
+                            showLoaderOnConfirm: true,
+                            preConfirm: () => {
+                                var form = document.querySelector('#modificarForm');
+                                var formData = new FormData(form);
+                                fetch('procesarModificacion.php', {
+                                        method: 'POST',
+                                        body: formData, // Envía el objeto FormData
+                                    })
+                                    .then(data => {
+                                        Swal.fire('Éxito', data.message, 'success')
+                                            .then((result) => {
+                                                if (result.isConfirmed) {
+                                                    window.location.reload();
+                                                }
+                                            });
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                        Swal.fire('Error', 'Hubo un error al procesar la solicitud', 'error');
+                                    });
+                            }
                         });
-
+                    } else {
+                        console.error("Error en la solicitud AJAX");
+                    }
                 }
-            });
+            };
+            // Enviar la solicitud con el ID como parámetro
+            xhr.send("id=" + encodeURIComponent(id));
         }
     </script>
 
