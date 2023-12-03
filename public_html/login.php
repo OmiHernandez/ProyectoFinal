@@ -1,6 +1,6 @@
 <?php
 
-$servidor='localhost';
+$servidor='localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';

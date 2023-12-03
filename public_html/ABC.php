@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-$servidor = 'localhost';
+$servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -226,38 +226,7 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
         </div>
     </section>
 
-    <br><br><br><br><br>
-    <section>
-        <div class="parallax">
-            <br><br>
-            <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <div style="display:flex;justify-content:center;"><img src="img/logoWF.png" alt="Logo BotanicalG" height="90" width="90"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <h1 style="text-align:center;color:white;">La esencia de la naturaleza, capturada en Bocanical Garden</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <p style="text-align:center;color:white;">Sumérgete en un mundo donde la frescura del aire se mezcla con la exuberancia de las hojas y el perfume de las flores. </p>
-                </div>
-            </div>
-            <!-- <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <div style="text-align: center">
-                        <button type="button" class="btn btn-lg" id="boton"><a class="text-white" href="contact.php">¡Contactanos!</a></button>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </section>
+    <br><br><br>
 
     <footer>
         <div class="foot">
