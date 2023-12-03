@@ -1,6 +1,6 @@
 <?php
 
-$servidor = 'localhost:3029';
+$servidor='localhost';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -342,6 +342,7 @@ session_start();
                         <a class="dropdown-item" href="altas.php">Categorias</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                        
                     </div>
                     </div>
                     <?php
