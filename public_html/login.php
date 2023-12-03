@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
 <?php
 
-$servidor = 'localhost';
+$servidor = 'localhost:3029';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
