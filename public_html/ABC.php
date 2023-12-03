@@ -328,12 +328,13 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
 
                     // Configurar la solicitud
                     xhr.open("POST", "procesamientoABC.php", true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
                     // Definir la función de devolución de llamada cuando la solicitud se complete
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === XMLHttpRequest.DONE) {
+                            // Procesar la respuesta del servidor
                             if (xhr.status === 200) {
-                                // Procesar la respuesta del servidor
                                 var response = JSON.parse(xhr.responseText);
                                 if (response.success) {
                                     Swal.fire({
@@ -341,6 +342,7 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
                                         text: "El producto con ID " + id + " ha sido eliminado.",
                                         icon: "success"
                                     });
+                                    window.location.reload();
                                 } else {
                                     Swal.fire({
                                         title: "Error",
