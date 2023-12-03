@@ -1,59 +1,5 @@
 <!DOCTYPE html>
 <html lang="es_mx">
-
-<?php
-$servidor = 'localhost:33065';
-$cuenta = 'root';
-$password = '';
-$bd = 'botanical';
-
-$conexion = new mysqli($servidor, $cuenta, $password, $bd);
-
-if ($conexion->connect_errno) {
-    die('Error en la conexion');
-}
-
-if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FILES['foto']) && !(empty($_FILES['foto']['tmp_name']))) {
-    /*  
-        Nombre -
-        Descripcion	-
-        Categoria -
-        Cantidad -
-        Precio -
-        Descuento -
-        imagen -
-        PrecioN
-    */
-    $targetDir = "img/productos/";  // Directorio donde se guardarán las imágenes
-    $Imagen = basename($_FILES["foto"]["name"]);
-    $targetFile = $targetDir . $Imagen;
-
-    $check = getimagesize($_FILES["foto"]["tmp_name"]);
-    if ($check !== false) {
-        if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFile)) {
-            $Nombre = $_POST['Nombre'];
-            $Descripcion = $_POST['Descripcion'];
-            $Categoria = $_POST['Categoria'];
-            $Cantidad =  $_POST['Cantidad'];
-            $Precio = $_POST['Precio'];
-            $Descuento = $_POST['Descuento'];
-
-            if ($Descuento != 0) {
-                $aux = $Precio * ($Descuento / 100);
-                $PrecioN = $Precio - $aux;
-            } else {
-                $PrecioN = $Precio;
-            }
-
-            $sql = "INSERT INTO productos
-                        VALUES(default, '$Nombre', '$Descripcion', '$Categoria', $Cantidad, $Precio, 
-                        $Descuento, '$Imagen', $PrecioN)";
-            $resultado = $conexion->query($sql); //aplicamos sentencia
-        }
-    }
-}
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +33,7 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
     </section>
 
     <section class="altas">
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="formulario" enctype="multipart/form-data">
+        <form action="" method="post" class="formulario" enctype="multipart/form-data">
             <legend>
                 <h1>Agregar producto nuevo</h1>
             </legend>
@@ -133,7 +79,7 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
                 <tr>
                     <td colspan="3" style="text-align: center;">
                         <input type="text" name="metodo" value="AltaProducto" hidden>
-                        <button type="submit" class="btn botonenviar" name="submit">Publicar</button>
+                        <button type="button" class="btn botonenviar" name="submit" onclick="agregar()">Publicar</button>
                     </td>
                 </tr>
             </table>
@@ -211,7 +157,7 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
                                     </button>
                                 </div>
                                 <div>
-                                    <button>
+                                    <button onclick="modificar(<?php echo $id ?>)">
                                         <p>Modificar producto</p>
                                     </button>
                                 </div>
@@ -226,7 +172,38 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
         </div>
     </section>
 
-    <br><br><br>
+    <br><br><br><br><br>
+    <section>
+        <div class="parallax">
+            <br><br>
+            <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6">
+                    <div style="display:flex;justify-content:center;"><img src="img/logoWF.png" alt="Logo BotanicalG" height="90" width="90"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6">
+                    <h1 style="text-align:center;color:white;">La esencia de la naturaleza, capturada en Bocanical Garden</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6">
+                    <p style="text-align:center;color:white;">Sumérgete en un mundo donde la frescura del aire se mezcla con la exuberancia de las hojas y el perfume de las flores. </p>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6">
+                    <div style="text-align: center">
+                        <button type="button" class="btn btn-lg" id="boton"><a class="text-white" href="contact.php">¡Contactanos!</a></button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
 
     <footer>
         <div class="foot">
@@ -281,6 +258,29 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
     </footer>
 
     <script>
+        function agregar() {
+            var form = document.querySelector('.formulario');
+            var formData = new FormData(form);
+
+            fetch('procesarAlta.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        Swal.fire('Éxito', 'Los datos fueron enviados correctamente', 'success');
+                        window.location.reload();
+                    } else {
+                        Swal.fire('Error', data.message , 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    Swal.fire('Error', error, 'error');
+                });
+        }
+
         function eliminarProducto(id) {
             Swal.fire({
                 title: "¿Desea eliminar este producto?",
@@ -296,10 +296,10 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
                     var xhr = new XMLHttpRequest();
 
                     // Configurar la solicitud
-                    xhr.open("POST", "procesamientoABC.php", true);
+                    xhr.open("POST", "procesarBaja.php", true);
                     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                    // Definir la función de devolución de llamada cuando la solicitud se complete
+                    // Definir la función de devolución de ll   amada cuando la solicitud se complete
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === XMLHttpRequest.DONE) {
                             // Procesar la respuesta del servidor
@@ -330,7 +330,68 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
                 }
             });
         }
+
+        function modificar(id) {
+            // Crear un formulario HTML
+            var formularioHTML = `
+        <form id="modificarForm">
+            <label for="NombreP">Nombre del producto:</label>
+            <input type="text" class="form-control" id="NombreP" name="NombreP" required>
+            <br>
+            <label for="CategoriaP">Categoría:</label>
+            <select class="form-control" id="CategoriaP" name="CategoriaP" required>
+                <option value="Sombra">Sombra</option>
+                <option value="Sol">Sol</option>
+            </select>
+            <br>
+            <label for="fotoMod">Imagen:</label>
+            <input type="file" class="form-control subirfile" id="fotoMod" name="fotoMod" required>
+            <br>
+            <label for="CantidadP">Cantidad:</label>
+            <input type="number" class="form-control" id="CantidadP" name="CantidadP" min="0" max="999" required>
+            <br>
+            <label for="PrecioP">Precio:</label>
+            <input type="number" class="form-control" id="PrecioP" name="PrecioP" min="0" max="999" required>
+            <br>
+            <label for="DescuentoP">Descuento:</label>
+            <input type="number" class="form-control" id="DescuentoP" name="DescuentoP" min="0" max="100" required>
+            <br>
+            <label for="DescripcionP">Descripción:</label>
+            <textarea class="form-control" id="DescripcionP" name="DescripcionP" rows="2" required></textarea>
+        </form>
+    `;
+
+            // Mostrar una alerta con SweetAlert que contiene el formulario
+            Swal.fire({
+                title: 'Modificación de producto nuevo',
+                html: formularioHTML,
+                showCancelButton: true,
+                confirmButtonText: 'Enviar',
+                cancelButtonText: 'Cancelar',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+
+                    var form = document.querySelector('#modificarForm');
+                    var formData = new FormData(form);
+
+                    fetch('procesarModificacion.php', {
+                            method: 'POST',
+                            body: formData, // Envía el objeto FormData
+                        })
+                        .then(data => {
+                            Swal.fire('Éxito', 'Los datos fueron enviados correctamente', 'success');
+                            window.location.reload();
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            Swal.fire('Error', 'Hubo un error al procesar la solicitud', 'error');
+                        });
+
+                }
+            });
+        }
     </script>
+
 </body>
 
 </html>

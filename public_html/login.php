@@ -339,7 +339,7 @@ session_start();
                     <?php if ($_SESSION["nombre"] == "admin") {
                     ?>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="altas.php">Cambiar productos</a>
+                            <a class="dropdown-item" href="ABC.php">Administrar productos</a>
                             <a class="dropdown-item" href="altas.php">Categorias</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>

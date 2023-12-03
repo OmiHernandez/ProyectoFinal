@@ -1,50 +1,49 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $conexion = new mysqli("localhost", "root", "", "botanical");
+    if ($conexion->connect_errno) {
+        echo "Error de conexión: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
+        exit();
+    }
 
-header('Content-Type: application/json');
-
-
-$conexion = new mysqli("localhost", "root", "", "botanical");
-if ($conexion->connect_errno) {
-    echo "Error de conexión: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
-    exit();
-}
-// Obtener el contenido del cuerpo de la solicitud
-$json_data = file_get_contents("php://input");
-
-// Decodificar el JSON en un array asociativo
-$data = json_decode($json_data, true);
-
-// Hacer algo con los datos
-if ($data !== null) {
     // Acceder a los datos como un array asociativo
-    $id = $data['id'];
-    $nombre = $data['nombre'];
-    $categoria = $data['categoria'];
-    $foto = $data['foto'];
-    $cantidad = $data['cantidad'];
-    $precio = $data['precio'];
-    $descuento = $data['descuento'];
-    $descripcion = $data['descripcion'];
+    $id = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $categoria = $_POST['categoria'];
+    $foto = $_FILES['fotoMod']; // Obtiene el archivo de imagen
+    $cantidad = $_POST['cantidad'];
+    $precio = $_POST['precio'];
+    $descuento = $_POST['descuento'];
+    $descripcion = $_POST['descripcion'];
     $PrecioN = $precio - ($precio * $descuento / 100);
 
-    $rutaDefinitiva = substr($foto, 12);
-    $ruta_destino = "img/productos/"; // Asegúrate de cambiar esto a la ruta deseada
-    
-    // Mover la imagen desde su ubicación temporal a la carpeta deseada
-    move_uploaded_file($_FILES["foto"]["tmp_name"], $ruta_destino);
+    // Consulta para obtener la ruta de la imagen existente
+    $stmt = $conexion->prepare("SELECT imagen FROM productos WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $ruta_imagen_existente = $row['imagen'];
 
-    // move_uploaded_file($rutaDefinitiva, $ruta_destino);
+    // Borrar la imagen existente
+    if (file_exists($ruta_imagen_existente)) {
+        unlink($ruta_imagen_existente);
+    }
 
+    // Mover la nueva imagen a la carpeta deseada
+    $ruta_destino = "img/productos/" . basename($foto['name']);
+    move_uploaded_file($foto['tmp_name'], $ruta_destino);
+
+    // Actualizar la base de datos con la nueva información
     $statement = $conexion->prepare("UPDATE productos SET Nombre = ?, Categoria = ?, imagen = ?, Cantidad = ?, Precio = ?, Descuento = ?, Descripcion = ?, PrecioN = ? WHERE id = ?");
-    $statement->bind_param("sssiiisii", $nombre, $categoria, $rutaDefinitiva, $cantidad, $precio, $descuento, $descripcion, $PrecioN, $id);
+    $statement->bind_param("sssiiisii", $nombre, $categoria, $ruta_destino, $cantidad, $precio, $descuento, $descripcion, $PrecioN, $id);
     $statement->execute();
+
     if ($statement->affected_rows == 1) {
         $response = ['status' => 'success', 'message' => 'Datos modificados correctamente'];
     } else {
         $response = ['status' => 'error', 'message' => 'Error al modificar los datos'];
     }
-    // Por ejemplo, almacenar en una base de datos, procesar, etc.
-    // $response = ['status' => 'success', 'message' => 'Datos recibidos correctamente'];
 
     echo json_encode($response);
 } else {
