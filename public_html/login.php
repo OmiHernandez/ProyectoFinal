@@ -1,6 +1,7 @@
+<script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
 <?php
 
-$servidor='localhost:33065';
+$servidor = 'localhost:3029';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -335,30 +336,38 @@ session_start();
                         }
                         echo $_SESSION["nombre"] . "!"; ?>
                     </a>
-                    <?php if($_SESSION["nombre"] == "admin"){
-                    ?>    
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="ABC.php">Administrar productos</a>
-                        <a class="dropdown-item" href="altas.php">Categorias</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
-                        
-                    </div>
-                    </div>
-                    <?php
-                    }else{?>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="formulario.php">Categorias</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
-                    </div>
-                </div>
-            <?php
-                    }
-            }
-            ?>
+                    <?php if ($_SESSION["nombre"] == "admin") {
+                    ?>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="altas.php">Cambiar productos</a>
+                            <a class="dropdown-item" href="altas.php">Categorias</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 
+                        </div>
+                </div>
+                <div>
+                    <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+                </div>
+                <div>&nbsp;0&nbsp;</div>
+            <?php
+                    } else { ?>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Categorias</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                </div>
         </div>
+        <div>
+        <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+        </div>
+        <div>&nbsp;0</div>
+<?php
+                    }
+                }
+?>
+
+</div>
     </nav>
 
 </header>

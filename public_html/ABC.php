@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-$servidor = 'localhost';
+$servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -211,7 +211,7 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
                                     </button>
                                 </div>
                                 <div>
-                                    <button onclick="modificar(<?php echo $id ?>)">
+                                    <button>
                                         <p>Modificar producto</p>
                                     </button>
                                 </div>
@@ -226,38 +226,7 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
         </div>
     </section>
 
-    <br><br><br><br><br>
-    <section>
-        <div class="parallax">
-            <br><br>
-            <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <div style="display:flex;justify-content:center;"><img src="img/logoWF.png" alt="Logo BotanicalG" height="90" width="90"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <h1 style="text-align:center;color:white;">La esencia de la naturaleza, capturada en Bocanical Garden</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <p style="text-align:center;color:white;">Sumérgete en un mundo donde la frescura del aire se mezcla con la exuberancia de las hojas y el perfume de las flores. </p>
-                </div>
-            </div>
-            <!-- <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <div style="text-align: center">
-                        <button type="button" class="btn btn-lg" id="boton"><a class="text-white" href="contact.php">¡Contactanos!</a></button>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </section>
+    <br><br><br>
 
     <footer>
         <div class="foot">
@@ -327,10 +296,10 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
                     var xhr = new XMLHttpRequest();
 
                     // Configurar la solicitud
-                    xhr.open("POST", "procesarBaja.php", true);
+                    xhr.open("POST", "procesamientoABC.php", true);
                     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                    // Definir la función de devolución de ll   amada cuando la solicitud se complete
+                    // Definir la función de devolución de llamada cuando la solicitud se complete
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === XMLHttpRequest.DONE) {
                             // Procesar la respuesta del servidor
@@ -361,88 +330,7 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "AltaProducto" && isset($_FIL
                 }
             });
         }
-
-        function modificar(id) {
-            // Crear un formulario HTML
-            var formularioHTML = `
-                <form>
-                    <label for="NombreP">Nombre del producto:</label>
-                    <input type="text" class="form-control" id="NombreP" name="NombreP" required>
-                    <br>
-                    <label for="CategoriaP">Categoría:</label>
-                    <select class="form-control" id="CategoriaP" name="CategoriaP" required>
-                        <option value="Sombra">Sombra</option>
-                        <option value="Sol">Sol</option>
-                    </select>
-                    <br>
-                    <label for="foto">Imagen:</label>
-                    <input type="file" class="form-control subirfile" id="foto" name="foto" required>
-                    <br>
-                    <label for="CantidadP">Cantidad:</label>
-                    <input type="number" class="form-control" id="CantidadP" name="CantidadP" min="0" max="999" required>
-                    <br>
-                    <label for="PrecioP">Precio:</label>
-                    <input type="number" class="form-control" id="PrecioP" name="PrecioP" min="0" max="999" required>
-                    <br>
-                    <label for="DescuentoP">Descuento:</label>
-                    <input type="number" class="form-control" id="DescuentoP" name="DescuentoP" min="0" max="100" required>
-                    <br>
-                    <label for="DescripcionP">Descripción:</label>
-                    <textarea class="form-control" id="DescripcionP" name="DescripcionP" rows="2" required></textarea>
-                </form>
-            `;
-
-            // Mostrar una alerta con SweetAlert que contiene el formulario
-            Swal.fire({
-                title: 'Modificación de producto nuevo',
-                html: formularioHTML,
-                showCancelButton: true,
-                confirmButtonText: 'Enviar',
-                cancelButtonText: 'Cancelar',
-                showLoaderOnConfirm: true,
-                preConfirm: () => {
-
-                    const content = Swal.getHtmlContainer();
-
-                    var nombre = content.querySelector('#NombreP').value;
-                    var categoria = content.querySelector('#CategoriaP').value;
-                    var foto = content.querySelector('#foto').value;
-                    var cantidad = content.querySelector('#CantidadP').value;
-                    var precio = content.querySelector('#PrecioP').value;
-                    var descuento = content.querySelector('#DescuentoP').value;
-                    var descripcion = content.querySelector('#DescripcionP').value;
-
-                    var formData = {
-                        id: id,
-                        nombre: nombre,
-                        categoria: categoria,
-                        foto: foto,
-                        cantidad: cantidad,
-                        precio: precio,
-                        descuento: descuento,
-                        descripcion: descripcion
-                    };
-
-                    fetch('procesarModificacion.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(formData),
-                    })
-                    .then(data => {
-                        Swal.fire('Éxito', 'Los datos fueron enviados correctamente', 'success');
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        Swal.fire('Error', 'Hubo un error al procesar la solicitud', 'error');
-                    });
-
-                }
-            });
-        }
     </script>
-
 </body>
 
 </html>
