@@ -8,7 +8,7 @@
 <?php
 
 
-$servidor='localhost:33065';
+$servidor='localhost:33063';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
