@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3029
--- Tiempo de generación: 02-12-2023 a las 06:37:25
+-- Tiempo de generación: 03-12-2023 a las 22:52:04
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -43,7 +43,8 @@ CREATE TABLE `cuenta` (
 --
 
 INSERT INTO `cuenta` (`ID`, `Usuario`, `Correo`, `Contraseña`, `Pregunta`, `Respuesta`, `Nombre`, `Bloqueo`) VALUES
-(1, 'BryanM', 'jalkemmorales@gmail.com', 'owo', '¿Nombre de tu primera mascota?', 'Rufi', 'Bryan Misael Morales Martin', 0);
+(0, 'admin', 'botanicalgarden000@gmail.com', '$2y$10$615iY85obJoJezozzRowTenUiFnsBf2My8A0XIg2352QGiLl0gF0u', '¿Nombre de tu primera mascota?', 'owo', 'admin', 0),
+(2, 'Jalkem', 'jalkemmoralesps4@gmail.com', '$2y$10$ijMiU4yG1fqR02WVCLR00.MvELPkJhyrfzYPK4iMLv8aBCusnH3zu', '¿Nombre de tu primera mascota?', 'owo', 'Bryan Misael', 1);
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,7 @@ INSERT INTO `productos` (`ID`, `Nombre`, `Descripcion`, `Categoria`, `Cantidad`,
 (9, 'Pensamiento', 'Perfecta para decorar jardines por su gran colorido y resistencia al clima', 'Sol', 13, 165, 8, 'pensamiento.jpg', 151.8),
 (12, 'Begonia Híbrida', 'Cultivada en el interior, planta de origen tropical, no tolera bien el frio.', 'Sombra', 25, 175, 12, 'begonia.jpg', 154),
 (13, 'Hortensia', 'Hermosa planta nativas del sur y el este de Asia​ y de América', 'Sombra', 31, 235, 10, 'hortensia.jpg', 211.5),
-(14, 'Rosal', 'El rosal es una de las plantas más populares de los jardines, perfecta para el hogar', 'Sol', 15, 210, 0, 'rosal.jpg', 210),
+(14, 'Rosal', 'El rosal es una de las plantas más populares de los jardines, perfecta para el h', 'Sol', 15, 210, 0, 'rosal.jpg', 210),
 (15, 'Citronelas', 'La citronela es una planta natural de Sri Lanka y la costa Malabar.', 'Sol', 10, 240, 17, 'citronela.jpg', 199.2),
 (16, 'Astilbe', 'El astilbe florece en verano llenando de color esta estación', 'Sombra', 14, 315, 0, 'astilbe.jpg', 315),
 (17, 'Buganvilla', 'Una de las flores más bonitas y vistosas para elegir en verano', 'Sol', 32, 280, 0, 'bougainvillea.jpg', 280),
@@ -111,13 +112,13 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `cuenta`
 --
 ALTER TABLE `cuenta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -84,7 +84,7 @@
   
     <section class="Mega">
         <div class="contenedorII">
-            <img src="img/contact_img_1.png" alt="Imagen de Contacto" width="500px" height="500p´x">
+            <img src="img/contact_img_1.png" alt="Imagen de Contacto" width="550px" height="600p´x">
         </div>
 
         <div class="contenedorIII">
@@ -133,8 +133,8 @@
                     <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
                 </a>
                 <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
-                <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contáctanos</a>
-                <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Sobre nosotros...</a>
+                <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Contáctanos</a>
+                <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Sobre nosotros...</a>
             </nav>
             <div class="redes">
                 <ul class="nav justify-content-center">
@@ -179,6 +179,9 @@
             <br>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 </body>
 
 </html>

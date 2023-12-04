@@ -22,9 +22,8 @@
     margin-top: 10px;
 }
 
-.modificacion a {
+.modificacion button{
     text-decoration: none;
-    color: inherit;
 }
 
 .subirfoto {

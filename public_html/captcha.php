@@ -27,10 +27,10 @@ for($i = 0; $i < 10; $i++) {
   $line_color = $colors[rand(1, 4)];
   imagerectangle($image, rand(-10, 190), rand(-10, 10), rand(-10, 190), rand(40, 60), $line_color);
 }
-$black = imagecolorallocate($image, 0, 0, 0);
-$white = imagecolorallocate($image, 255, 255, 255);
+$black = imagecolorallocate($image, rand(0, 255), rand(0, 255), rand(0, 255));
+$white = imagecolorallocate($image, rand(0, 255), rand(0, 255), rand(0, 255));
 $textcolors = [$black, $white];
-$fonts = ['fonts\capfuent.ttf'];
+$fonts = ['fonts\fuente.ttf', 'fonts\SansRegu.ttf', 'fonts\JuliusSans.ttf'];
 $string_length = 6;
 $captcha_string = generate_string($permitted_chars, $string_length);
 $_SESSION['captcha_text'] = $captcha_string;

@@ -167,7 +167,7 @@ if ($_POST["metodo"] == "registrar") {
                 <br>
             </div>
         </footer>
-        <?php
+    <?php
         header("refresh:6;url=index.php");
         exit();
     }
@@ -181,65 +181,65 @@ if ($_POST["metodo"] == "registrar") {
 
     ?>
 
-        <div class="alert alert-success" role="alert" id="alerta">
-            <h4 class="alert-heading">Registro exitoso.</h4>
-            <p>Se ha registrado correctamente.</p>
-            <hr>
-            <h6 class="mb-0">Esta siendo redireccionado.</h6>
-        </div>
-        <br>
-        <footer>
-            <div class="foot">
-                <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
-                    <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
-                        <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
-                    </a>
-                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
-                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contactanos</a>
-                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Sobre nosotros...</a>
-                </nav>
-                <div class="redes">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <br>
-                <div class="derechos">
-                    <nav class="navbar">
-                        <a class="navbar-brand text-white">Empresa BotanicalG | Todos los derechos reservados &copy;</a>
-                        <span class="badge badge-info">
-                            <?php
-                            date_default_timezone_set('America/Mexico_City');
-                            echo "Ultima modificación: " . date("d/m/Y H:i:s.", getlastmod());
-                            ?>
-                        </span>
-                        <p class="navbar-item my-2 my-lg-0 text-white">Al utilizar nuestro sitio indicas que aceptas nuestro <a class="text-white-50" href="#">aviso de privacidad</a></p>
-                    </nav>
-                </div>
-                <br>
+    <div class="alert alert-success" role="alert" id="alerta">
+        <h4 class="alert-heading">Registro exitoso.</h4>
+        <p>Se ha registrado correctamente.</p>
+        <hr>
+        <h6 class="mb-0">Esta siendo redireccionado.</h6>
+    </div>
+    <br>
+    <footer>
+        <div class="foot">
+            <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+                <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
+                    <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
+                </a>
+                <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
+                <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contactanos</a>
+                <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Sobre nosotros...</a>
+            </nav>
+            <div class="redes">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+                    </li>
+                </ul>
             </div>
-        </footer>
-        <?php
+            <br>
+            <div class="derechos">
+                <nav class="navbar">
+                    <a class="navbar-brand text-white">Empresa BotanicalG | Todos los derechos reservados &copy;</a>
+                    <span class="badge badge-info">
+                        <?php
+                        date_default_timezone_set('America/Mexico_City');
+                        echo "Ultima modificación: " . date("d/m/Y H:i:s.", getlastmod());
+                        ?>
+                    </span>
+                    <p class="navbar-item my-2 my-lg-0 text-white">Al utilizar nuestro sitio indicas que aceptas nuestro <a class="text-white-50" href="#">aviso de privacidad</a></p>
+                </nav>
+            </div>
+            <br>
+        </div>
+    </footer>
+    <?php
 
     header("refresh:6;url=index.php");
     exit();
@@ -247,9 +247,9 @@ if ($_POST["metodo"] == "registrar") {
     $usuario = $_POST["usuario"];
     $contra = $_POST["contraseña"];
 
-    if(!isset($_POST['respcaptcha']) || $_POST['respcaptcha'] != $_SESSION['captcha_text']){
+    if (!isset($_POST['respcaptcha']) || $_POST['respcaptcha'] != $_SESSION['captcha_text']) {
         $_SESSION['captcha_text'] = ""
-        ?>
+    ?>
         <div class="alert alert-danger" role="alert" id="alerta">
             <h4 class="alert-heading">Error.</h4>
             <p>Captcha incorrecto.</p>
@@ -315,24 +315,30 @@ if ($_POST["metodo"] == "registrar") {
 
 
     $sql = 'SELECT usuario, correo, contraseña, bloqueo FROM cuenta';
-    $resultado = $conexion -> query($sql);
+    $resultado = $conexion->query($sql);
     $existeCuenta = false;
 
-    if ($resultado -> num_rows) { //Si la consulta genera registros
-        while($fila = $resultado->fetch_assoc()){ //Recorremos los registros obtenidos de la tabla
-            if($usuario===$fila['usuario'] || $usuario===$fila['correo']) {
-                $existeUsuario=true;
+    if ($resultado->num_rows) { //Si la consulta genera registros
+        while ($fila = $resultado->fetch_assoc()) { //Recorremos los registros obtenidos de la tabla
+            if ($usuario === $fila['usuario'] || $usuario === $fila['correo']) {
+                $existeUsuario = true;
 
-                if($fila['bloqueo']<3){
-                    //if($contra === $fila['contraseña']){ 
-                    if (password_verify($contra, $fila['contraseña'])) { //Contraseña correcta
+                if ($fila['bloqueo'] < 3) {
+                    if (password_verify($contra, $fila['contraseña'])) {
+                        if (!empty($_POST["recordar"])) {
+                            setcookie("usuario", $_POST["usuario"], time() + (86400 * 30));
+                            setcookie("contraseña", $_POST["contraseña"], time() + (86400 * 30));
+                        } else {
+                            setcookie("usuario", "");
+                            setcookie("contraseña", "");
+                        }
 
                         $_SESSION["nombre"] = $fila['usuario'];
                         $_SESSION["correo"] = $fila['correo'];
 
                         $sql = "UPDATE cuenta SET bloqueo=0 WHERE usuario='$usuario' OR correo='$usuario'";
-                        $conexion->query($sql); 
-                        ?>
+                        $conexion->query($sql);
+        ?>
 
                         <div class="alert alert-success" role="alert" id="alerta">
                             <h4 class="alert-heading">Inicio de sesión exitoso.</h4>
@@ -341,58 +347,263 @@ if ($_POST["metodo"] == "registrar") {
                             <h6 class="mb-0">Esta siendo redireccionado.</h6>
                         </div>
 
-                        <?php
+                    <?php
                         header("refresh:6;url=index.php");
                         exit();
-                    }
-                    else{
+                    } else {
                         $insertarBloqueo = $fila['bloqueo'] + 1;
                         $sql = "UPDATE cuenta SET bloqueo='$insertarBloqueo' WHERE usuario='$usuario' OR correo='$usuario'";
-                        $conexion->query($sql); 
-                        ?>
+                        $conexion->query($sql);
+                    ?>
 
                         <div class="alert alert-danger" role="alert" id="alerta">
-                        <h4 class="alert-heading">Contraseña incorrecta</h4>
-                        <p>Vuelve a intentar.</p>
-                        <hr>
-                        <h6 class="mb-0">Esta siendo redireccionado.</h6>
+                            <h4 class="alert-heading">Contraseña incorrecta</h4>
+                            <p>Vuelve a intentar.</p>
+                            <hr>
+                            <h6 class="mb-0">Esta siendo redireccionado.</h6>
                         </div>
 
-                        <?php
+                    <?php
                         header("refresh:6;url=index.php");
                         exit();
                     }
-                }
-                else{
+                } else {
                     ?>
 
                     <div class="alert alert-danger" role="alert" id="alerta">
-                    <h4 class="alert-heading">Cuenta Bloqueada</h4>
-                    <p>Se ha alcanzado el límite de intentos.</p>
-                    <hr>
-                    <h6 class="mb-0">Esta siendo redireccionado.</h6>
+                        <h4 class="alert-heading">Cuenta Bloqueada</h4>
+                        <p>Se ha alcanzado el límite de intentos.</p>
+                        <hr>
+                        <h6 class="mb-0">Esta siendo redireccionado.</h6>
                     </div>
 
-                    <?php
+            <?php
                     header("refresh:6;url=index.php");
                     exit();
-                }   
+                }
             }
         }
-        if(!$existeCuenta) {
+        if (!$existeCuenta) {
             ?>
 
             <div class="alert alert-danger" role="alert" id="alerta">
-            <h4 class="alert-heading">Cuenta no registrada</h4>
-            <p>La cuenta no existe, favor de registrarse.</p>
-            <hr>
-            <h6 class="mb-0">Esta siendo redireccionado.</h6>
+                <h4 class="alert-heading">Cuenta no registrada</h4>
+                <p>La cuenta no existe, favor de registrarse.</p>
+                <hr>
+                <h6 class="mb-0">Esta siendo redireccionado.</h6>
             </div>
 
             <?php
             header("refresh:6;url=index.php");
             exit();
         }
+    }
+} else if ($_POST["metodo"] == "recuperarcuenta") {
+    $usuario = $_POST["usuario"];
+    $contra = $_POST["contraseña"];
+    $pregunta = $_POST["pregunta"];
+    $respuesta = $_POST["respuesta"];
+    $hash = password_hash($contra, PASSWORD_DEFAULT);
+
+    $sql = 'SELECT usuario, correo, contraseña, pregunta, respuesta, bloqueo FROM cuenta WHERE usuario="' . $usuario . '"';
+    $resultado = $conexion->query($sql);
+    if ($resultado->num_rows) {
+        while ($fila = $resultado->fetch_assoc()) {
+            if ($pregunta === $fila["pregunta"] && $respuesta === $fila["respuesta"]) {
+
+                $sql = 'UPDATE cuenta SET contraseña="' . $hash . '", bloqueo=0 WHERE usuario="' . $usuario . '"';
+                $resultado = $conexion->query($sql);
+            ?>
+                <div class="alert alert-success" role="alert" id="alerta">
+                    <h4 class="alert-heading">Contraseña cambiada.</h4>
+                    <p>Se ha cambiado la contraseña satisfactoriamente</p>
+                    <hr>
+                    <h6 class="mb-0">Esta siendo redireccionado.</h6>
+                </div>
+                <br>
+                <footer>
+                    <div class="foot">
+                        <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+                            <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
+                                <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
+                            </a>
+                            <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
+                            <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contactanos</a>
+                            <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Sobre nosotros...</a>
+                        </nav>
+                        <div class="redes">
+                            <ul class="nav justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="derechos">
+                            <nav class="navbar">
+                                <a class="navbar-brand text-white">Empresa BotanicalG | Todos los derechos reservados &copy;</a>
+                                <span class="badge badge-info">
+                                    <?php
+                                    date_default_timezone_set('America/Mexico_City');
+                                    echo "Ultima modificación: " . date("d/m/Y H:i:s.", getlastmod());
+                                    ?>
+                                </span>
+                                <p class="navbar-item my-2 my-lg-0 text-white">Al utilizar nuestro sitio indicas que aceptas nuestro <a class="text-white-50" href="#">aviso de privacidad</a></p>
+                            </nav>
+                        </div>
+                        <br>
+                    </div>
+                </footer>
+        <?php
+                $_SESSION["nombre"] = $fila['usuario'];
+                $_SESSION["correo"] = $fila['correo'];
+                header("refresh:6;url=index.php");
+                exit();
+            }
+        }
+        ?>
+        <div class="alert alert-danger" role="alert" id="alerta">
+            <h4 class="alert-heading">Error.</h4>
+            <p>Pregunta o respuesta incorrecta.</p>
+            <hr>
+            <h6 class="mb-0">Esta siendo redireccionado.</h6>
+        </div>
+        <br>
+        <footer>
+            <div class="foot">
+                <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+                    <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
+                        <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
+                    </a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contactanos</a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Sobre nosotros...</a>
+                </nav>
+                <div class="redes">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="derechos">
+                    <nav class="navbar">
+                        <a class="navbar-brand text-white">Empresa BotanicalG | Todos los derechos reservados &copy;</a>
+                        <span class="badge badge-info">
+                            <?php
+                            date_default_timezone_set('America/Mexico_City');
+                            echo "Ultima modificación: " . date("d/m/Y H:i:s.", getlastmod());
+                            ?>
+                        </span>
+                        <p class="navbar-item my-2 my-lg-0 text-white">Al utilizar nuestro sitio indicas que aceptas nuestro <a class="text-white-50" href="#">aviso de privacidad</a></p>
+                    </nav>
+                </div>
+                <br>
+            </div>
+        </footer>
+    <?php
+        header("refresh:6;url=index.php");
+        exit();
+    } else {
+    ?>
+        <div class="alert alert-danger" role="alert" id="alerta">
+            <h4 class="alert-heading">Error.</h4>
+            <p>Usuario no encontrado.</p>
+            <hr>
+            <h6 class="mb-0">Esta siendo redireccionado.</h6>
+        </div>
+        <br>
+        <footer>
+            <div class="foot">
+                <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+                    <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
+                        <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
+                    </a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contactanos</a>
+                    <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Sobre nosotros...</a>
+                </nav>
+                <div class="redes">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="derechos">
+                    <nav class="navbar">
+                        <a class="navbar-brand text-white">Empresa BotanicalG | Todos los derechos reservados &copy;</a>
+                        <span class="badge badge-info">
+                            <?php
+                            date_default_timezone_set('America/Mexico_City');
+                            echo "Ultima modificación: " . date("d/m/Y H:i:s.", getlastmod());
+                            ?>
+                        </span>
+                        <p class="navbar-item my-2 my-lg-0 text-white">Al utilizar nuestro sitio indicas que aceptas nuestro <a class="text-white-50" href="#">aviso de privacidad</a></p>
+                    </nav>
+                </div>
+                <br>
+            </div>
+        </footer>
+<?php
+        header("refresh:6;url=index.php");
+        exit();
     }
 }
 

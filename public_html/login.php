@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
 <?php
 
 $servidor='localhost:33063';
@@ -25,10 +26,12 @@ session_start();
     }
 
     function AbrirModal3() {
+        $('#modal1').modal('hide');
         $('#modal3').modal('show');
     }
 
     function Volver() {
+        $('#modal3').modal('hide');
         $('#modal2').modal('hide');
         $('#modal1').modal('show');
     }
@@ -48,10 +51,24 @@ session_start();
         }
     }
 
-    function CambiarImage(){
-        document.querySelector(".captcha-image").src = 'captcha.php?' + Date.now();
+    function ValidarContra() {
+        $contra1 = document.getElementById('consrec').value;
+        $contra2 = document.getElementById('reconsrec').value;
+        if ($contra1.length < 8) {
+            swal("Error", "La contraseña es muy debil (minimo 8 caracteres)", "error");
+        } else {
+            if ($contra1 == $contra2) {
+                let formulario = document.getElementById('recuperarcuen');
+                formulario.submit();
+            } else {
+                swal("Error", "Las contraseñas no coinciden", "error");
+            }
+        }
     }
 
+    function CambiarImage() {
+        document.querySelector(".captcha-image").src = 'captcha.php?' + Date.now();
+    }
 </script>
 
 <header>
@@ -98,25 +115,46 @@ session_start();
                                 </div>
                                 <div class="modal-body">
                                     <form action="registrar.php" method="POST">
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">Usuario:</label>
-                                            <input type="text" name="usuario" class="form-control" id="recipient-name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label">Contraseña:</label>
-                                            <input type="password" name="contraseña" class="form-control" id="recipient-name" required>
-                                        </div>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Usuario:</label>
+                                                        <input type="text" name="usuario" class="form-control" id="recipient-name" value="<?php if (isset($_COOKIE["usuario"])) {
+                                                                                                                                                echo $_COOKIE["usuario"];
+                                                                                                                                            } ?>" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Contraseña:</label>
+                                                        <input type="password" name="contraseña" class="form-control" id="recipient-name" value="<?php if (isset($_COOKIE["contraseña"])) {
+                                                                                                                                                        echo $_COOKIE["contraseña"];
+                                                                                                                                                    } ?>" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="elem-group">
+                                                        <label for="captcha">Ingresa el siguiente captcha: </label>
+                                                        <br>
+                                                        <img src="captcha.php" alt="CAPTCHA" class="captcha-image"> <i class="fas fa-redo refresh-captcha" onclick="CambiarImage();" style="font-size:30px;"></i>
+                                                        <br><br>
+                                                        <input type="text" id="captcha" class="form-control" name="respcaptcha" pattern="[A-Z]{6}">
+                                                        <br>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="recordar" id="recordar"><label for="recordar" class="form-check-label"> Recordar contraseña</label></td>
+                                            </tr>
+                                        </table>
                                         <input type="text" value="iniciar" name="metodo" hidden>
-                                        <div class="elem-group">
-                                            <label for="captcha">Ingresa el siguiente captcha: </label>
-                                            <br>
-                                            <img src="captcha.php" alt="CAPTCHA" class="captcha-image"> <i class="fas fa-redo refresh-captcha" onclick="CambiarImage();" style="font-size:30px;"></i>
-                                            <br><br>
-                                            <input type="text" id="captcha" class="form-control" name="respcaptcha" pattern="[A-Z]{6}" style="width:50%;">
-                                            <br>
-                                        </div>
                                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                                     </form>
+                                    <p>¿Cuenta bloqueada?<button type="button" class="btn" id="btnModal3" onclick="AbrirModal3()">Recuperar cuenta</button></p>
+
                                 </div>
                                 <div class="modal-footer">
                                     <p>¿No tienes cuenta? </p>
@@ -210,6 +248,73 @@ session_start();
 
 
                 </div>
+
+                <div id="modal3" class="modal fade" role="dialog" style="overflow-y: hidden;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-tittle">Recuperar cuenta.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="registrar.php" method="POST" id="recuperarcuen">
+                                    <table>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Usuario:</label>
+                                                    <input type="text" name="usuario" class="form-control" id="recipient-name" required>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Pregunta de seguridad:</label>
+                                                    <select name="pregunta" class="custom-select">
+                                                        <option value="¿Nombre de tu primera mascota?">¿Nombre de tu primera mascota?</option>
+                                                        <option value="¿Lugar de nacimiento de tu madre?">¿Lugar de nacimiento de tu madre?</option>
+                                                        <option value="¿Nombre de tu abuelo paterno?">¿Nombre de tu abuelo paterno?</option>
+                                                        <option value="¿Ciudad donde estudiaste la primaria?">¿Ciudad donde estudiaste la primaria?</option>
+                                                        <option value="¿Nombre del primer colegio al que asististe?">¿Nombre del primer colegio al que asististe?</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Contraseña:</label>
+                                                    <input type="password" name="contraseña" class="form-control" id="consrec" required>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Respuesta:</label>
+                                                    <input type="text" name="respuesta" class="form-control" id="recipient-name" required>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Repetir contraseña:</label>
+                                                    <input type="password" name="repcontraseña" class="form-control" id="reconsrec" required>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <input type="text" value="recuperarcuenta" name="metodo" hidden>
+                                    <button type="button" class="btn btn-primary" onclick="ValidarContra();">Enviar</button>
+                                </form>
+                                <p>¿Cuenta bloqueada?<button type="button" class="btn" id="btnModal3" onclick="AbrirModal3()">Recuperar cuenta</button></p>
+
+                            </div>
+                            <div class="modal-footer">
+                                <p>¿Volver? </p>
+                                <button type="button" class="btn" id="btnModal3" onclick="Volver()">Iniciar sesión</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             <?php
             } else {
             ?>
@@ -231,18 +336,38 @@ session_start();
                         }
                         echo $_SESSION["nombre"] . "!"; ?>
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="formulario.php">Vacantes</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
-                    </div>
+                    <?php if ($_SESSION["nombre"] == "admin") {
+                    ?>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="ABC.php">Administrar productos</a>
+                            <a class="dropdown-item" href="tienda.php">Categorias</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 
+                        </div>
                 </div>
+                <div>
+                    <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+                </div>
+                <div>&nbsp;0&nbsp;</div>
             <?php
-            }
-            ?>
-
+                    } else { ?>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="tienda.php">Categorias</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                </div>
         </div>
+        <div>
+        <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+        </div>
+        <div>&nbsp;0</div>
+<?php
+                    }
+                }
+?>
+
+</div>
     </nav>
 
 </header>
