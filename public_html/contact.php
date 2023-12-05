@@ -84,7 +84,7 @@
   
     <section class="Mega">
         <div class="contenedorII">
-            <img src="img/contact_img_1.png" alt="Imagen de Contacto" width="550px" height="600p´x">
+            <img src="img/contact_img_1.png" alt="Imagen de Contacto" width="550px" height="600px">
         </div>
 
         <div class="contenedorIII">

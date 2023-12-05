@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-    $servidor='localhost:3306';
+    $servidor='localhost:33065';
     $cuenta='root';
     $password='';
     $bd='botanical';
@@ -268,7 +268,7 @@
             <div class="row">
                 <div class="col-sm-6"></div>
                 <div class="col-sm-6">
-                    <h1 style="text-align:center;color:white;">La esencia de la naturaleza, capturada en Bocanical Garden</h1>
+                    <h1 style="text-align:center;color:white;">La esencia de la naturaleza, capturada en Botanical Garden</h1>
                 </div>
             </div>
             <div class="row">
