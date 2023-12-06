@@ -268,7 +268,7 @@
             <div class="row">
                 <div class="col-sm-6"></div>
                 <div class="col-sm-6">
-                    <h1 style="text-align:center;color:white;">La esencia de la naturaleza, capturada en Bocanical Garden</h1>
+                    <h1 style="text-align:center;color:white;">La esencia de la naturaleza, capturada en Botanical Garden</h1>
                 </div>
             </div>
             <div class="row">
@@ -282,6 +282,9 @@
 
     <footer>
         <div class="foot">
+            <div class="academico">
+                Página perteneciente a proyecto académico
+            </div>
             <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
                 <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
                     <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
