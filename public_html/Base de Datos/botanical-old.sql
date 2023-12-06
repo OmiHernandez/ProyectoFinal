@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:33065
--- Tiempo de generación: 06-12-2023 a las 20:23:30
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: localhost:3029
+-- Tiempo de generación: 03-12-2023 a las 22:52:04
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,8 +44,7 @@ CREATE TABLE `cuenta` (
 
 INSERT INTO `cuenta` (`ID`, `Usuario`, `Correo`, `Contraseña`, `Pregunta`, `Respuesta`, `Nombre`, `Bloqueo`) VALUES
 (0, 'admin', 'botanicalgarden000@gmail.com', '$2y$10$615iY85obJoJezozzRowTenUiFnsBf2My8A0XIg2352QGiLl0gF0u', '¿Nombre de tu primera mascota?', 'owo', 'admin', 0),
-(2, 'Jalkem', 'jalkemmoralesps4@gmail.com', '$2y$10$ijMiU4yG1fqR02WVCLR00.MvELPkJhyrfzYPK4iMLv8aBCusnH3zu', '¿Nombre de tu primera mascota?', 'owo', 'Bryan Misael', 1),
-(4, 'NaomiHR', 'hernandez.romo@gmail.com', '$2y$10$421Lbk9KEkwF2uxOoStCSuKEk4biGxgfja8o32oN9VABf3dMRrmVm', '¿Nombre de tu primera mascota?', 'Midas', 'Naomi', 0);
+(2, 'Jalkem', 'jalkemmoralesps4@gmail.com', '$2y$10$ijMiU4yG1fqR02WVCLR00.MvELPkJhyrfzYPK4iMLv8aBCusnH3zu', '¿Nombre de tu primera mascota?', 'owo', 'Bryan Misael', 1);
 
 -- --------------------------------------------------------
 
@@ -89,17 +88,6 @@ INSERT INTO `productos` (`ID`, `Nombre`, `Descripcion`, `Categoria`, `Cantidad`,
 (19, 'Petunia', 'Flor famosa debido a sus hermosas flores multicolores en forma de trompeta', 'Sombra', 25, 95, 0, 'petunia.jpg', 95),
 (20, 'Ficus', 'Una de las plantas más bonitas para decorar el hogar.', 'Sombra', 23, 235, 7, 'ficus.jpg', 218.55);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ventas`
---
-
-CREATE TABLE `ventas` (
-  `IDcliente` int(11) DEFAULT NULL,
-  `IDproducto` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Índices para tablas volcadas
 --
@@ -117,13 +105,6 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indices de la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD KEY `IDcliente` (`IDcliente`),
-  ADD KEY `IDproducto` (`IDproducto`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -131,24 +112,13 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `cuenta`
 --
 ALTER TABLE `cuenta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`IDcliente`) REFERENCES `cuenta` (`ID`),
-  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`IDproducto`) REFERENCES `productos` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
