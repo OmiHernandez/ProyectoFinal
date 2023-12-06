@@ -246,7 +246,7 @@ button.agotado {
     top: -100px;
     text-decoration: underline;
     text-decoration-color: #5e7e66;
-} 
+}
 .comp div {
     width: 20%;
     margin: 2%;
@@ -279,3 +279,45 @@ div.parte1 h4, h6 {
 .lasds {
     background: #43a36b;
 }
+
+/********************************************************************************/
+/*                              ESTILOS DEL POPUP                               */
+/********************************************************************************/
+
+.show-up{
+    z-index: 9999999 !important;
+    display: none;
+}
+.show-up .overlay-up{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.66);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.show-up .img-show-up{
+    width: 70vh;
+    height: 70vh;
+    background: #FFF;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden
+}
+.img-show-up span{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+    cursor: pointer;
+}
+.img-show-up img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: contain;
+    top: 0;
+    left: 0;
+} 
