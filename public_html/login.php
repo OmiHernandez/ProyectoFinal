@@ -89,6 +89,15 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="tienda.php">Tienda</a>
                 </li>
+                <li class="nav-item"> 
+                    <div class="nav-item dropdown my-2 my-lg-0">
+                        <a class="nav-link" style="color:black;" href="#" role="button" data-toggle="dropdown" aria-expanded="false"> Categorías </a>
+                            <div class="dropdown-menu" style="background: #F7F2EE;" >
+                                <a class="dropdown-item" href="sombra.php">Sombra</a>
+                                <a class="dropdown-item" href="sol.php">Sol</a>
+                            </div>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="about.php">Sobre nosotros</a>
                 </li>
@@ -340,7 +349,7 @@ session_start();
                     ?>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="ABC.php">Administrar productos</a>
-                            <a class="dropdown-item" href="tienda.php">Categorias</a>
+                            <a class="dropdown-item" href="tienda.php">Categorías</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 
@@ -353,7 +362,7 @@ session_start();
             <?php
                     } else { ?>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="tienda.php">Categorias</a>
+                    <a class="dropdown-item" href="tienda.php">Categorías</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
                 </div>
@@ -361,7 +370,7 @@ session_start();
         <div>
         <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
         </div>
-        <div>&nbsp;0</div>
+        <div style="color:#968475;">&nbsp;0</div>
 <?php
                     }
                 }
