@@ -345,47 +345,33 @@ session_start();
                         }
                         echo $_SESSION["nombre"] . "!"; ?>
                     </a>
-                    <?php if ($_SESSION["nombre"] == "admin") {
-                    ?>
-                        <div class="dropdown-menu">
+                    <div class="dropdown-menu">
+                        <?php if ($_SESSION["nombre"] == "admin") { ?>
                             <a class="dropdown-item" href="ABC.php">Administrar productos</a>
-                            <a class="dropdown-item" href="tienda.php">Categorías</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                        <?php } ?>
+                        <a class="dropdown-item" href="tienda.php">Categorías</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 
-                        </div>
+                    </div>
                 </div>
                 <div>
                     <a href="carrito.php">
                         <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
-                        <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php if(isset($_SESSION['carrito'])){echo count($_SESSION['carrito']); }else{ echo 0; } ?></div>
+                        <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php if (isset($_SESSION['carrito'])) {
+                                                                                        echo count($_SESSION['carrito']);
+                                                                                    } else {
+                                                                                        echo 0;
+                                                                                    } ?></div>
                     </a>
                 </div>
+
             <?php
-                    } else { ?>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="tienda.php">Categorías</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
-                </div>
+            }
+
+            ?>
+
         </div>
-        <div>
-            <a href="carrito.php">
-                <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
-                <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php if(isset($_SESSION['carrito'])){echo count($_SESSION['carrito']); }else{ echo 0; } ?></div>
-            </a>
-        </div>
-<?php
-                    }
-                }
-?>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
-</div>
     </nav>
 
 </header>

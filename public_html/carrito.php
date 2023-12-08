@@ -190,26 +190,22 @@ if ($conn->connect_error) {
 
             cantidadInputs.forEach(input => {
                 const cantidad = parseInt(input.value);
-                const precio = parseFloat(input.closest('.card').querySelector('.precio-valor').innerText.replace('$', ''));
+                const precio = parseFloat(input.closest('.row').querySelector('.precio-valor').innerText.replace('$', ''));
                 const subtotal = cantidad * precio;
 
                 totalCarrito += subtotal;
 
                 // Actualizar el valor del subtotal en el DOM
-                input.closest('.card').querySelector('.subtotal-valor').innerText = `$${subtotal.toFixed(2)}`;
+                input.closest('.row').querySelector('.subtotal-valor').innerText = `$${subtotal.toFixed(2)}`;
             });
 
             // Actualizar el valor total del carrito en el DOM
             document.getElementById('total-carrito-valor').innerText = `$${totalCarrito.toFixed(2)}`;
         }
 
-
         // Función para eliminar un producto del carrito
         function eliminarProducto(productoId) {
             // Hacer una solicitud AJAX para eliminar el producto del carrito
-            // Puedes usar fetch o jQuery.ajax para hacer la solicitud al servidor
-            // Después de eliminar el producto, puedes recargar la página o actualizar dinámicamente la sección del carrito mediante AJAX
-            // Aquí hay un ejemplo simple usando fetch:
 
             fetch(`eliminar_del_carrito.php?producto_id=${productoId}`, {
                     method: 'GET',
