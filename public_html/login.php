@@ -358,7 +358,7 @@ session_start();
                 <div>
                     <a href="carrito.php">
                         <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
-                        <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php echo count($_SESSION['carrito']); ?></div>
+                        <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php if(isset($_SESSION['carrito'])){echo count($_SESSION['carrito']); }else{ echo 0; } ?></div>
                     </a>
                 </div>
             <?php
@@ -372,7 +372,7 @@ session_start();
         <div>
             <a href="carrito.php">
                 <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
-                <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php echo count($_SESSION['carrito']); ?></div>
+                <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php if(isset($_SESSION['carrito'])){echo count($_SESSION['carrito']); }else{ echo 0; } ?></div>
             </a>
         </div>
 <?php
