@@ -38,86 +38,104 @@ if ($conn->connect_error) {
         <h1>Carrito de Compras</h1>
     </header>
 
-    <main class="container mt-5">
-        <section class="carrito-container">
-            <?php
-            // Verifica si hay productos en el carrito
-            if (!empty($_SESSION['carrito'])) {
-                // Inicializa un arreglo para contar las ocurrencias de cada ID en el carrito
-                $ocurrencias = array_count_values($_SESSION['carrito']);
+    <main class="container mt-10">
+        <div class="row">
+            <div class="col-md-8">
+                <section class="carrito-container">
+                    <?php
+                    // Verifica si hay productos en el carrito
+                    if (!empty($_SESSION['carrito'])) {
+                        // Inicializa un arreglo para contar las ocurrencias de cada ID en el carrito
+                        $ocurrencias = array_count_values($_SESSION['carrito']);
 
-                // Inicializa el total del carrito
-                $totalCarrito = 0;
+                        // Inicializa el total del carrito
+                        $totalCarrito = 0;
 
-                // Itera sobre los productos en el carrito
-                foreach ($ocurrencias as $producto_id => $cantidadEnCarrito) {
-                    // Consulta SQL para obtener información detallada del producto
-                    $sql = "SELECT * FROM productos WHERE id = $producto_id";
-                    $result = $conn->query($sql);
+                        // Itera sobre los productos en el carrito
+                        foreach ($ocurrencias as $producto_id => $cantidadEnCarrito) {
+                            // Consulta SQL para obtener información detallada del producto
+                            $sql = "SELECT * FROM productos WHERE id = $producto_id";
+                            $result = $conn->query($sql);
 
-                    if ($result->num_rows > 0) {
-                        // Obtiene los datos del producto
-                        $producto = $result->fetch_assoc();
+                            if ($result->num_rows > 0) {
+                                // Obtiene los datos del producto
+                                $producto = $result->fetch_assoc();
 
-                        // Calcula el subtotal por producto
-                        $subtotal = $cantidadEnCarrito * ($producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']);
+                                // Verifica si hay suficiente existencia del producto
+                                if ($cantidadEnCarrito > $producto['Cantidad']) {
+                                    // Si la cantidad pedida es mayor que la existencia, muestra un mensaje y no añade el producto al carrito
+                                    echo "<p class='text-danger'>No hay suficiente existencia del producto '{$producto['Nombre']}'. Por favor, ajusta la cantidad en tu carrito.</p>";
+                                    continue; // Salta a la próxima iteración
+                                }
 
-                        // Actualiza el total del carrito
-                        $totalCarrito += $subtotal;
-            ?>
-                        <div class="row mb-4">
-                            <div class="col-md-2 col-sm-12">
-                                <div class="imagen">
-                                    <!-- Muestra la imagen del producto -->
-                                    <img src="img/productos/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['Nombre']; ?>" class="img-fluid">
+                                // Calcula el subtotal por producto
+                                $subtotal = $cantidadEnCarrito * ($producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']);
+
+                                // Actualiza el total del carrito
+                                $totalCarrito += $subtotal;
+                    ?>
+                                <div class="row mb-4">
+                                    <div class="col-md-2 col-sm-12">
+                                        <div class="imagen">
+                                            <!-- Muestra la imagen del producto -->
+                                            <img src="img/productos/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['Nombre']; ?>" class="img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="descripcion">
+                                            <!-- Muestra el nombre y la descripción del producto -->
+                                            <h3 class="text-center"><?php echo $producto['Nombre']; ?></h3>
+                                            <p><?php echo $producto['Descripcion']; ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-sm-12">
+                                        <div class="precio">
+                                            <!-- Muestra el precio del producto -->
+                                            <h3>Precio</h3>
+                                            <p class="precio-valor">$<?php echo $producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']; ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-12">
+                                        <div class="cantidad">
+                                            <!-- Muestra la cantidad deseada del producto -->
+                                            <h3 class="text-center">Cantidad</h3>
+                                            <input type="number" min="0" max="<?php echo $producto['Cantidad']; ?>" value="<?php echo $cantidadEnCarrito; ?>" name="cantidad[]" data-producto-id="<?php echo $producto_id; ?>" class="form-control cantidad-input text-center">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-12">
+                                        <div class="subtotal">
+                                            <!-- Muestra el subtotal por producto -->
+                                            <h3>Subtotal</h3>
+                                            <p class="subtotal-valor">$<?php echo number_format($subtotal, 2); ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-sm-12">
+                                        <div class="eliminar">
+                                            <!-- Muestra el botón para eliminar el producto del carrito -->
+                                            <button type="button" class="btn btn-danger btn-block" onclick="eliminarProducto(<?php echo $producto_id; ?>)">Eliminar</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-5 col-sm-12">
-                                <div class="descripcion">
-                                    <!-- Muestra el nombre y la descripción del producto -->
-                                    <h3><?php echo $producto['Nombre']; ?></h3>
-                                    <p><?php echo $producto['Descripcion']; ?></p>
-                                </div>
-                            </div>
-                            <div class="col-md-1 col-sm-12">
-                                <div class="precio">
-                                    <!-- Muestra el precio del producto -->
-                                    <h3>Precio</h3>
-                                    <p class="precio-valor">$<?php echo $producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']; ?></p>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-12">
-                                <div class="cantidad">
-                                    <!-- Muestra la cantidad deseada del producto -->
-                                    <h3>Cantidad</h3>
-                                    <input type="number" min="0" max="<?php echo $producto['Cantidad']; ?>" value="<?php echo $cantidadEnCarrito; ?>" name="cantidad[]" data-producto-id="<?php echo $producto_id; ?>" class="form-control cantidad-input">
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-12">
-                                <div class="subtotal">
-                                    <!-- Muestra el subtotal por producto -->
-                                    <h3>Subtotal</h3>
-                                    <p class="subtotal-valor">$<?php echo number_format($subtotal, 2); ?></p>
-                                </div>
-                            </div>
-                        </div>
-            <?php
+                    <?php
+                            }
+                        }
+                    } else {
+                        // Muestra un mensaje si el carrito está vacío
+                        echo "<p class='text-center'>El carrito está vacío.</p>";
                     }
-                }
-            } else {
-                // Muestra un mensaje si el carrito está vacío
-                echo "<p class='text-center'>El carrito está vacío.</p>";
-            }
-            // Cierra la conexión a la base de datos
-            $conn->close();
-            ?>
-        </section>
-
-        <section class="total-carrito">
-            <!-- Muestra el total de la cuenta del carrito -->
-            <h2>Total del Carrito: $<span id="total-carrito-valor"><?php echo number_format($totalCarrito, 2); ?></span></h2>
-            <button onclick="realizarCompra()" class="btn btn-primary">Realizar Compra</button>
-        </section>
+                    // Cierra la conexión a la base de datos
+                    $conn->close();
+                    ?>
+                </section>
+            </div>
+            <div class="col-md-4">
+                <section class="total-carrito">
+                    <!-- Muestra el total de la cuenta del carrito -->
+                    <h2>Total del Carrito: $<span id="total-carrito-valor"><?php echo number_format($totalCarrito, 2); ?></span></h2>
+                    <button onclick="realizarCompra()" class="btn btn-primary">Realizar Compra</button>
+                </section>
+            </div>
+        </div>
     </main>
 
 
@@ -202,6 +220,33 @@ if ($conn->connect_error) {
 
             // Actualizar el valor total del carrito en el DOM
             document.getElementById('total-carrito-valor').innerText = totalCarrito.toFixed(2);
+        }
+
+        // Función para eliminar un producto del carrito
+        function eliminarProducto(productoId) {
+            // Hacer una solicitud AJAX para eliminar el producto del carrito
+            // Puedes usar fetch o jQuery.ajax para hacer la solicitud al servidor
+            // Después de eliminar el producto, puedes recargar la página o actualizar dinámicamente la sección del carrito mediante AJAX
+            // Aquí hay un ejemplo simple usando fetch:
+
+            fetch(`eliminar_del_carrito.php?producto_id=${productoId}`, {
+                    method: 'GET',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Actualizar la vista del carrito después de eliminar el producto
+                        // Puedes recargar la página completa o realizar una actualización dinámica usando JavaScript
+                        location.reload(); // Esto recargará toda la página
+                        // O puedes actualizar solo la sección del carrito usando AJAX
+                        // Aquí es donde realizarías una actualización dinámica
+                    } else {
+                        console.error('Error al eliminar el producto del carrito');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error de red:', error);
+                });
         }
     </script>
 

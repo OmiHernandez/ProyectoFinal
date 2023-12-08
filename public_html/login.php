@@ -356,9 +356,11 @@ session_start();
                         </div>
                 </div>
                 <div>
-                    <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+                    <a href="carrito.php">
+                        <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+                        <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php echo count($_SESSION['carrito']); ?></div>
+                    </a>
                 </div>
-                <div>&nbsp;0&nbsp;</div>
             <?php
                     } else { ?>
                 <div class="dropdown-menu">
