@@ -43,14 +43,12 @@ if ($conn->connect_error) {
             <div class="col-md-8">
                 <section class="carrito-container">
                     <?php
+                    // Inicializa el total del carrito
+                    $totalCarrito = 0;
                     // Verifica si hay productos en el carrito
                     if (!empty($_SESSION['carrito'])) {
                         // Inicializa un arreglo para contar las ocurrencias de cada ID en el carrito
                         $ocurrencias = array_count_values($_SESSION['carrito']);
-
-                        // Inicializa el total del carrito
-                        $totalCarrito = 0;
-
                         // Itera sobre los productos en el carrito
                         foreach ($ocurrencias as $producto_id => $cantidadEnCarrito) {
                             // Consulta SQL para obtener información detallada del producto
