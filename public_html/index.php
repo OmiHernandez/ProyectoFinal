@@ -341,16 +341,6 @@ $resultado = $conexion->query($sql);
         </div>
     </footer>
 
-    <script>
-        console.log(array);
-
-        function agregar(id) {
-
-            var indice = parseInt(id);
-            console.log(`Elegiste ${array[indice]}`);
-        }
-    </script>
-
 
     <!--Funcion script para el popup del descuento-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
