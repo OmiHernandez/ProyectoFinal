@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $conexion = new mysqli("localhost:33065", "root", "", "botanical");
+    $conexion = new mysqli("localhost", "root", "", "botanical");
     if ($conexion->connect_errno) {
         echo "Error de conexión: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
         exit();

@@ -2,15 +2,15 @@
 <html lang="es_mx">
 
 <?php
-    $servidor='localhost:33065';
-    $cuenta='root';
-    $password='';
-    $bd='botanical';
+$servidor = 'localhost';
+$cuenta = 'root';
+$password = '';
+$bd = 'botanical';
 
-    $conexion = new mysqli($servidor,$cuenta,$password,$bd);
+$conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
-    $sql = 'select * from productos order by ID desc';
-    $resultado = $conexion -> query($sql);
+$sql = 'select * from productos order by ID desc';
+$resultado = $conexion->query($sql);
 ?>
 
 <head>
@@ -21,13 +21,14 @@
     <link rel="stylesheet" href="css/menu.css">
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f097015f8a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/x-icon" href="img/logoWF.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <?php
-        include("login.php");
+    include("login.php");
     ?>
 
     <section class="carrusel">
@@ -78,7 +79,7 @@
     </section>
     <br><br>
 
-    <section >
+    <section>
         <div class="Movie">
             <h1>Dale mas vida a tu espacio</h1>
             <h5>Explora las opciones que hay para ti</h5>
@@ -157,96 +158,101 @@
         <div class="separacion"></div>
         <br><br>
         <div>
-            <div class="container"> 
+            <div class="container">
                 <div class="row">
+
                     <?php
-                        $numPro = 0;
-                        $new=0;
-                    ?>
-                    <script> var array=[];</script>
-                    <?php
-                        while( $fila = $resultado ->  fetch_assoc()){
-                            $imagen = $fila['imagen'];
-                            $nombre = $fila['Nombre'];
-                            $id = $fila['ID'];
-                            $descrip = $fila['Descripcion'];
-                            $catego = $fila['Categoria'];
-                            $precio = $fila['Precio'];
-                            $precioN =$fila['PrecioN'];
-                            $desc = $fila['Descuento'];
-                            $cantidad = $fila['Cantidad'];
+                    while ($fila = $resultado->fetch_assoc()) {
+                        $imagen = $fila['imagen'];
+                        $nombre = $fila['Nombre'];
+                        $id = $fila['ID'];
+                        $descrip = $fila['Descripcion'];
+                        $catego = $fila['Categoria'];
+                        $precio = $fila['Precio'];
+                        $precioN = $fila['PrecioN'];
+                        $desc = $fila['Descuento'];
+                        $cantidad = $fila['Cantidad'];
 
 
-                            $agotado=false;
-                            if($cantidad==0) {
-                                $agotado=true;
+                        $agotado = false;
+                        if ($cantidad == 0) {
+                            $agotado = true;
                         }
                     ?>
-                    <script>
-                        array.push("<?php echo $nombre ?>");
-                    </script>
-                    
-                    <div class="product"><!-- col-md-3 col-sm-6  -->
-                        <div class="separacion2"></div>
-                        <?php 
-                            if($desc!=0) {
-                                echo '<div class="descuent">'.$desc.'%</div>';
+
+                        <div class="product"><!-- col-md-3 col-sm-6  -->
+                            <div class="separacion2"></div>
+                            <?php
+                            if ($desc != 0) {
+                                echo '<div class="descuent">' . $desc . '%</div>';
                             }
-                        ?>
-                        <div class="efecto">
-                            <a href="#" class="">
-                                <img class="img-fluid image" width="240" height="240" src="img/productos/<?php echo $imagen ?>">
-                            </a>
-                            <div class="overlay">
-                                <div class="textDesc">
-                                    <?php echo "<span>ID: $id </span><br><br>$descrip"; ?>
+                            ?>
+                            <div class="efecto">
+                                <a href="#" class="">
+                                    <img class="img-fluid image" width="240" height="240" src="img/productos/<?php echo $imagen ?>">
+                                </a>
+                                <div class="overlay">
+                                    <div class="textDesc">
+                                        <?php echo "<span>ID: $id </span><br><br>$descrip"; ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <h5 class="titulo"><?php echo $nombre ?></h5>
-                        <p class="cate"><?php echo "- $catego -"; ?></p>
-                        <h4 class="precio">
-                            <?php
-                                if($desc!=0) {
-                                     echo "<p>$".$precio."</p>";
-                                     echo "$".$precioN; 
+                            <h5 class="titulo"><?php echo $nombre ?></h5>
+                            <p class="cate"><?php echo "- $catego -"; ?></p>
+                            <h4 class="precio">
+                                <?php
+                                if ($desc != 0) {
+                                    echo "<p>$" . $precio . "</p>";
+                                    echo "$" . $precioN;
                                 } else {
-                                     echo "<br>$".$precioN.""; 
+                                    echo "<br>$" . $precioN . "";
                                 }
+                                ?>
+                            </h4>
+                            <br>
+                            <?php
+
+                            $cantidadEnCarrito = 0;
+                            if (isset($_SESSION['carrito'])) {
+                                // Contar cuántas veces aparece el producto en el carrito
+                                $ocurrencias = array_count_values($_SESSION['carrito']);
+                                $cantidadEnCarrito = $ocurrencias[$id] ?? 0;
+                            }
+
+                            // Mostrar la existencia tomando en cuenta la cantidad en el carrito
+                            $existenciaMostrar = max(0, $cantidad - $cantidadEnCarrito);
+
+                            // Mostrar la existencia con el nuevo valor calculado
+                            echo '<p class="cantidad" id="cantidad-' . $id . '">Existencia: ' . $existenciaMostrar . '</p>';
+
+                            if ($agotado) {
                             ?>
-                        </h4>
-                        <br>
-                        <p class="cantidad"><?php echo "Existencia: $cantidad"; ?></p>
-                        <?php
-                        if($agotado) {
-                        ?>
-                            <button id="<?php echo $numPro ?>" class="agotado" disabled>
-                                <i class="fa-solid fa-circle-exclamation" style="color: #ffffff;"></i>
-                                Producto agotado
-                            </button>
-                        <?php
-                        } else {
-                        ?> 
-                            <button id="<?php echo $numPro ?>" onclick="agregar(this.id)">
-                                <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
-                                Añadir al carrito
-                            </button>
-                        <?php
-                        }
-                        ?>
-                        
-                        <br><br>
-                    </div>
-                <?php
-                        $numPro = $numPro+1;
-                        $new = $new+1;
-                        if($new==8) {
-                            break;
-                        }
-                    }//fin while
-                ?>
-                </div>
-            </div>
+                                <div id="agotado-<?php echo $id; ?>">
+                                    <button id="buttonAgotado-<?php echo $id; ?>" class="ButtonAgotado--<?php echo $id; ?>" disabled>
+                                        <i class="fa-solid fa-circle-exclamation" style="color: #ffffff;"></i>
+                                        Producto agotado
+                                    </button>
+                                </div>
+                            <?php
+                            } else {
+                            ?>
+                                <div id="carrito-<?php echo $id; ?>">
+                                    <button id="buttonCarrito-<?php echo $id; ?>" data-existencia="<?php echo $existenciaMostrar ?>" onclick="agregar(<?php echo $id; ?>)">
+                                        <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+                                        Añadir al carrito
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+
+                            <br><br>
+                        </div>
+                    <?php
+                    } //fin while
+                    ?>
+                </div> <!--div row-->
+            </div> <!--div cointaier-->
         </div>
         <div>
             <button type="button" class="btn" id="botontienda">
@@ -334,11 +340,12 @@
             <br>
         </div>
     </footer>
-    
+
     <script>
-        console.log(array); 
-        
+        console.log(array);
+
         function agregar(id) {
+
             var indice = parseInt(id);
             console.log(`Elegiste ${array[indice]}`);
         }
@@ -347,28 +354,80 @@
 
     <!--Funcion script para el popup del descuento-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script> 
-        document.addEventListener('DOMContentLoaded', function () {
-        "use strict";
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            "use strict";
 
-        var showElement = document.querySelector('.show-up');
-        var overlayElement = document.querySelector('.overlay-up');
-        var imgShowElement = document.querySelector('.img-show-up');
-        var imgElement = document.querySelector('.img-show-up img');
+            var showElement = document.querySelector('.show-up');
+            var overlayElement = document.querySelector('.overlay-up');
+            var imgShowElement = document.querySelector('.img-show-up');
+            var imgElement = document.querySelector('.img-show-up img');
 
-        if (showElement) {
-            showElement.style.display = 'block';
+            if (showElement) {
+                showElement.style.display = 'block';
 
-            var imgSrc = "img/descuento-web.png";
-            imgElement.src = imgSrc;
+                var imgSrc = "img/descuento-web.png";
+                imgElement.src = imgSrc;
 
-            [overlayElement, imgShowElement].forEach(function (element) {
-            element.addEventListener('click', function () {
-                showElement.style.display = 'none';
-            });
-            });
-        }
+                [overlayElement, imgShowElement].forEach(function(element) {
+                    element.addEventListener('click', function() {
+                        showElement.style.display = 'none';
+                    });
+                });
+            }
         });
+
+        function agregar(id) {
+            var indice = parseInt(id);
+            var boton = document.getElementById("buttonCarrito-" + id);
+            var existenciaActual = parseInt(boton.dataset.existencia);
+
+            if (!isNaN(existenciaActual) && existenciaActual > 0) {
+                // Reducir la existencia de manera local
+                boton.dataset.existencia = existenciaActual - 1;
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'agregar_al_carrito.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        // Actualizar la interfaz de usuario y la cantidad en el carrito
+                        actualizarInterfaz(id, boton);
+                        // Actualizar la cantidad en el icono del carrito
+                        $("#cantidad-en-carrito").text(xhr.responseText);
+                    } else {
+                        console.error('Error al enviar el ID al servidor:', xhr.status);
+
+                        // Mostrar alerta de SweetAlert2 en caso de error
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No fue posible agregar al carrito. Por favor, intenta de nuevo.',
+                        });
+                    }
+                };
+
+                var data = 'producto_id=' + id;
+                xhr.send(data);
+            }
+        }
+
+        function actualizarInterfaz(id, boton) {
+            var existenciaActual = parseInt(boton.dataset.existencia);
+            var cantidadElement = document.getElementById("cantidad-" + id);
+
+            if (existenciaActual > 0) {
+                // Obtener el elemento con la clase "cantidad" dentro del contenedor específico
+                // Actualizar el texto de la existencia
+                cantidadElement.innerText = `Existencia: ${existenciaActual}`;
+            } else {
+                // Cambiar el contenido del botón a "Producto agotado" y deshabilitarlo
+                cantidadElement.innerText = `Existencia: ${existenciaActual}`;
+                document.getElementById("buttonCarrito-" + id).innerHTML = '<i class="fa-solid fa-circle-exclamation" style="color: #ffffff;"></i>Producto agotado';
+                document.getElementById("buttonCarrito-" + id).disabled = true;
+            }
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

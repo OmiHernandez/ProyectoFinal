@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
 <?php
 
-$servidor = 'localhost:33065';
+$servidor = 'localhost';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -89,13 +89,13 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="tienda.php">Tienda</a>
                 </li>
-                <li class="nav-item"> 
+                <li class="nav-item">
                     <div class="nav-item dropdown my-2 my-lg-0">
                         <a class="nav-link" style="color:black;" href="#" role="button" data-toggle="dropdown" aria-expanded="false"> Categorías </a>
-                            <div class="dropdown-menu" style="background: #F7F2EE;" >
-                                <a class="dropdown-item" href="sombra.php">Sombra</a>
-                                <a class="dropdown-item" href="sol.php">Sol</a>
-                            </div>
+                        <div class="dropdown-menu" style="background: #F7F2EE;">
+                            <a class="dropdown-item" href="sombra.php">Sombra</a>
+                            <a class="dropdown-item" href="sol.php">Sol</a>
+                        </div>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -368,9 +368,11 @@ session_start();
                 </div>
         </div>
         <div>
-        <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+            <a href="carrito.php">
+                <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+                <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php echo count($_SESSION['carrito']); ?></div>
+            </a>
         </div>
-        <div style="color:#968475;">&nbsp;0</div>
 <?php
                     }
                 }
