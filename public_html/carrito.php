@@ -81,7 +81,7 @@ if ($conn->connect_error) {
                                             <div class="card-body">
                                                 <h5 class="card-title"><?php echo $producto['Nombre']; ?></h5>
                                                 <p class="card-text"><?php echo $producto['Descripcion']; ?></p>
-                                                <p class="card-text"><small class="text-muted">Precio: $<?php echo $producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']; ?></small></p>
+                                                <p class="card-text"><small class="text-muted precio-valor"><?php echo $producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']; ?></small></p>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <label class="input-group-text" for="cantidad-<?php echo $producto_id; ?>">Cantidad</label>
@@ -91,7 +91,7 @@ if ($conn->connect_error) {
                                                         <button class="btn btn-outline-danger" type="button" onclick="eliminarProducto(<?php echo $producto_id; ?>)">Eliminar</button>
                                                     </div>
                                                 </div>
-                                                <p class="card-text"><small class="text-muted">Subtotal: $<?php echo number_format($subtotal, 2); ?></small></p>
+                                                <p class="card-text"><small class="text-muted subtotal-valor">Subtotal: $<?php echo number_format($subtotal, 2); ?></small></p>
                                             </div>
                                         </div>
                                     </div>
@@ -191,6 +191,7 @@ if ($conn->connect_error) {
             cantidadInputs.forEach(input => {
                 const cantidad = parseInt(input.value);
                 const precio = parseFloat(input.closest('.row').querySelector('.precio-valor').innerText.replace('$', ''));
+                console.log(precio);
                 const subtotal = cantidad * precio;
 
                 totalCarrito += subtotal;
