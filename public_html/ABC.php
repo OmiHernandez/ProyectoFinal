@@ -11,13 +11,39 @@
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f097015f8a.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/x-icon" href="img/logoWF.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .chart {
+            width: 45%;
+        }
+    </style>
 </head>
 
 <body>
     <?php
     include("login.php");
+
+    $conexion = new mysqli('localhost', 'root', '', 'botanical');
+
+    // Verifica la conexión
+    if ($conexion->connect_error) {
+        die("Connection failed: " . $conexion->connect_error);
+    }
+
+    // Realiza la consulta para obtener los productos más vendidos
+    $resultado = $conexion->query("SELECT IDproducto, COUNT(*) as total FROM ventas GROUP BY IDproducto ORDER BY total DESC LIMIT 6");
+    $productos_mas_vendidos = $resultado->fetch_all(MYSQLI_ASSOC);
+
+    // Realiza la consulta para obtener los registros diarios
+    $resultado = $conexion->query("SELECT DATE(registro) as fecha, COUNT(*) as total FROM cuenta GROUP BY fecha");
+    $registros_diarios = $resultado->fetch_all(MYSQLI_ASSOC);
     ?>
 
     <br><br>
@@ -31,6 +57,19 @@
         <div class="separacion"></div>
         <br>
 
+    </section>
+    <section>
+        <div class="chart-container">
+            <div class="chart">
+                <canvas id="myChart1"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+        <br>
+        <div class="separacion"></div>
+        <br>
     </section>
 
     <section class="altas">
@@ -423,6 +462,65 @@
             // Enviar la solicitud con el ID como parámetro
             xhr.send("id=" + encodeURIComponent(id));
         }
+
+        var ctx1 = document.getElementById('myChart1').getContext('2d');
+        var myChart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode(array_column($productos_mas_vendidos, 'IDproducto')); ?>,
+                datasets: [{
+                    label: '# de Ventas',
+                    data: <?php echo json_encode(array_column($productos_mas_vendidos, 'total')); ?>,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: <?php echo json_encode(array_column($registros_diarios, 'fecha')); ?>,
+                datasets: [{
+                    label: '# de Registros',
+                    data: <?php echo json_encode(array_column($registros_diarios, 'total')); ?>,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
 
 </body>
