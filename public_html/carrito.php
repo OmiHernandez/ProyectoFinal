@@ -191,7 +191,6 @@ if ($conn->connect_error) {
             cantidadInputs.forEach(input => {
                 const cantidad = parseInt(input.value);
                 const precio = parseFloat(input.closest('.row').querySelector('.precio-valor').innerText.replace('$', ''));
-                console.log(precio);
                 const subtotal = cantidad * precio;
 
                 totalCarrito += subtotal;
@@ -201,7 +200,7 @@ if ($conn->connect_error) {
             });
 
             // Actualizar el valor total del carrito en el DOM
-            document.getElementById('total-carrito-valor').innerText = `$${totalCarrito.toFixed(2)}`;
+            document.getElementById('total-carrito-valor').innerText = `${totalCarrito.toFixed(2)}`;
         }
 
         // Función para eliminar un producto del carrito
