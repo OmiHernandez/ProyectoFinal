@@ -15,14 +15,14 @@
     <link rel="icon" type="image/x-icon" href="img/logoWF.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <style>
-    .chart-container {
-        display: flex;
-        justify-content: space-around;
-    }
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+        }
 
-    .chart {
-        width: 45%;
-    }
+        .chart {
+            width: 45%;
+        }
     </style>
 </head>
 
@@ -30,7 +30,20 @@
     <?php
     include("login.php");
 
+    $conexion = new mysqli('localhost', 'usuario', 'contraseña', 'nombre_base_de_datos');
+
+    // Verifica la conexión
+    if ($conexion->connect_error) {
+        die("Connection failed: " . $conexion->connect_error);
+    }
     
+    // Realiza la consulta para obtener los productos más vendidos
+    $resultado = $conexion->query("SELECT IDproducto, COUNT(*) as total FROM ventas GROUP BY IDproducto ORDER BY total DESC LIMIT 6");
+    $productos_mas_vendidos = $resultado->fetch_all(MYSQLI_ASSOC);
+    
+    // Realiza la consulta para obtener los registros diarios
+    $resultado = $conexion->query("SELECT DATE(registo) as fecha, COUNT(*) as total FROM cuenta GROUP BY fecha");
+    $registros_diarios = $resultado->fetch_all(MYSQLI_ASSOC);
     ?>
 
     <br><br>
