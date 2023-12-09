@@ -45,7 +45,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: levitar 4s infinite alternate;
+    animation-delay: 1s; /* Retraso de 1 segundo antes de que comience la animación */
 }
+
+@keyframes levitar {
+    from {
+        transform: translateY(-20px); /* Ajusta la distancia de levitación hacia arriba */
+    }
+    to {
+        transform: translateY(20px); /* Ajusta la distancia de levitación hacia abajo */
+    }
+}
+
+
 
 
 .contenedorIII {

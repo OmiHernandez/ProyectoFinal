@@ -116,8 +116,8 @@
                     <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
                 </a>
                 <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
-                <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Contactanos</a>
-                <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Sobre nosotros...</a>
+                <a class="flex-sm-fill text-sm-center nav-link text-light" href="contact.php">Contactanos</a>
+                <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Sobre nosotros...</a>
             </nav>
             <div class="redes">
                 <ul class="nav justify-content-center">
