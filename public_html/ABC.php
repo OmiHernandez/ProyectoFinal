@@ -30,19 +30,19 @@
     <?php
     include("login.php");
 
-    $conexion = new mysqli('localhost', 'usuario', 'contraseña', 'nombre_base_de_datos');
+    $conexion = new mysqli('localhost', 'root', '', 'botanical');
 
     // Verifica la conexión
     if ($conexion->connect_error) {
         die("Connection failed: " . $conexion->connect_error);
     }
-    
+
     // Realiza la consulta para obtener los productos más vendidos
     $resultado = $conexion->query("SELECT IDproducto, COUNT(*) as total FROM ventas GROUP BY IDproducto ORDER BY total DESC LIMIT 6");
     $productos_mas_vendidos = $resultado->fetch_all(MYSQLI_ASSOC);
-    
+
     // Realiza la consulta para obtener los registros diarios
-    $resultado = $conexion->query("SELECT DATE(registo) as fecha, COUNT(*) as total FROM cuenta GROUP BY fecha");
+    $resultado = $conexion->query("SELECT DATE(registro) as fecha, COUNT(*) as total FROM cuenta GROUP BY fecha");
     $registros_diarios = $resultado->fetch_all(MYSQLI_ASSOC);
     ?>
 
@@ -467,10 +467,10 @@
         var myChart1 = new Chart(ctx1, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: <?php echo json_encode(array_column($productos_mas_vendidos, 'IDproducto')); ?>,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '# de Ventas',
+                    data: <?php echo json_encode(array_column($productos_mas_vendidos, 'total')); ?>,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -498,31 +498,18 @@
                 }
             }
         });
+        
 
         var ctx2 = document.getElementById('myChart2').getContext('2d');
         var myChart2 = new Chart(ctx2, {
-            type: 'bar',
+            type: 'line',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: <?php echo json_encode(array_column($registros_diarios, 'fecha')); ?>,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [7, 11, 5, 8, 3, 7],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    label: '# de Registros',
+                    data: <?php echo json_encode(array_column($registros_diarios, 'total')); ?>,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
                 }]
             },
