@@ -5,6 +5,12 @@ form.filtro {
     padding: 15px;
     margin-left: 60px;
 }
+.sectionfiltro {
+    display: flex;
+}
+.sectionfiltro>form+form {
+    width: 200px !important;
+}
 
 .filtro div {
     width: 200px;
@@ -14,6 +20,15 @@ form.filtro {
     text-align: center;
     overflow: hidden;
     transition: transform 0.3s ease;
+}
+.cuales {
+    width: 300px;
+    margin: 10px;
+    margin-left: 6.5%;
+    border: 1px solid #c4ae9c;
+    padding: 10px;
+    font-style: italic;
+    text-align: center;
 }
 /* .filtro div:hover {
     transform: translateY(-10px);
@@ -28,6 +43,10 @@ select#FiltrarCate {
     appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
+}
+.filtro label {
+    font-size: 15px;
+    margin: 0px;
 }
 .filtro>div img {
     width: 100%;
