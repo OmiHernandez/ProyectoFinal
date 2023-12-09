@@ -79,11 +79,3 @@ hr {
     background-color: #c4ae9c;
     margin: 20px 0;
 }
-.chart-container {
-    display: flex;
-    justify-content: space-around;
-}
-
-.chart {
-    width: 45%;
-}
