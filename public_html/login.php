@@ -368,13 +368,71 @@ session_start();
                             $resultado = $conexion->query($sql);
 
                             if($resultado) { ?>
-                                <a class="dropdown-item" href="tienda.php">Suscribirse <i class="fa-regular fa-bell" style="color: #3b342e;"></i></a>
+                                <button type="button" id="btnModal4" class="btn" onclick="AbrirModal4()">&nbsp; Suscribirse <i class="fa-regular fa-bell" style="color: #3b342e;"></i></button>
                             <?php
                             } else { ?>
-                                <a class="dropdown-item" href="tienda.php">Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></a>
+                                <button type="button" class="btn" disabled>&nbsp; Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></button>
+                                <!-- <a class="dropdown-item" href="tienda.php">Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></a> -->
                             <?php
                             }
                         ?>
+                        <div id="modal4" class="modal fade" role="dialog" style="overflow-y: hidden;">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-tittle">Iniciar sesión</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="registrar.php" method="POST">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Usuario:</label>
+                                                        <input type="text" name="usuario" class="form-control" id="recipient-name" value="<?php if (isset($_COOKIE["usuario"])) {
+                                                                                                                                                echo $_COOKIE["usuario"];
+                                                                                                                                            } ?>" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Contraseña:</label>
+                                                        <input type="password" name="contraseña" class="form-control" id="recipient-name" value="<?php if (isset($_COOKIE["contraseña"])) {
+                                                                                                                                                        echo $_COOKIE["contraseña"];
+                                                                                                                                                    } ?>" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="elem-group">
+                                                        <label for="captcha">Ingresa el siguiente captcha: </label>
+                                                        <br>
+                                                        <img src="captcha.php" alt="CAPTCHA" class="captcha-image"> <i class="fas fa-redo refresh-captcha" onclick="CambiarImage();" style="font-size:30px;"></i>
+                                                        <br><br>
+                                                        <input type="text" id="captcha" class="form-control" name="respcaptcha" pattern="[A-Z]{6}">
+                                                        <br>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="recordar" id="recordar"><label for="recordar" class="form-check-label"> Recordar contraseña</label></td>
+                                            </tr>
+                                        </table>
+                                        <input type="text" value="iniciar" name="metodo" hidden>
+                                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                                    </form>
+                                    <p>¿Cuenta bloqueada?<button type="button" class="btn" id="btnModal3" onclick="AbrirModal3()">Recuperar cuenta</button></p>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <p>¿No tienes cuenta? </p>
+                                    <button type="button" class="btn" id="btnModal2" onclick="AbrirModal2()">Registrarse</button>
+                                </div>
+                            </div>
+                        </div> <!-- cierra modal 4 -->
+                       
+                    </div>
                         
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
