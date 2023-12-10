@@ -56,7 +56,7 @@
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'botanicalgarden000@gmail.com';
-            $mail->Password = 'fiqzpjzbeokolpop';
+            $mail->Password = 'qezxrgqjpfpnydgt';
             $mail->SMTPSecure = 'ssl';
             $mail->Port = 465;
 

@@ -374,14 +374,27 @@ session_start();
                             $sqlS = 'select suscrito from cuenta where Usuario="'.$_SESSION["nombre"].'"';
                             $resultadoS = $conexionS->query($sqlS);
 
-                            if($resultadoS) { ?>
-                                <button type="button" id="btnModal4" class="btn" onclick="AbrirModal4()">&nbsp; Suscribirse <i class="fa-regular fa-bell" style="color: #3b342e;"></i></button>
-                            <?php
-                            } else { ?>
-                                <button type="button" class="btn" disabled>&nbsp; Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></button>
-                                <!-- <a class="dropdown-item" href="tienda.php">Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></a> -->
-                            <?php
+                            // if ($resultado->num_rows) { //Si la consulta genera registros
+                            //     while ($fila = $resultado->fetch_assoc()) { //Recorremos los registros obtenidos de la tabla
+                            //         if ($usuario === $fila['usuario'] || $usuario === $fila['correo']) {
+                            //             $existeUsuario = true;
+                            if($resultadoS->num_rows) {
+                                while ($filaS = $resultadoS->fetch_assoc()) {
+                                    if($filaS['suscrito']) { ?>
+                                        <button type="button" class="btn" disabled>&nbsp; Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></button>
+
+                                        <!-- <button type="button" id="btnModal4" class="btn" onclick="AbrirModal4()">&nbsp; Suscribirse <i class="fa-regular fa-bell" style="color: #3b342e;"></i></button> -->
+                                    <?php
+                                    } else { ?>
+                                        <button type="button" id="btnModal4" class="btn" onclick="AbrirModal4()">&nbsp; Suscribirse <i class="fa-regular fa-bell" style="color: #3b342e;"></i></button>
+
+                                        <!-- <button type="button" class="btn" disabled>&nbsp; Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></button> -->
+                                    <?php
+                                    }
+                                }
+                                
                             }
+                            
                         ?>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
