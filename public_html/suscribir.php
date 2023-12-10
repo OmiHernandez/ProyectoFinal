@@ -57,12 +57,6 @@
 
             $mail->send();
         ?>
-            <!-- <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">¡Nuevo correo recibido!</h4>
-                <p>Has recibido un nuevo correo electrónico. Revisa tu bandeja de entrada para estar al tanto de las últimas novedades.</p>
-                <hr>
-                <p class="mb-0">Recuerda revisar tu correo regularmente para no perderte información importante.</p>
-            </div> -->
 
             <div class="alert alert-success" role="alert" id="alerta">
                 <h4 class="alert-heading">Bienvenido!</h4>
