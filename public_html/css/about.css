@@ -210,3 +210,12 @@ a.Conoce:hover {
         display: block;
     }
 }
+
+@media only screen and (max-width: 570px) {
+    .logo {
+        display: none;
+    }
+    .logo2 {
+        display: block;
+    }
+}

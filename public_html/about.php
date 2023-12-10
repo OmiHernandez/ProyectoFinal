@@ -119,7 +119,7 @@
         <div class="foot">
             <div class="logo">
                 <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
-                    <img src="img/logoWF.png" alt="Logo de BotanicalG" height="70" width="70">
+                    <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
                 </a>
                 <br>
             </div>
