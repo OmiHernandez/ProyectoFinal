@@ -58,6 +58,8 @@
             </div>
 
             <div class="parte4">
+                <img class="about" src="img/about1.png" alt="Mision" width="100px">
+                <br>
                 <h1>Visión</h1>
                 <p>En Botanical Garden, nos sumergimos en la realización de nuestra visión al establecer colaboraciones
                     estrechas con productores locales. Este compromiso nos impulsa a trabajar de la mano con
@@ -70,6 +72,8 @@
             </div>
 
             <div class="parte5">
+                <img class="about" src="img/about2.png" alt="Mision" width="100px">
+                <br>
                 <h1>Objetivo</h1>
                 <p>En el contexto actual de transformación hacia prácticas empresariales más sostenibles y comprometidas
                     con la preservación del medio ambiente, Botanical Garden se destaca al impulsar un cultivo más
@@ -97,6 +101,8 @@
             </div>
 
             <div class="parte8">
+                <img class="about" src="img/about3.png" alt="Mision" width="100px">
+                <br>
                 <h1>Mision</h1>
                 <p>Nos conformamos como un equipo apasionado y diverso que trabaja con integridad, creatividad y energía
                     para alcanzar metas asombrosas, edificando así una empresa con visión de sostenibilidad a largo

@@ -156,6 +156,14 @@ a.Conoce:hover {
     display: none;
 }
 
+.about {
+    display: none;
+    transition: transform 0.3s ease-in-out;
+    max-width: 100%;
+}
+.about:hover {
+    transform: scale(1.2); 
+}
 @media only screen and (max-width: 853px) {
     .parte2 {
         display: none;
@@ -196,5 +204,9 @@ a.Conoce:hover {
     
     .parte3, .parte6, .parte7 {
         display: none;
+    }
+
+    .about {
+        display: block;
     }
 }
