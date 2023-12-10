@@ -3,10 +3,12 @@
     width: 100%;
 }
 
+
+
 .contenedorI img {
     width: 100%;
     display: block;
-    height: 800px;
+    height: auto;
 }
 
 .textoarriba {
@@ -29,9 +31,9 @@
     text-align: justify;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "parte1        parte2"
-        "parte3        parte4"
-        "parte5        parte6"
-        "parte7        parte8";
+                         "parte3        parte4"
+                         "parte5        parte6"
+                         "parte7        parte8";
 }
 
 .parte1 {
@@ -65,7 +67,7 @@
 .parte4 {
     grid-area: parte4;
     padding: 60px;
-    width: 600px;
+    width: 100%;
     display: grid;
     place-items: center;
     font-family: 'Montserrat', sans-serif;
@@ -110,7 +112,7 @@
 .parte8 {
     grid-area: parte8;
     padding: 60px;
-    width: 600px;
+    width: 100%;
     display: grid;
     place-items: center;
     font-family: 'Montserrat', sans-serif;
@@ -148,4 +150,13 @@ a.Conoce:after {
 a.Conoce:hover {
     transform-origin: center bottom;
     transform: rotateX(-90deg) translateY(100%);
+}
+
+@media only screen and (max-width: 853px) {
+    .parte2 {
+        display: none;
+    }
+    .parte1 {
+        grid-area: 1 / 1 / 2 / 2;
+    }
 }

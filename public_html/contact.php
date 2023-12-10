@@ -18,6 +18,7 @@
     include("login.php");
     ?>
     <section>
+        <br><br>
         <div class="contenedorI">
             <h1>Contáctanos</h1>
             <div class="mini-1">

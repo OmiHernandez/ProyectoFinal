@@ -30,7 +30,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="contenido">
         <div class="contenedorII">
             <div class="parte1">
                 <h1>En el año 2020, dimos vida a BOTANICAL GARDEN con la firme convicción de convertir a las plantas en
@@ -50,11 +50,11 @@
             </div>
 
             <div class="parte2">
-                <img src="img/about_img_2.png" alt="imagen plantas" width="500px">
+                <img src="img/about_img_2.png" alt="imagen plantas" width="100%">
             </div>
 
             <div class="parte3">
-                <img src="img/about_img_3.jpeg" alt="imagen plantas" width="500px">
+                <img src="img/about_img_3.jpeg" alt="imagen plantas" width="100%">
             </div>
 
             <div class="parte4">
@@ -89,11 +89,11 @@
             </div>
 
             <div class="parte6">
-                <img src="img/about_img_4.png" alt="imagen plantas" width="700px">
+                <img src="img/about_img_4.png" alt="imagen plantas" width="100%">
             </div>
 
             <div class="parte7">
-                <img src="img/about_img_5.jpg" alt="imagen plantas" width="500px">
+                <img src="img/about_img_5.jpg" alt="imagen plantas" width="100%">
             </div>
 
             <div class="parte8">
