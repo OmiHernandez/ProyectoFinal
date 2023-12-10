@@ -152,11 +152,49 @@ a.Conoce:hover {
     transform: rotateX(-90deg) translateY(100%);
 }
 
+.logo {
+    display: none;
+}
+
 @media only screen and (max-width: 853px) {
     .parte2 {
         display: none;
     }
-    .parte1 {
-        grid-area: 1 / 1 / 2 / 2;
+    .contenedorII {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: "parte1"        
+                             "parte4"
+                             "parte3"
+                             "parte5"
+                             "parte6"
+                             "parte8"
+                             "parte7";
+    }
+    .parte1 p {
+        padding: 0px 30px;
+    }
+    
+    .parte3, .parte6, .parte7 {
+        width: 80%;
+        height: auto;
+        margin-left: 10%;
+        margin-top: -120px;
+    }
+
+    .logo2 {
+        display: none;
+    }
+    .logo {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .parte1 p {
+        left: 0px;
+    }
+    
+    .parte3, .parte6, .parte7 {
+        display: none;
     }
 }

@@ -111,8 +111,14 @@
     <br>
     <footer>
         <div class="foot">
-            <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+            <div class="logo">
                 <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
+                    <img src="img/logoWF.png" alt="Logo de BotanicalG" height="70" width="70">
+                </a>
+                <br>
+            </div>
+            <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+                <a class="flex-sm-fill text-sm-center nav-link logo2" href="index.php">
                     <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
                 </a>
                 <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
