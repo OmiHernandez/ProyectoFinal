@@ -38,6 +38,10 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "parte1        parte2";
 }
+.contenido {
+    max-width: 100%;
+    overflow: hidden;
+}
 
 
 .contenedorII {
@@ -59,8 +63,6 @@
 }
 
 
-
-
 .contenedorIII {
     grid-area: parte2;
     padding: 30px;
@@ -78,3 +80,17 @@
     margin: 0 auto;
    width: 500px;
 }
+
+@media only screen and (max-width: 600px) {
+    .container {
+      width: 100%;
+    }
+  
+    .header {
+      padding: 10px;
+    }
+  
+    .main-content {
+      padding: 10px;
+    }
+  }

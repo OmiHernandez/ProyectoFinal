@@ -1,7 +1,8 @@
 <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/login-rd.css">
 <?php
 
-$servidor = 'localhost';
+$servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -34,6 +35,13 @@ session_start();
         $('#modal3').modal('hide');
         $('#modal2').modal('hide');
         $('#modal1').modal('show');
+    }
+
+    function AbrirModal4() {
+        $('#modal3').modal('hide');
+        $('#modal2').modal('hide');
+        $('#modal1').modal('hide');
+        $('#modal4').modal('show');
     }
 
     function Validaciones() {
@@ -81,14 +89,15 @@ session_start();
             Botanical Garden
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"><i class="fa-solid fa-bars" style="color: #36312b;"></i></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto opciones">
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="tienda.php">Tienda</a>
                 </li>
+                <hr>
                 <li class="nav-item">
                     <div class="nav-item dropdown my-2 my-lg-0">
                         <a class="nav-link" style="color:black;" href="#" role="button" data-toggle="dropdown" aria-expanded="false"> Categorías </a>
@@ -98,15 +107,19 @@ session_start();
                         </div>
                     </div>
                 </li>
+                <hr>
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="about.php">Sobre nosotros</a>
                 </li>
+                <hr>
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="contact.php">Contáctanos</a>
                 </li>
+                <hr>
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="ayuda.php">Ayuda</a>
                 </li>
+                <hr>
             </ul>
 
             <?php
@@ -327,6 +340,7 @@ session_start();
             <?php
             } else {
             ?>
+            <div class="logueado">
                 <div class="nav-item dropdown my-2 my-lg-0">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         <?php switch ($horaActual) {
@@ -349,13 +363,80 @@ session_start();
                         <?php if ($_SESSION["nombre"] == "admin") { ?>
                             <a class="dropdown-item" href="ABC.php">Administrar productos</a>
                         <?php } ?>
-                        <a class="dropdown-item" href="tienda.php">Categorías</a>
+
+                        <?php
+                            $conexionS = new mysqli('localhost:33065', 'root', '', 'botanical');
+
+                            if ($conexionS->connect_error) {
+                                die("Connection failed: " . $conexionS->connect_error);
+                            }
+
+                            $sqlS = 'select suscrito from cuenta where Usuario="'.$_SESSION["nombre"].'"';
+                            $resultadoS = $conexionS->query($sqlS);
+
+                            // if ($resultado->num_rows) { //Si la consulta genera registros
+                            //     while ($fila = $resultado->fetch_assoc()) { //Recorremos los registros obtenidos de la tabla
+                            //         if ($usuario === $fila['usuario'] || $usuario === $fila['correo']) {
+                            //             $existeUsuario = true;
+                            if($resultadoS->num_rows) {
+                                while ($filaS = $resultadoS->fetch_assoc()) {
+                                    if($filaS['suscrito']) { ?>
+                                        <button type="button" class="btn" disabled>&nbsp; Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></button>
+
+                                        <!-- <button type="button" id="btnModal4" class="btn" onclick="AbrirModal4()">&nbsp; Suscribirse <i class="fa-regular fa-bell" style="color: #3b342e;"></i></button> -->
+                                    <?php
+                                    } else { ?>
+                                        <button type="button" id="btnModal4" class="btn" onclick="AbrirModal4()">&nbsp; Suscribirse <i class="fa-regular fa-bell" style="color: #3b342e;"></i></button>
+
+                                        <!-- <button type="button" class="btn" disabled>&nbsp; Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></button> -->
+                                    <?php
+                                    }
+                                }
+                                
+                            }
+                            
+                        ?>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                        
+                    </div> <!--cierra el menu despegable-->
 
-                    </div>
+                    <!-- inicia modal 4 -->
+                        <div id="modal4" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-tittle">Suscribirse</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="suscribir.php" method="POST" id="formulariosuscribir">
+                                            <table style="width: 100%">
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="form-group">
+                                                            <label for="correosus" class="col-form-label">Correo:</label>
+                                                            <input type="email" name="correosus" class="form-control" id="correosus" required>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <input type="text" value="suscribir" name="metodo" hidden>
+                                                        <input type="text" value="<?php echo $_SESSION["nombre"]?>" name="usuario" hidden>
+                                                        <button type="summit" class="btn btn-primary" style="width: 100%">Suscribirse</button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- cierra modal 4 -->
                 </div>
-                <div>
+            </div> <!--cierra el bloque loguin-->
+
+                <div class="carrito">
                     <a href="carrito.php">
                         <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
                         <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php if (isset($_SESSION['carrito'])) {
@@ -365,7 +446,7 @@ session_start();
                                                                                     } ?></div>
                     </a>
                 </div>
-
+                <!-- </div> -->
             <?php
             }
 

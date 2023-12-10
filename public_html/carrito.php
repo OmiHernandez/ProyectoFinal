@@ -1,6 +1,6 @@
 <?php
 // Configuración de la conexión a la base de datos
-$servername = "localhost";
+$servername = "localhost:33065";
 $username = "root";
 $password = "";
 $dbname = "botanical";
@@ -134,25 +134,25 @@ if ($conn->connect_error) {
                 <a class="flex-sm-fill text-sm-center nav-link text-light" href="about.php">Sobre nosotros...</a>
             </nav>
             <div class="redes">
-                <ul class="nav justify-content-center">
+                <<ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                        <a class="nav-link" id="red" href="https://www.instagram.com/the.botanicalgarden/"><i class="fa-brands fa-instagram fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a class="nav-link" id="red" href="https://www.facebook.com/profile.php?id=61553949556849"><i class="fa-brands fa-facebook fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
                     </li>
