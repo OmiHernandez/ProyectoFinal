@@ -162,6 +162,7 @@ $resultado = $conexion->query($sql);
                 <div class="row">
 
                     <?php
+                    $mostrar=0;
                     while ($fila = $resultado->fetch_assoc()) {
                         $imagen = $fila['imagen'];
                         $nombre = $fila['Nombre'];
@@ -249,6 +250,10 @@ $resultado = $conexion->query($sql);
                             <br><br>
                         </div>
                     <?php
+                    $mostrar=$mostrar+1; 
+                    if($mostrar==8) {
+                        break;
+                    }
                     } //fin while
                     ?>
                 </div> <!--div row-->
