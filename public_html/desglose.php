@@ -13,6 +13,7 @@
     $usuario = "Gus";
     //$tarjeta = $_SESSION["tarjeta"]; 
     $tarjeta = "1234-5678-9012-3456";
+    //$carrito = $_SESSION['carrito'];
 
     $servidor='localhost:33063';
     $cuenta = 'root';
