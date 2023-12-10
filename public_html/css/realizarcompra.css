@@ -1,0 +1,104 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: rgb(241, 241, 241);
+}
+
+.grideo{
+    width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, auto);
+
+    grid-template-areas: "header header header header"
+                         "contenido contenido contenido sidebar"
+                         "contenido contenido contenido sidebar"
+                         "footer footer footer footer";
+}
+
+.grideo .header{
+    width: 100%;
+    font-size: 10px;
+    grid-area: header;
+    background-color: white;
+}
+
+.grideo .contenido{
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    grid-area: contenido;
+}
+
+.grideo .sidebar{
+    grid-area: sidebar;
+}
+
+.producto{
+    background-color: #5e7e66;
+    box-shadow: -10px 0px 16px -14px rgba(0,0,0,0.75);
+}
+
+.minidesglose{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top:5vh; 
+}
+
+.minidesglose>img{
+    align-self: center;
+}
+
+.numerito{
+    width:125px;
+    font-size: 15px;
+    position: relative;
+    bottom: 20px;
+    align-self: center;
+}
+
+.grideo .footer{
+    grid-area: footer;
+    background-color: #3e6347;
+}
+
+.formulario{
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+
+td{
+    width: 50%;
+    padding: 15px;
+}
+
+.minidesglose>table>tr>td{
+    color:white;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .grideo{
+        width: 100%;
+        min-height: 100%;
+        display: grid;
+        grid-gap: 0px;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: repeat(5, auto);
+    
+        grid-template-areas: "header header header header"
+                             "contenido contenido contenido contenido"
+                             "contenido contenido contenido contenido"
+                             "sidebar sidebar sidebar sidebar"
+                             "footer footer footer footer";
+    }
+    
+}
