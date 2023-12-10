@@ -387,85 +387,34 @@ session_start();
                         <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
                         
                     </div> <!--cierra el menu despegable-->
-                    
+
                     <!-- inicia modal 4 -->
                         <div id="modal4" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-tittle">Registrarse</h4>
+                                        <h4 class="modal-tittle">Suscribirse</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="registrar.php" method="POST" id="formularioregistro">
-                                            <table>
+                                        <form action="suscribir.php" method="POST" id="formulariosuscribir">
+                                            <table style="width: 100%">
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="form-group">
-                                                            <label for="recipient-name" class="col-form-label">Nombre:</label>
-                                                            <input type="text" name="nombre" class="form-control" id="recipient-name" required>
+                                                            <label for="correosus" class="col-form-label">Correo:</label>
+                                                            <input type="email" name="correosus" class="form-control" id="correosus" required>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="recipient-name" class="col-form-label">Usuario:</label>
-                                                            <input type="text" name="usuario" class="form-control" id="recipient-name idr1" required>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="recipient-name" class="col-form-label">Correo:</label>
-                                                            <input type="email" name="correo" class="form-control" id="recipient-name" required>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="message-text" class="col-form-label">Contraseña:</label>
-                                                            <input type="password" name="contraseña" class="form-control" id="cons" required>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="message-text" class="col-form-label">Pregunta de seguridad:</label>
-                                                            <select name="pregunta" class="custom-select">
-                                                                <option value="¿Nombre de tu primera mascota?">¿Nombre de tu primera mascota?</option>
-                                                                <option value="¿Lugar de nacimiento de tu madre?">¿Lugar de nacimiento de tu madre?</option>
-                                                                <option value="¿Nombre de tu abuelo paterno?">¿Nombre de tu abuelo paterno?</option>
-                                                                <option value="¿Ciudad donde estudiaste la primaria?">¿Ciudad donde estudiaste la primaria?</option>
-                                                                <option value="¿Nombre del primer colegio al que asististe?">¿Nombre del primer colegio al que asististe?</option>
-                                                            </select>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="message-text" class="col-form-label">Repetir contraseña:</label>
-                                                            <input type="password" name="repcontraseña" class="form-control" id="recons" required>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="recipient-name" class="col-form-label">Respuesta:</label>
-                                                            <input type="text" name="respuesta" class="form-control" id="recipient-name" required>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="text" value="registrar" name="metodo" hidden>
-                                                        <button type="button" class="btn btn-primary" onclick="Validaciones();">Registrarse</button>
+                                                    <td colspan="2">
+                                                        <input type="text" value="suscribir" name="metodo" hidden>
+                                                        <input type="text" value="<?php echo $_SESSION["nombre"]?>" name="usuario" hidden>
+                                                        <button type="summit" class="btn btn-primary" style="width: 100%">Suscribirse</button>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <p>¿Ya tienes cuenta? </p>
-                                        <button type="button" class="btn" id="btnModal4" onclick="Volver()">Iniciar sesión</button>
                                     </div>
                                 </div>
                             </div>
