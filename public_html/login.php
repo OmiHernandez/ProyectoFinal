@@ -356,7 +356,26 @@ session_start();
                         <?php if ($_SESSION["nombre"] == "admin") { ?>
                             <a class="dropdown-item" href="ABC.php">Administrar productos</a>
                         <?php } ?>
-                        <a class="dropdown-item" href="tienda.php">Categorías</a>
+
+                        <?php
+                            $conexion = new mysqli('localhost:33065', 'root', '', 'botanical');
+
+                            if ($conexion->connect_error) {
+                                die("Connection failed: " . $conexion->connect_error);
+                            }
+
+                            $sql = 'select suscrito from cuenta where Usuario="'.$_SESSION["nombre"].'"';
+                            $resultado = $conexion->query($sql);
+
+                            if($resultado) { ?>
+                                <a class="dropdown-item" href="tienda.php">Suscribirse <i class="fa-regular fa-bell" style="color: #3b342e;"></i></a>
+                            <?php
+                            } else { ?>
+                                <a class="dropdown-item" href="tienda.php">Suscrito <i class="fa-solid fa-bell" style="color: #3b342e;"></i></a>
+                            <?php
+                            }
+                        ?>
+                        
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 
