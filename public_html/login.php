@@ -382,7 +382,7 @@ session_start();
                        
                     </div> <!--cierra el menu despegable-->
                 </div>
-            </div>
+            </div> <!--cierra el bloque loguin-->
 
                 <div class="carrito">
                     <a href="carrito.php">
