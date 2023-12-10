@@ -64,54 +64,74 @@
         </button>
     </div>
 
-    <div class="modal fade" id="desgloseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+    <form action="nota.php" method="post">
+        <div class="modal fade" id="desgloseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Desglose de los Productos</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Productos a Pagar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
-                <div class="modal-body">
-                    <?php
-                        while ($fila = $resultado->fetch_assoc()) {
-                            foreach ($vector as $idProducto => $numeroProductos) {
-                                if($idProducto == $fila["ID"]){
-                                    echo '<div class="form-group">';
-                                        echo '<label for="nombre">Nombre: '.$fila["Nombre"].'</label>';
-                                        echo "<br>";
-                                        echo '<img src="img/productos/'.$fila["imagen"].'" alt="'.$fila["Nombre"].'" width="150" height="150">';
-                                        echo '<input type="text" class="form-control" id="nombre" aria-describedby="nombre"
-                                                value="Número de Productos: '.$numeroProductos.'" disabled>';
-                                    echo '</div>';
+                    <div class="modal-body">
+                        <?php
+                            $totalPagar = 0;
+                            while ($fila = $resultado->fetch_assoc()) {
+                                foreach ($vector as $idProducto => $numeroProductos) {
+                                    if($idProducto == $fila["ID"]){
+                                        echo '<div class="form-group">';
+                                            echo '<label for="nombre">Nombre: '.$fila["Nombre"].'</label>';
+                                            echo "<br>";
+                                            echo '<img src="img/productos/'.$fila["imagen"].'" alt="'.$fila["Nombre"].'" width="150" height="150">';
+                                            echo '<input type="text" class="form-control" id="nombre" aria-describedby="nombre"
+                                                    value="Número de Productos: '.$numeroProductos.'" disabled>';
+                                            echo '<input type="text" class="form-control" id="nombre" aria-describedby="nombre"
+                                                    value="Precio: $'.$numeroProductos*$fila["PrecioN"].'" disabled>';
+                                        echo '</div>';
+                                        $totalPagar = $totalPagar + ($numeroProductos*$fila["PrecioN"]);
+
+                                        echo '<input type="hidden" name="vector['.$idProducto.']" value="'.$numeroProductos.'">';
+                                    }
                                 }
                             }
-                        }
-                    ?>
+                        ?>
+                        
+                        <div class="form-group">
+                            <label for="tel">Número Total de Productos</label>
+                            <input type="text" class="form-control" id="tel" aria-describedby="tel"
+                                    value="<?php echo $totalProductos; ?>" disabled>
+                            <input type="hidden" name="totalProductos" value="<?php echo $totalProductos; ?>">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="tel">Número Total de Productos</label>
-                        <input type="text" class="form-control" id="tel" aria-describedby="tel"
-                                value="<?php echo $totalProductos; ?>" disabled>
+                        <div class="form-group">
+                            <label for="tel">Total a Pagar</label>
+                            <input type="text" class="form-control" id="tel" aria-describedby="tel"
+                                    value="<?php echo "$".$totalPagar; ?>" disabled>
+                            <input type="hidden" name="totalPagar" value="<?php echo $totalPagar; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tel">Tarjeta a Cobrar</label>
+                            <input type="text" class="form-control" id="tel" aria-describedby="tel"
+                                    value="<?php echo $tarjeta; ?>" disabled>
+                            <input type="hidden" name="tarjeta" value="<?php echo $tarjeta; ?>">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="tel">Tarjeta a Cobrar</label>
-                        <input type="text" class="form-control" id="tel" aria-describedby="tel"
-                                value="<?php echo $tarjeta; ?>" disabled>
+                    <input type="hidden" name="usuarioID" value="<?php echo $usuarioID; ?>">
+                    <input type="hidden" name="bandera" value="true">
+
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-secondary" name="submit" value="Confirmar Compra" >
                     </div>
-                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='index.php'">Confirmar Compra</button>
                 </div>
-
             </div>
         </div>
-    </div>
+    </form>
 
     <?php
     }
