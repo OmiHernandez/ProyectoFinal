@@ -1,9 +1,9 @@
 <?php
 // Configuración de la conexión a la base de datos
-$servername = "localhost:3029";
-$username = "root";
-$password = "";
-$dbname = "botanical";
+$servername = 'localhost:33063';
+$username = 'root';
+$password = '';
+$dbname = 'botanical';
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
