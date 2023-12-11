@@ -414,7 +414,15 @@ $resultado = $conexion->query($sql);
                         }
                     } else  {
                         console.log("NOOOOOOOOOOO ENTRAAAA"+this.responseText);
-                        AbrirModal1();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Por favor, inicie sesión para agregar productos al carrito.',
+                        }).then(() => {
+                            setTimeout(function () {
+                                AbrirModal1();
+                            }, 1000);
+                        });
                     }
                 }
             };
