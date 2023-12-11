@@ -9,12 +9,13 @@
         $bd = 'botanical';
         $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
-        $usuarioID = 0;
         $sql = "SELECT ID FROM cuenta WHERE usuario='$usuario'";
         $resultado = $conexion->query($sql);
+
+        $_SESSION['usuarioID'] = 0;
         if ($resultado->num_rows) {
             while ($fila = $resultado->fetch_assoc()) {
-                $usuarioID = $fila["ID"];
+                $_SESSION['usuarioID'] = $fila["ID"];
             }
         }
 
@@ -22,11 +23,12 @@
         $resultado = $conexion->query($sql);
         
         //Disminuir las existencias
+        $_SESSION['carritoReacomodado'] = $_POST['vector'];
         $sqlVector = array();
         $longitudVector = 0;
         if ($resultado->num_rows) {
             while ($fila = $resultado->fetch_assoc()) {
-                foreach ($vector as $idProducto => $numeroProductos) {
+                foreach ($_SESSION['carritoReacomodado'] as $idProducto => $numeroProductos) {
                     if($idProducto == $fila["ID"]){
                         $sqlVector[$longitudVector] = "UPDATE productos SET cantidad=".$fila["Cantidad"]-$numeroProductos." WHERE ID=".$idProducto.";";
                         $longitudVector++;
@@ -39,14 +41,17 @@
         }
 
         //Agregar Carrito a Ventas
+        for($i=0; $i<count($_SESSION['carrito']); $i++){
+            $sql = "INSERT INTO ventas VALUES ($usuarioID,".$_SESSION['carrito'][$i].")";
+            $resultado = $conexion->query($sql);
+        }
 
-
-
-        //Limpiar Carrito (El vector)
-
+        //Limpiar Carrito
+        $_SESSION['carrito'] = null;
+        unset($_SESSION["carrito"]);
         
         //Datos Requeridos para Hacer la Nota de Compra
-        print_r($_POST['vector']);
+        print_r($_SESSION['carritoReacomodado']);
         echo "<br>Subtotal: ".$_SESSION["totalcar"];
         echo "<br>Cobro por envío: ".$_SESSION["envio"];
         echo "<br>Impuesto: ".$_SESSION["impuesto"];
@@ -54,5 +59,6 @@
         echo "<br>Método de Pago: ".$_SESSION["metodoPago"];
         echo "<br>Dirección de Envío: ".$_SESSION["direccionEnvio"];
         echo "<br>Tarjeta: ".$_SESSION["numeroTarjeta"];
+        echo "<br>ID del Usuario: ".$_SESSION['usuarioID'];
     }
 ?>
