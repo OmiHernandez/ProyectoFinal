@@ -2,10 +2,10 @@
 <html lang="es_mx">
 
 <?php
-$servidor = 'localhost';
-$cuenta = 'root';
-$password = '';
-$bd = 'botanical';
+    $servidor='localhost:3029';
+    $cuenta='root';
+    $password='';
+    $bd='botanical';
 
 $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
