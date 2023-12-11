@@ -2,6 +2,10 @@
     session_start();
     $usuario = $_SESSION['nombre'];
 
+    if(!isset($_SESSION['carrito'])){
+        header("Location: index.php");
+    }
+
     if(isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         $servidor='localhost:33063';
         $cuenta = 'root';
