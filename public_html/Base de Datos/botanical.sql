@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:33065
--- Tiempo de generación: 06-12-2023 a las 20:23:30
+-- Tiempo de generación: 10-12-2023 a las 08:35:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -35,17 +35,31 @@ CREATE TABLE `cuenta` (
   `Pregunta` varchar(50) DEFAULT NULL,
   `Respuesta` varchar(255) DEFAULT NULL,
   `Nombre` varchar(60) DEFAULT NULL,
-  `Bloqueo` int(2) DEFAULT 0
+  `Bloqueo` int(2) DEFAULT 0,
+  `suscrito` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cuenta`
 --
 
-INSERT INTO `cuenta` (`ID`, `Usuario`, `Correo`, `Contraseña`, `Pregunta`, `Respuesta`, `Nombre`, `Bloqueo`) VALUES
-(0, 'admin', 'botanicalgarden000@gmail.com', '$2y$10$615iY85obJoJezozzRowTenUiFnsBf2My8A0XIg2352QGiLl0gF0u', '¿Nombre de tu primera mascota?', 'owo', 'admin', 0),
-(2, 'Jalkem', 'jalkemmoralesps4@gmail.com', '$2y$10$ijMiU4yG1fqR02WVCLR00.MvELPkJhyrfzYPK4iMLv8aBCusnH3zu', '¿Nombre de tu primera mascota?', 'owo', 'Bryan Misael', 1),
-(4, 'NaomiHR', 'hernandez.romo@gmail.com', '$2y$10$421Lbk9KEkwF2uxOoStCSuKEk4biGxgfja8o32oN9VABf3dMRrmVm', '¿Nombre de tu primera mascota?', 'Midas', 'Naomi', 0);
+INSERT INTO `cuenta` (`ID`, `Usuario`, `Correo`, `Contraseña`, `Pregunta`, `Respuesta`, `Nombre`, `Bloqueo`, `suscrito`) VALUES
+(0, 'admin', 'botanicalgarden000@gmail.com', '$2y$10$615iY85obJoJezozzRowTenUiFnsBf2My8A0XIg2352QGiLl0gF0u', '¿Nombre de tu primera mascota?', 'owo', 'admin', 0, 0),
+(2, 'Jalkem', 'jalkemmoralesps4@gmail.com', '$2y$10$ijMiU4yG1fqR02WVCLR00.MvELPkJhyrfzYPK4iMLv8aBCusnH3zu', '¿Nombre de tu primera mascota?', 'owo', 'Bryan Misael', 1, 0),
+(4, 'NaomiHR', 'hernandez.romo@gmail.com', '$2y$10$421Lbk9KEkwF2uxOoStCSuKEk4biGxgfja8o32oN9VABf3dMRrmVm', '¿Nombre de tu primera mascota?', 'Midas', 'Naomi', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cupones`
+--
+
+CREATE TABLE `cupones` (
+  `ID` int(11) NOT NULL,
+  `Codigo` varchar(10) DEFAULT NULL,
+  `Descuento` int(11) DEFAULT NULL,
+  `FechaTermino` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -92,6 +106,17 @@ INSERT INTO `productos` (`ID`, `Nombre`, `Descripcion`, `Categoria`, `Cantidad`,
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `usado`
+--
+
+CREATE TABLE `usado` (
+  `IDCliente` int(11) DEFAULT NULL,
+  `IDCupon` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ventas`
 --
 
@@ -111,10 +136,23 @@ ALTER TABLE `cuenta`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `usado`
+--
+ALTER TABLE `usado`
+  ADD KEY `IDCliente` (`IDCliente`),
+  ADD KEY `IDCupon` (`IDCupon`);
 
 --
 -- Indices de la tabla `ventas`
@@ -134,6 +172,12 @@ ALTER TABLE `cuenta`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -142,6 +186,13 @@ ALTER TABLE `productos`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `usado`
+--
+ALTER TABLE `usado`
+  ADD CONSTRAINT `usado_ibfk_1` FOREIGN KEY (`IDCliente`) REFERENCES `cuenta` (`ID`),
+  ADD CONSTRAINT `usado_ibfk_2` FOREIGN KEY (`IDCupon`) REFERENCES `cupones` (`ID`);
 
 --
 -- Filtros para la tabla `ventas`

@@ -8,7 +8,7 @@
 <?php
 
 
-$servidor='localhost:33063';
+$servidor = 'localhost:33063';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -173,7 +173,7 @@ if ($_POST["metodo"] == "registrar") {
     }
 
     $sql = "INSERT INTO cuenta
-          VALUES(default, '$usuario', '$correo', '$hash', '$pregunta', '$respuesta', '$nombre', default)";
+          VALUES(default, '$usuario', '$correo', '$hash', '$pregunta', '$respuesta', '$nombre', default, default)";
     $resultado = $conexion->query($sql);
 
     $_SESSION["nombre"] = $usuario;

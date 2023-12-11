@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
 <?php
 
-$servidor='localhost:33063';
+$servidor = 'localhost:33063';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -89,13 +89,13 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" style="color: black;" href="tienda.php">Tienda</a>
                 </li>
-                <li class="nav-item"> 
+                <li class="nav-item">
                     <div class="nav-item dropdown my-2 my-lg-0">
                         <a class="nav-link" style="color:black;" href="#" role="button" data-toggle="dropdown" aria-expanded="false"> Categorías </a>
-                            <div class="dropdown-menu" style="background: #F7F2EE;" >
-                                <a class="dropdown-item" href="sombra.php">Sombra</a>
-                                <a class="dropdown-item" href="sol.php">Sol</a>
-                            </div>
+                        <div class="dropdown-menu" style="background: #F7F2EE;">
+                            <a class="dropdown-item" href="sombra.php">Sombra</a>
+                            <a class="dropdown-item" href="sol.php">Sol</a>
+                        </div>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -345,38 +345,33 @@ session_start();
                         }
                         echo $_SESSION["nombre"] . "!"; ?>
                     </a>
-                    <?php if ($_SESSION["nombre"] == "admin") {
-                    ?>
-                        <div class="dropdown-menu">
+                    <div class="dropdown-menu">
+                        <?php if ($_SESSION["nombre"] == "admin") { ?>
                             <a class="dropdown-item" href="ABC.php">Administrar productos</a>
-                            <a class="dropdown-item" href="tienda.php">Categorías</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                        <?php } ?>
+                        <a class="dropdown-item" href="tienda.php">Categorías</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 
-                        </div>
+                    </div>
                 </div>
                 <div>
-                    <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+                    <a href="carrito.php">
+                        <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
+                        <div id="cantidad-en-carrito" style="color:#968475;">&nbsp;<?php if (isset($_SESSION['carrito'])) {
+                                                                                        echo count($_SESSION['carrito']);
+                                                                                    } else {
+                                                                                        echo 0;
+                                                                                    } ?></div>
+                    </a>
                 </div>
-                <div>&nbsp;0&nbsp;</div>
-            <?php
-                    } else { ?>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="tienda.php">Categorías</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
-                </div>
-        </div>
-        <div>
-        <i class="fa-solid fa-cart-shopping" style="color:#968475;"></i>
-        </div>
-        <div style="color:#968475;">&nbsp;0</div>
-<?php
-                    }
-                }
-?>
 
-</div>
+            <?php
+            }
+
+            ?>
+
+        </div>
     </nav>
 
 </header>
