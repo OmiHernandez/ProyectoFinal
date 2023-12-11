@@ -1,3 +1,4 @@
+
 <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/login-rd.css">
 <?php
@@ -12,8 +13,8 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 date_default_timezone_set('America/Mexico_City');
 
 $horaActual = date("G");
-session_start();
 
+session_start();
 ?>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
@@ -124,6 +125,10 @@ session_start();
 
             <?php
             if (empty($_SESSION["nombre"])) {
+                // $logueado=false;
+                // echo json_encode($logueado);
+
+                
             ?>
                 <div class="nav-item my-2 my-lg-0">
 
@@ -339,6 +344,8 @@ session_start();
 
             <?php
             } else {
+                // $logueado=true;
+                // echo json_encode($logueado);
             ?>
             <div class="logueado">
                 <div class="nav-item dropdown my-2 my-lg-0">
