@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$servername = "localhost:33063";
+$servername = "localhost:3029";
 $username = "root";
 $password = "";
 $dbname = "botanical";
@@ -29,24 +29,19 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
     $_SESSION["numeroTarjeta"] = null;
 }
 ?>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
 <script>
     var metod = "<?php if (isset($_POST["metodo"])) {
-        echo $_POST["metodo"];
-    } else {
-        echo "no";
-    } ?>";
+                        echo $_POST["metodo"];
+                    } else {
+                        echo "no";
+                    } ?>";
 
     console.log(metod);
+
     function abrirModal() {
         $('#modal1').modal('show');
         console.log("Llegue aqui");
@@ -72,7 +67,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
         if (document.getElementById('cupons').value != "") {
             var xhr = new XMLHttpRequest();
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     if (this.responseText == "usado") {
                         swal("Error", "Este cupon ya ha sido utilizado.", "error");
@@ -245,7 +240,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
         document.getElementById('calcimp').addEventListener('animationend', () => {
             var xhr = new XMLHttpRequest();
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     if (this.responseText == 0) {
                         document.getElementById('calcimp').innerHTML = "No aplica";
@@ -285,7 +280,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
 
         var xhr = new XMLHttpRequest();
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
+        xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById('calcenv').innerHTML = "$" + this.responseText;
             }
@@ -306,7 +301,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
         document.getElementById('calctot').addEventListener('animationend', () => {
             var xhr = new XMLHttpRequest();
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById('calctot').innerHTML = "$" + this.responseText;
                 }
@@ -315,7 +310,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
             xhttp.send();
 
             var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     if (this.responseText == "0") {
                         document.getElementById('calcenv').classList.add('animate__animated', "animate__rubberBand");
@@ -362,7 +357,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                 tercero.hidden = false;
                 tercero.classList.add('animate__animated', "animate__fadeIn", "animate__delay-1s");
                 tercero.addEventListener('animationend', () => {
-                    /* Llamar al modal */
+                    document.getElementById('formuoxxo').submit();
                 });
             });
         });
@@ -376,8 +371,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Botanical Garden</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/realizarcompra.css">
     <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
@@ -393,17 +387,15 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
     <div class="grideo">
         <header class="header animate__animated animate__fadeInDown">
             <div style="display:flex;justify-content:center;">
-                <img src="img/logo.png" width="90" height="90" class="d-inline-block align-top"
-                    alt="Logo de BotanicalG">
+                <img src="img/logo.png" width="90" height="90" class="d-inline-block align-top" alt="Logo de BotanicalG">
             </div>
         </header>
         <section class="contenido">
             <div class="formulario">
                 <?php
                 if (!isset($_POST["metodo"])) {
-                    ?>
-                    <form id="añadir" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
-                        class="animate__animated animate__fadeInLeft" autocomplete="off">
+                ?>
+                    <form id="añadir" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="animate__animated animate__fadeInLeft" autocomplete="off">
                         <legend>Dirección de envío</legend>
                         <table style="width:100%;">
                             <tr>
@@ -421,7 +413,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                 <td>
                                     <div class="form-group">
                                         <label for="cop">Código postal (<span style="color:red;">*</span>)</label>
-                                        <input type="number" class="form-control" id="cop" required>
+                                        <input type="number" class="form-control" id="cop" name="cop" required>
                                     </div>
                                 </td>
                             </tr>
@@ -429,14 +421,13 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                 <td>
                                     <div class="form-group">
                                         <label for="estado" id="estcam">Estado (<span style="color:red;">*</span>)</label>
-                                        <select class="form-control" id="estado" onchange="CalcularImpuestos(this);"
-                                            disabled required></select>
+                                        <select class="form-control" id="estado" onchange="CalcularImpuestos(this);" name="estado" disabled required></select>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <label for="ciud">Ciudad/Municipio (<span style="color:red;">*</span>)</label>
-                                        <input type="text" class="form-control" id="ciud" required>
+                                        <input type="text" class="form-control" id="ciud" name="ciud" required>
                                     </div>
                                 </td>
                             </tr>
@@ -444,22 +435,21 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                 <td>
                                     <div class="form-group">
                                         <label for="numext">Numero exterior</label>
-                                        <input type="number" class="form-control" id="numext" placeholder="S/N">
+                                        <input type="number" class="form-control" id="numext" name="numext" placeholder="S/N">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <label for="numint">Numero interior (opcional)</label>
-                                        <input type="number" class="form-control" id="numint">
+                                        <input type="number" class="form-control" id="numint" name="numint">
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
                                     <div class="form-group">
-                                        <label for="dir">Dirección (Incluya detalles) (<span
-                                                style="color:red;">*</span>)</label>
-                                        <textarea class="form-control" id="dir" rows="3" required></textarea>
+                                        <label for="dir">Dirección (Incluya detalles) (<span style="color:red;">*</span>)</label>
+                                        <textarea class="form-control" id="dir" rows="3" name="direccion" required></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -467,15 +457,13 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                 <td colspan="2">
                                     <p>¿Es tu trabajo o casa?</p>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="exampleRadios"
-                                            id="exampleRadios1" value="option1">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
                                         <label class="form-check-label" for="exampleRadios1" style="font-size: 18px;">
                                             <i class="fa-solid fa-briefcase"></i> Trabajo
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="exampleRadios"
-                                            id="exampleRadios2" value="option2" checked>
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
                                         <label class="form-check-label" for="exampleRadios2" style="font-size: 18px;">
                                             <i class="fa-solid fa-house"></i> Casa
                                         </label>
@@ -486,307 +474,268 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                 <td>
                                     <div class="form-group">
                                         <label for="NumCon">Numero de contacto (<span style="color:red;">*</span>)</label>
-                                        <input type="number" class="form-control" id="NumCon" required>
+                                        <input type="number" class="form-control" name="numcont" id="NumCon" required>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align:right;">
                                     <input type="text" name="metodo" value="cupon" hidden>
-                                    <input type="button" class="btn btn-primary" onclick="AdiosFormulario1();"
-                                        value="Siguiente">
+                                    <input type="button" class="btn btn-primary" onclick="AdiosFormulario1();" value="Siguiente">
                                 </td>
                             </tr>
                         </table>
                     </form>
-                    <?php
+                <?php
                 } else if ($_POST["metodo"] == "pago") {
-                    //Aquí Contruir Direccion de Envio
-                    ?>
-                        <h3>Añadir metodo de pago</h3>
-                        <div class="accordion animate__animated animate__fadeInLeft" id="accordionExample">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                            data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne" style="text-decoration:none;">
-                                            <img src="img/iconovisa.png" alt="Visa/Mastercard" height="30px" width="auto">
-                                            Visa/Mastercard
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                    data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <form id="pago" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
-                                            method="post">
-                                            <legend>Datos de tarjeta de credito</legend>
-                                            <table style="width:100%;">
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="nomtit">Nombre del titular (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="text" class="form-control" id="nomtit" required>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="numtar">Numero de tarjeta (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="text" class="form-control" id="numtar" size="16"
-                                                                name="numeroTarjeta" required>
+                ?>
+                    <h3>Añadir metodo de pago</h3>
+                    <div class="accordion animate__animated animate__fadeInLeft" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration:none;">
+                                        <img src="img/iconovisa.png" alt="Visa/Mastercard" height="30px" width="auto">
+                                        Visa/Mastercard
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <form id="pago" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                        <legend>Datos de tarjeta de credito</legend>
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="nomtit">Nombre del titular (<span style="color:red;">*</span>)</label>
+                                                        <input type="text" class="form-control" id="nomtit" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="numtar">Numero de tarjeta (<span style="color:red;">*</span>)</label>
+                                                        <input type="text" class="form-control" id="numtar" size="16" name="numeroTarjeta" required>
                                                         <?php $_SESSION["metodoPago"] = 'Visa/Mastercard'; ?>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="mesexp">Mes de expiración (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="number" class="form-control" id="mesexp" min="1"
-                                                                max="12" placeholder="MM" required>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="anoexp">Año de expiración (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="number" class="form-control" id="anoexp" min="23"
-                                                                max="50" placeholder="YY" required>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="cvv">CVV de tres digitos (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="number" class="form-control" id="cvv" max="999"
-                                                                size="3" required>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <div class="form-group">
-                                                            <label for="dirfar">Dirección de facturación (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <textarea class="form-control" id="dirfar" rows="3"
-                                                                required></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <input type="text" name="metodo" value="desglose" hidden>
-                                                        <div style="display:flex;justify-content:right;"><input type="submit"
-                                                                class="btn btn-primary" value="Siguiente"></input></div>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </form>
-                                    </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="mesexp">Mes de expiración (<span style="color:red;">*</span>)</label>
+                                                        <input type="number" class="form-control" id="mesexp" min="1" max="12" placeholder="MM" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="anoexp">Año de expiración (<span style="color:red;">*</span>)</label>
+                                                        <input type="number" class="form-control" id="anoexp" min="23" max="50" placeholder="YY" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="cvv">CVV de tres digitos (<span style="color:red;">*</span>)</label>
+                                                        <input type="number" class="form-control" id="cvv" max="999" size="3" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="form-group">
+                                                        <label for="dirfar">Dirección de facturación (<span style="color:red;">*</span>)</label>
+                                                        <textarea class="form-control" id="dirfar" rows="3" required></textarea>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input type="text" name="metodo" value="desglose" hidden>
+                                                    <div style="display:flex;justify-content:right;"><input type="submit" class="btn btn-primary" value="Siguiente"></input></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="card-header" id="headingFour">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                            data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
-                                            aria-controls="collapseFour" style="text-decoration:none;">
-                                            <img src="img/iconoamerican.png" alt="Visa/Mastercard" height="30px" width="auto">
-                                            American Express
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                    data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <form id="añadir" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
-                                            method="post">
-                                            <legend>Datos de tarjeta de credito</legend>
-                                            <table style="width:100%;">
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="nomtit">Nombre del titular (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="text" class="form-control" id="nomtit" required>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="numtar">Numero de tarjeta (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="text" class="form-control" id="numtar" size="16"
-                                                                name="numeroTarjeta" required>
-                                                        <?php $_SESSION["metodoPago"] = 'American Express'; ?>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="mesexp">Mes de expiración (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="number" class="form-control" id="mesexp" min="1"
-                                                                max="12" placeholder="MM" required>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="anoexp">Año de expiración (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="number" class="form-control" id="anoexp" min="23"
-                                                                max="50" placeholder="YY" required>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <label for="cvv">CVV de cuatro digitos (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <input type="number" class="form-control" id="cvv" max="9999"
-                                                                size="4" required>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <div class="form-group">
-                                                            <label for="dirfar">Dirección de facturación (<span
-                                                                    style="color:red;">*</span>)</label>
-                                                            <textarea class="form-control" id="dirfar" rows="3"
-                                                                required></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <input type="text" name="metodo" value="desglose" hidden>
-                                                        <div style="display:flex;justify-content:right;"><input type="submit"
-                                                                class="btn btn-primary" value="Siguiente"></input></div>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                            aria-controls="collapseTwo" style="text-decoration:none;">
-                                            <img src="img/iconooxxo.png" alt="Visa/Mastercard" height="30px" width="auto"> OXXO
-                                            (Solo en territorio mexicano)
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                    data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <h3 style="text-align:center;">Codigo de barras</h3>
-                                        <?php
-                                        $diez = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 10);
-                                        $siete = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 7);
-                                        $stringcompleto = "OX-" . $diez . "-" . $siete;
-                                        ?>
-                                        <div id="codigobar" style="display:flex;justify-content:center;"><img
-                                                src="plugins/barcode.php?text=<?php echo $stringcompleto; ?>&size=30&codetype=Code128&print=true" />
-                                        </div>
-                                        <p style="text-align:center;">Presenta el codigo de barras en tu sucursal de OXXO mas
-                                            cercana<br>Paga desde ahi tu compra.</p>
-                                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                            <div style="display:flex;justify-content:right;">
-                                                <div style="justify-self:left;">
-                                                    <p id="primerpaso" hidden>Esperando pago...</p>
-                                                    <p id="segundopaso" hidden>Procesando...</p>
-                                                    <p id="tercerpaso" hidden><i class="fa-solid fa-circle-check fa-lg"
-                                                            style="color: #258113;"></i></p>
-                                                </div>
-                                                <input type="text" name="metodo" value="cupon" hidden>
-                                                <input type="button" class="btn btn-primary" value="Siguiente"
-                                                    onclick="InterludioOXXO();" id="botoncup"></input>
-                                                <div class="spinner-border text-success" role="status" id="spinners"
-                                                    style="text-align:center;border-color: brown; border-top:transparent;"
-                                                    hidden>
-                                                    <span><i class="fa-solid fa-seedling fa-rotate-180"
-                                                            style="color: #24a800;"></i></span>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header" id="headingThree">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                            data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                            aria-controls="collapseThree" style="text-decoration:none;">
-                                            <img src="img/iconopaypal.png" alt="Visa/Mastercard" height="30px" width="auto">
-                                            eWallet
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                    data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <h3>Añadir una cuenta de paypal</h3>
-                                        <div style="display:flex;justify-content:center;"><img src="img/iconopaypal.png"
-                                                alt="Logo de Paypal" height="200px"></div>
-                                        <p style="text-align:center;">El siguiente paso te redireccionará a la página oficial
-                                            <br> de PayPal para que completes el proceso de inicio de sesión <br>
-                                        </p>
-                                        <div style="display:flex;justify-content:right;"><button class="btn btn-primary"
-                                                onclick="EnviarPaypal();">Siguiente</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br><br>
                         </div>
-                    <?php
-                } else if ($_POST["metodo"] == "cupon") { ?>
-                            <form id="formcupo" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
-                                class="animate__animated animate__fadeInLeft">
-                                <table style="width:100%;">
-                                    <tr>
-                                        <td colspan="2" style="text-align:center;font-size:30px;">
-                                            ¿Posees un cupón de compra? <br> ¡Es hora de utilizarlo!
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="text-align:center;font-size:125px;">
-                                            <i class="fa-solid fa-ticket" style="color: #25511f;"></i>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                                <label for="cupons">Ingresar cupón:</label>
-                                                <input type="text" class="form-control" id="cupons" required>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="text-decoration:none;">
+                                        <img src="img/iconoamerican.png" alt="Visa/Mastercard" height="30px" width="auto">
+                                        American Express
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <form id="añadir" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                        <legend>Datos de tarjeta de credito</legend>
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="nomtit">Nombre del titular (<span style="color:red;">*</span>)</label>
+                                                        <input type="text" class="form-control" id="nomtit" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="numtar">Numero de tarjeta (<span style="color:red;">*</span>)</label>
+                                                        <input type="text" class="form-control" id="numtar" size="16" name="numeroTarjeta" required>
+                                                        <?php $_SESSION["metodoPago"] = 'American Express'; ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="mesexp">Mes de expiración (<span style="color:red;">*</span>)</label>
+                                                        <input type="number" class="form-control" id="mesexp" min="1" max="12" placeholder="MM" required>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="anoexp">Año de expiración (<span style="color:red;">*</span>)</label>
+                                                        <input type="number" class="form-control" id="anoexp" min="23" max="50" placeholder="YY" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="cvv">CVV de cuatro digitos (<span style="color:red;">*</span>)</label>
+                                                        <input type="number" class="form-control" id="cvv" max="9999" size="4" required>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="form-group">
+                                                        <label for="dirfar">Dirección de facturación (<span style="color:red;">*</span>)</label>
+                                                        <textarea class="form-control" id="dirfar" rows="3" required></textarea>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input type="text" name="metodo" value="desglose" hidden>
+                                                    <div style="display:flex;justify-content:right;"><input type="submit" class="btn btn-primary" value="Siguiente"></input></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration:none;">
+                                        <img src="img/iconooxxo.png" alt="Visa/Mastercard" height="30px" width="auto"> OXXO
+                                        (Solo en territorio mexicano)
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <h3 style="text-align:center;">Codigo de barras</h3>
+                                    <?php
+                                    $diez = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 10);
+                                    $siete = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 7);
+                                    $stringcompleto = "OX-" . $diez . "-" . $siete;
+                                    ?>
+                                    <div id="codigobar" style="display:flex;justify-content:center;"><img src="plugins/barcode.php?text=<?php echo $stringcompleto; ?>&size=30&codetype=Code128&print=true" />
+                                    </div>
+                                    <p style="text-align:center;">Presenta el codigo de barras en tu sucursal de OXXO mas
+                                        cercana<br>Paga desde ahi tu compra.</p>
+                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="formuoxxo">
+                                        <div style="display:flex;justify-content:right;">
+                                            <div style="justify-self:left;">
+                                                <p id="primerpaso" hidden>Esperando pago...</p>
+                                                <p id="segundopaso" hidden>Procesando...</p>
+                                                <p id="tercerpaso" hidden><i class="fa-solid fa-circle-check fa-lg" style="color: #258113;"></i></p>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="display:flex;justify-content:space-between;width:100%;">
-                                            <input type="text" name="metodo" value="pago" hidden>
-                                            <input type="button" class="btn btn-secondary" onclick="NoTengoCupon();"
-                                                value="No, gracias">
-                                            <input type="button" class="btn btn-primary" onclick="AdiosFormularioCupon();"
-                                                value="Siguiente">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </form>
-                    <?php
+                                            <input type="text" name="metodo" value="cupon" hidden>
+                                            <input type="button" class="btn btn-primary" value="Siguiente" onclick="InterludioOXXO();" id="botoncup"></input>
+                                            <div class="spinner-border text-success" role="status" id="spinners" style="text-align:center;border-color: brown; border-top:transparent;" hidden>
+                                                <span><i class="fa-solid fa-seedling fa-rotate-180" style="color: #24a800;"></i></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-decoration:none;">
+                                        <img src="img/iconopaypal.png" alt="Visa/Mastercard" height="30px" width="auto">
+                                        eWallet
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <h3>Añadir una cuenta de paypal</h3>
+                                    <div style="display:flex;justify-content:center;"><img src="img/iconopaypal.png" alt="Logo de Paypal" height="200px"></div>
+                                    <p style="text-align:center;">El siguiente paso te redireccionará a la página oficial
+                                        <br> de PayPal para que completes el proceso de inicio de sesión <br>
+                                    </p>
+                                    <div style="display:flex;justify-content:right;"><button class="btn btn-primary" onclick="EnviarPaypal();">Siguiente</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                    </div>
+                <?php
+                } else if ($_POST["metodo"] == "cupon") {
+                    if (empty($_POST["numext"])) {
+                        $numext = "NumExt: S/N";
+                    } else {
+                        $numext = "NumExt: #".$_POST["numext"];
+                    }
+                    if (empty($_POST["numint"])) {
+                        $numint = "";
+                    } else {
+                        $numint = "NumInt: #".$_POST["numint"];
+                    }
+                    $_SESSION["direccionEnvio"] = $_POST["direccion"]." ".$numext." ".$numint."<br>".$_POST["cop"]." - ".$_POST["ciud"].", ".$_POST["estado"].", ".$_POST["pais"]." "." Número de contacto: ".$_POST["numcont"];
+                ?>
+                    <form id="formcupo" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="animate__animated animate__fadeInLeft">
+                        <table style="width:100%;">
+                            <tr>
+                                <td colspan="2" style="text-align:center;font-size:30px;">
+                                    ¿Posees un cupón de compra? <br> ¡Es hora de utilizarlo!
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:center;font-size:125px;">
+                                    <i class="fa-solid fa-ticket" style="color: #25511f;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="cupons">Ingresar cupón:</label>
+                                        <input type="text" class="form-control" id="cupons" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="display:flex;justify-content:space-between;width:100%;">
+                                    <input type="text" name="metodo" value="pago" hidden>
+                                    <input type="button" class="btn btn-secondary" onclick="NoTengoCupon();" value="No, gracias">
+                                    <input type="button" class="btn btn-primary" onclick="AdiosFormularioCupon();" value="Siguiente">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <?php
                 } else if ($_POST["metodo"] == "desglose") {
                     if (isset($_POST['numeroTarjeta']))
                         $_SESSION['numeroTarjeta'] = $_POST['numeroTarjeta'];
@@ -801,113 +750,104 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                         }
                     }
                     //print_r($carritoNuevo);
-                
+
                     $sql = "SELECT * FROM productos";
                     $resultado = $conn->query($sql);
-                    ?>
-                               
-                                <div class="modal fade" id="modal1" role="dialog" data-backdrop="static">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
+                ?>
+
+                    <div class="modal fade" id="modal1" role="dialog" data-backdrop="static">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
 
 
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Productos a Pagar</h5>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <form action="nota.php" method="post">
-                                            <?php
-                                            $totalPagar = 0;
-                                            while ($fila = $resultado->fetch_assoc()) {
-                                                foreach ($carritoNuevo as $idProducto => $numeroProductos) {
-                                                    if ($idProducto == $fila["ID"]) {
-                                                        echo '<div class="form-group">';
-                                                        echo '<label for="nombre">Producto: ' . $fila["Nombre"] . '</label>';
-                                                        echo "<br>";
-                                                        echo '<img src="img/productos/' . $fila["imagen"] . '" alt="' . $fila["Nombre"] . '" width="150" height="150">';
-                                                        echo '<input type="text" class="form-control" id="nombre" aria-describedby="nombre"
-                                                                    value="Número de Productos: ' . $numeroProductos . '" disabled>';
-                                                        echo '<input type="text" class="form-control" id="nombre" aria-describedby="nombre"
-                                                                    value="Precio: $' . $numeroProductos * $fila["PrecioN"] . '" disabled>';
-                                                        echo '</div>';
-                                                        $totalPagar = $totalPagar + ($numeroProductos * $fila["PrecioN"]);
-
-                                                        echo '<input type="hidden" name="vector[' . $idProducto . ']" value="' . $numeroProductos . '">';
-                                                    }
-                                                }
-                                            }
-                                            ?>
-
-                                                    <div class="form-group">
-                                                        <label for="tel">Número Total de Productos</label>
-                                                        <input type="text" class="form-control" id="tel" aria-describedby="tel"
-                                                            value="<?php echo count($_SESSION['carrito']); ?>" disabled>
-                                                        <input type="hidden" name="totalProductos"
-                                                            value="<?php echo count($_SESSION['carrito']); ?>">
-                                                    </div>
-
-                                            <?php
-                                            if ($_SESSION["metodoPago"] == 'Visa/Mastercard') {
-                                                ?>
-                                                        <div class="form-group">
-                                                            <label for="tel">Método de Pago: Visa/Mastercard</label>
-                                                            <input type="text" class="form-control" id="tel" aria-describedby="tel"
-                                                                value="<?php echo "Número de Tarjeta: " . $_SESSION['numeroTarjeta']; ?>"
-                                                                disabled>
-                                                        </div>
-                                            <?php
-                                            } else if ($_SESSION["metodoPago"] == 'American Express') {
-                                                ?>
-                                                            <div class="form-group">
-                                                                <label for="tel">Método de Pago: American Express</label>
-                                                                <input type="text" class="form-control" id="tel" aria-describedby="tel"
-                                                                    value="<?php echo "Número de Tarjeta: " . $_SESSION['numeroTarjeta']; ?>"
-                                                                    disabled>
-                                                            </div>
-                                            <?php
-                                            } else if ($_SESSION["metodoPago"] == 'Oxxo') {
-                                                ?>
-                                                                <div class="form-group">
-                                                                    <label for="tel">Método de Pago:</label>
-                                                                    <input type="text" class="form-control" id="tel" aria-describedby="tel"
-                                                                        value="<?php echo "OXXO"; ?>" disabled>
-                                                                    <input type="hidden" name="tarjeta" value="<?php echo $tarjeta; ?>">
-                                                                </div>
-                                            <?php
-                                            } else if ($_SESSION["metodoPago"] == 'PayPal') {
-                                                ?>
-                                                                    <div class="form-group">
-                                                                        <label for="tel">Método de Pago:</label>
-                                                                        <input type="text" class="form-control" id="tel" aria-describedby="tel"
-                                                                            value="<?php echo "PayPal"; ?>" disabled>
-                                                                        <input type="hidden" name="tarjeta" value="<?php echo $tarjeta; ?>">
-                                                                    </div>
-                                            <?php
-                                            }
-                                            ?>
-
-
-
-                                                    <input type="submit" class="btn btn-secondary" name="submit"
-                                                        value="Confirmar Compra">
-                                                </form>
-                                            </div>
-
-                                            <div class="modal-footer">
-
-                                            </div>
-
-
-                                        </div>
-                                    </div>
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Productos a Pagar</h5>
                                 </div>
 
-                                <script>
-                                    abrirModal();
-                                </script>
+                                <div class="modal-body">
+                                    <form action="nota.php" method="post">
+                                        <?php
+                                        $totalPagar = 0;
+                                        while ($fila = $resultado->fetch_assoc()) {
+                                            foreach ($carritoNuevo as $idProducto => $numeroProductos) {
+                                                if ($idProducto == $fila["ID"]) {
+                                                    echo '<div class="form-group">';
+                                                    echo '<label for="nombre">Producto: ' . $fila["Nombre"] . '</label>';
+                                                    echo "<br>";
+                                                    echo '<img src="img/productos/' . $fila["imagen"] . '" alt="' . $fila["Nombre"] . '" width="150" height="150">';
+                                                    echo '<input type="text" class="form-control" id="nombre" aria-describedby="nombre"
+                                                                    value="Número de Productos: ' . $numeroProductos . '" disabled>';
+                                                    echo '<input type="text" class="form-control" id="nombre" aria-describedby="nombre"
+                                                                    value="Precio: $' . $numeroProductos * $fila["PrecioN"] . '" disabled>';
+                                                    echo '</div>';
+                                                    $totalPagar = $totalPagar + ($numeroProductos * $fila["PrecioN"]);
 
-                    <?php
+                                                    echo '<input type="hidden" name="vector[' . $idProducto . ']" value="' . $numeroProductos . '">';
+                                                }
+                                            }
+                                        }
+                                        ?>
+
+                                        <div class="form-group">
+                                            <label for="tel">Número Total de Productos</label>
+                                            <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo count($_SESSION['carrito']); ?>" disabled>
+                                            <input type="hidden" name="totalProductos" value="<?php echo count($_SESSION['carrito']); ?>">
+                                        </div>
+
+                                        <?php
+                                        if ($_SESSION["metodoPago"] == 'Visa/Mastercard') {
+                                        ?>
+                                            <div class="form-group">
+                                                <label for="tel">Método de Pago: Visa/Mastercard</label>
+                                                <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "Número de Tarjeta: " . $_SESSION['numeroTarjeta']; ?>" disabled>
+                                            </div>
+                                        <?php
+                                        } else if ($_SESSION["metodoPago"] == 'American Express') {
+                                        ?>
+                                            <div class="form-group">
+                                                <label for="tel">Método de Pago: American Express</label>
+                                                <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "Número de Tarjeta: " . $_SESSION['numeroTarjeta']; ?>" disabled>
+                                            </div>
+                                        <?php
+                                        } else if ($_SESSION["metodoPago"] == 'Oxxo') {
+                                        ?>
+                                            <div class="form-group">
+                                                <label for="tel">Método de Pago:</label>
+                                                <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "OXXO"; ?>" disabled>
+                                                <input type="hidden" name="tarjeta" value="<?php echo $tarjeta; ?>">
+                                            </div>
+                                        <?php
+                                        } else if ($_SESSION["metodoPago"] == 'PayPal') {
+                                        ?>
+                                            <div class="form-group">
+                                                <label for="tel">Método de Pago:</label>
+                                                <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "PayPal"; ?>" disabled>
+                                                <input type="hidden" name="tarjeta" value="<?php echo $tarjeta; ?>">
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+
+
+
+                                        <input type="submit" class="btn btn-secondary" name="submit" value="Confirmar Compra">
+                                    </form>
+                                </div>
+
+                                <div class="modal-footer">
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        abrirModal();
+                    </script>
+
+                <?php
                 }
                 ?>
             </div>
@@ -923,10 +863,8 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
 
                     if ($result->num_rows > 0) {
                         $producto = $result->fetch_assoc();
-                        ?>
-                        <img class="animate__animated animate__zoomIn"
-                            src="img/productos/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['Nombre']; ?>"
-                            height="100px" style="border-radius:100%;">
+                    ?>
+                        <img class="animate__animated animate__zoomIn" src="img/productos/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['Nombre']; ?>" height="100px" style="border-radius:100%;">
                         <div class="badge badge-pill badge-success numerito animate__animated animate__zoomIn">Productos:
                             <?php echo $_SESSION["totalcant"]; ?>
                         </div>
@@ -994,7 +932,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                             </tr>
                         </table>
 
-                        <?php
+                    <?php
                     }
 
                     ?>
@@ -1007,8 +945,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                 <div class="academico">
                     Página perteneciente a proyecto académico
                 </div>
-                <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center"
-                    id="navfoot">
+                <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
                     <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
                         <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
                     </a>

@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/1d83af7d53.js" crossorigin="anonymous"></script>
 <?php
 
-$servidor = 'localhost:33063';
+$servidor = 'localhost:3029';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -119,7 +119,7 @@ session_start();
                     <div id="modal1" class="modal fade" role="dialog" style="overflow-y: hidden;">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                
+
                                 <div class="modal-header">
                                     <h4 class="modal-tittle">Iniciar sesión</h4>
                                 </div>
