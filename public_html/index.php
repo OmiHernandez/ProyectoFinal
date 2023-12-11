@@ -413,7 +413,7 @@ $resultado = $conexion->query($sql);
                             xhr.send(data);
                         }
                     } else  {
-                        console.log("NOOOOOOOOOOO GAY"+this.responseText);
+                        console.log("NOOOOOOOOOOO ENTRAAAA"+this.responseText);
                         AbrirModal1();
                     }
                 }

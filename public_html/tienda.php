@@ -248,36 +248,49 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "Filtrar") {
             var indice = parseInt(id);
             var boton = document.getElementById("buttonCarrito-" + id);
             var existenciaActual = parseInt(boton.dataset.existencia);
+            
+            var logueadojs = new XMLHttpRequest();
+            logueadojs.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText=="0") {
+                        console.log("SI LOGUEADO :D");
+                        if (!isNaN(existenciaActual) && existenciaActual > 0) {
+                            // Reducir la existencia de manera local
+                            boton.dataset.existencia = existenciaActual - 1;
 
-            if (!isNaN(existenciaActual) && existenciaActual > 0) {
-                // Reducir la existencia de manera local
-                boton.dataset.existencia = existenciaActual - 1;
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', 'agregar_al_carrito.php', true);
+                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'agregar_al_carrito.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                            xhr.onload = function() {
+                                if (xhr.status === 200) {
+                                    // Actualizar la interfaz de usuario y la cantidad en el carrito
+                                    actualizarInterfaz(id, boton);
+                                    // Actualizar la cantidad en el icono del carrito
+                                    $("#cantidad-en-carrito").text(xhr.responseText);
+                                } else {
+                                    console.error('Error al enviar el ID al servidor:', xhr.status);
 
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        // Actualizar la interfaz de usuario y la cantidad en el carrito
-                        actualizarInterfaz(id, boton);
-                        // Actualizar la cantidad en el icono del carrito
-                        $("#cantidad-en-carrito").text(xhr.responseText);
-                    } else {
-                        console.error('Error al enviar el ID al servidor:', xhr.status);
+                                    // Mostrar alerta de SweetAlert2 en caso de error
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: 'No fue posible agregar al carrito. Por favor, intenta de nuevo.',
+                                    });
+                                }
+                            };
 
-                        // Mostrar alerta de SweetAlert2 en caso de error
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'No fue posible agregar al carrito. Por favor, intenta de nuevo.',
-                        });
+                            var data = 'producto_id=' + id;
+                            xhr.send(data);
+                        }
+                    } else  {
+                        console.log("NOOOOOOOOOOO ENTRAAAA"+this.responseText);
+                        AbrirModal1();
                     }
-                };
-
-                var data = 'producto_id=' + id;
-                xhr.send(data);
-            }
+                }
+            };
+            logueadojs.open("GET", "logueado.php?logueado=true", true);
+            logueadojs.send();
         }
 
 
