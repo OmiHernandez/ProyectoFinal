@@ -1,6 +1,6 @@
 <?php
 // Configuración de la conexión a la base de datos
-$servername = 'localhost:33063';
+$servername = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'botanical';

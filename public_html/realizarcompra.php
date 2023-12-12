@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$servername = "localhost:33063";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "botanical";
@@ -659,7 +659,8 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                                 <p id="segundopaso" hidden>Procesando...</p>
                                                 <p id="tercerpaso" hidden><i class="fa-solid fa-circle-check fa-lg" style="color: #258113;"></i></p>
                                             </div>
-                                            <input type="text" name="metodo" value="cupon" hidden>
+                                            <input type="text" name="metodo" value="desglose" hidden>
+                                            <?php $_SESSION["metodoPago"] = 'Oxxo'; ?>
                                             <input type="button" class="btn btn-primary" value="Siguiente" onclick="InterludioOXXO();" id="botoncup"></input>
                                             <div class="spinner-border text-success" role="status" id="spinners" style="text-align:center;border-color: brown; border-top:transparent;" hidden>
                                                 <span><i class="fa-solid fa-seedling fa-rotate-180" style="color: #24a800;"></i></span>
@@ -704,7 +705,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                     } else {
                         $numint = "NumInt: #".$_POST["numint"];
                     }
-                    $_SESSION["direccionEnvio"] = $_POST["direccion"]." ".$numext." ".$numint."<br>".$_POST["cop"]." - ".$_POST["ciud"].", ".$_POST["estado"].", ".$_POST["pais"]." "." Número de contacto: ".$_POST["numcont"];
+                    $_SESSION["direccionEnvio"] = $_POST["direccion"]." ".$numext." ".$numint." ".$_POST["cop"]." - ".$_POST["ciud"].", ".$_POST["estado"].", ".$_POST["pais"]." "." Número de contacto: ".$_POST["numcont"];
                 ?>
                     <form id="formcupo" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="animate__animated animate__fadeInLeft">
                         <table style="width:100%;">

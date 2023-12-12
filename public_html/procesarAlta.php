@@ -1,5 +1,5 @@
 <?php
-$servidor = 'localhost:3029';
+$servidor = 'localhost';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
