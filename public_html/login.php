@@ -133,10 +133,11 @@ session_start();
                 <div class="nav-item my-2 my-lg-0">
 
                     <button type="button" id="btnModal1" class="btn" onclick="AbrirModal1()">Iniciar sesión / Crear una cuenta</button>
-
+                    
                     <div id="modal1" class="modal fade" role="dialog" style="overflow-y: hidden;">
                         <div class="modal-dialog">
                             <div class="modal-content">
+
                                 <div class="modal-header">
                                     <h4 class="modal-tittle">Iniciar sesión</h4>
                                 </div>

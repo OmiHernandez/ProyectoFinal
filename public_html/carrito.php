@@ -45,6 +45,7 @@ if ($conn->connect_error) {
                     <?php
                     // Inicializa el total del carrito
                     $totalCarrito = 0;
+                    $cantidadtotal = 0;
                     // Verifica si hay productos en el carrito
                     if (!empty($_SESSION['carrito'])) {
                         // Inicializa un arreglo para contar las ocurrencias de cada ID en el carrito
@@ -65,12 +66,14 @@ if ($conn->connect_error) {
                                     echo "<p class='text-danger'>No hay suficiente existencia del producto '{$producto['Nombre']}'. Por favor, ajusta la cantidad en tu carrito.</p>";
                                     continue; // Salta a la próxima iteración
                                 }
-
+                                
                                 // Calcula el subtotal por producto
                                 $subtotal = $cantidadEnCarrito * ($producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']);
-
+                                $cantidadtotal += $cantidadEnCarrito;
                                 // Actualiza el total del carrito
                                 $totalCarrito += $subtotal;
+                                $_SESSION["totalcar"]=$totalCarrito;
+                                $_SESSION["totalcant"]=$cantidadtotal;
                     ?>
                                 <div class="card mb-3">
                                     <div class="row no-gutters">
@@ -110,8 +113,8 @@ if ($conn->connect_error) {
                 <section class="total-carrito">
                     <!-- Muestra el total de la cuenta del carrito -->
                     <h2>Total del Carrito: $<span id="total-carrito-valor"><?php echo number_format($totalCarrito, 2); ?></span></h2>
-                    <button onclick="realizarCompra()" class="btn btn-primary btn-block mb-3">Realizar Compra</button>
-                    <button onclick="eliminarTodos()" class="btn btn-danger btn-block">Vaciar Carrito</button>
+                    <button onclick="realizarCompra();" class="btn btn-primary btn-block mb-3">Realizar Compra</button>
+                    <button onclick="eliminarTodos();" class="btn btn-danger btn-block">Vaciar Carrito</button>
                 </section>
             </div>
         </div>
@@ -180,6 +183,10 @@ if ($conn->connect_error) {
         const cantidadInputs = document.querySelectorAll('.cantidad-input');
 
         // Agregar un controlador de eventos de cambio a cada entrada de cantidad
+        function realizarCompra(){
+            location.href ="realizarcompra.php";
+        }
+
         cantidadInputs.forEach(input => {
             input.addEventListener('input', actualizarSubtotal);
         });
