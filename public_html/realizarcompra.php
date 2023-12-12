@@ -698,14 +698,14 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                     if (empty($_POST["numext"])) {
                         $numext = "NumExt: S/N";
                     } else {
-                        $numext = "NumExt: #".$_POST["numext"];
+                        $numext = "NumExt: #" . $_POST["numext"];
                     }
                     if (empty($_POST["numint"])) {
                         $numint = "";
                     } else {
-                        $numint = "NumInt: #".$_POST["numint"];
+                        $numint = "NumInt: #" . $_POST["numint"];
                     }
-                    $_SESSION["direccionEnvio"] = $_POST["direccion"]." ".$numext." ".$numint." ".$_POST["cop"]." - ".$_POST["ciud"].", ".$_POST["estado"].", ".$_POST["pais"]." "." Número de contacto: ".$_POST["numcont"];
+                    $_SESSION["direccionEnvio"] = $_POST["direccion"] . " " . $numext . " " . $numint . " " . $_POST["cop"] . " - " . $_POST["ciud"] . ", " . $_POST["estado"] . ", " . $_POST["pais"] . " " . " Número de contacto: " . $_POST["numcont"];
                 ?>
                     <form id="formcupo" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="animate__animated animate__fadeInLeft">
                         <table style="width:100%;">
@@ -795,6 +795,26 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                             <input type="hidden" name="totalProductos" value="<?php echo count($_SESSION['carrito']); ?>">
                                         </div>
 
+                                        <div class="form-group">
+                                            <label for="tel">Subtotal: </label>
+                                            <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "$".$_SESSION['totalcar']; ?>" disabled>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="tel">Cobro por envío: </label>
+                                            <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php if($_SESSION["envio"] == 0){echo "¡Envío gratis!";}else{echo "$".$_SESSION['totalcar'];} ?>" disabled>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="tel">Impuestos: </label>
+                                            <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "$".$_SESSION['impuesto']; ?>" disabled>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="tel">Total a pagar: </label>
+                                            <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "$".$_SESSION['total']; ?>" disabled>
+                                        </div>
+
                                         <?php
                                         if ($_SESSION["metodoPago"] == 'Visa/Mastercard') {
                                         ?>
@@ -829,6 +849,10 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                         }
                                         ?>
 
+                                        <div class="form-group">
+                                            <label for="tel">Dirección de envio: </label>
+                                            <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo $_SESSION['direccionEnvio']; ?>" disabled>
+                                        </div>
 
 
                                         <input type="submit" class="btn btn-secondary" name="submit" value="Confirmar Compra">
