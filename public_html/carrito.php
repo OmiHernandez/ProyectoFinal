@@ -1,6 +1,6 @@
 <?php
 // Configuración de la conexión a la base de datos
-$servername = "localhost:33065";
+$servername = "localhost:3029";
 $username = "root";
 $password = "";
 $dbname = "botanical";
@@ -184,7 +184,9 @@ if ($conn->connect_error) {
 
         // Agregar un controlador de eventos de cambio a cada entrada de cantidad
         function realizarCompra(){
-            location.href ="realizarcompra.php";
+            if (!empty($_SESSION['carrito'])) {
+             location.href ="realizarcompra.php";   
+            }
         }
 
         cantidadInputs.forEach(input => {

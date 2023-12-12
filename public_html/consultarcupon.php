@@ -1,6 +1,6 @@
 <?php
 session_start();
-$servername = "localhost";
+$servername = "localhost:3029";
 $username = "root";
 $password = "";
 $dbname = "botanical";

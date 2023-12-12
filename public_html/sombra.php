@@ -2,7 +2,7 @@
 <html lang="es_mx">
 
 <?php
-$servidor = 'localhost:33065';
+$servidor = 'localhost:3029';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';

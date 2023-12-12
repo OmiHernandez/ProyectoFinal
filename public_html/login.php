@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="css/login-rd.css">
 <?php
 
-$servidor = 'localhost:33065';
+$servidor = 'localhost:3029';
 $cuenta = 'root';
 $password = '';
 $bd = 'botanical';
@@ -373,7 +373,7 @@ session_start();
                         <?php } ?>
 
                         <?php
-                            $conexionS = new mysqli('localhost:33065', 'root', '', 'botanical');
+                            $conexionS = new mysqli('localhost:3029', 'root', '', 'botanical');
 
                             if ($conexionS->connect_error) {
                                 die("Connection failed: " . $conexionS->connect_error);

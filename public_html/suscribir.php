@@ -20,7 +20,7 @@
         $nombre = $_POST["usuario"];
         $correo = $_POST["correosus"];
 
-        $conexion = new mysqli('localhost:33065', 'root', '', 'botanical');
+        $conexion = new mysqli('localhost:3029', 'root', '', 'botanical');
 
         if ($conexion->connect_error) {
             die("Connection failed: " . $conexion->connect_error);

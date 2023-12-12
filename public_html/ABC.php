@@ -30,7 +30,7 @@
     <?php
     include("login.php");
 
-    $conexion = new mysqli('localhost:33065', 'root', '', 'botanical');
+    $conexion = new mysqli('localhost:3029', 'root', '', 'botanical');
 
     // Verifica la conexión
     if ($conexion->connect_error) {
