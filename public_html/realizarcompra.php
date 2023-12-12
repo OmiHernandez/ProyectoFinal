@@ -835,7 +835,6 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                             <div class="form-group">
                                                 <label for="tel">Método de Pago:</label>
                                                 <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "OXXO"; ?>" disabled>
-                                                <input type="hidden" name="tarjeta" value="<?php echo $tarjeta; ?>">
                                             </div>
                                         <?php
                                         } else if ($_SESSION["metodoPago"] == 'PayPal') {
@@ -843,7 +842,6 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                             <div class="form-group">
                                                 <label for="tel">Método de Pago:</label>
                                                 <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php echo "PayPal"; ?>" disabled>
-                                                <input type="hidden" name="tarjeta" value="<?php echo $tarjeta; ?>">
                                             </div>
                                         <?php
                                         }
