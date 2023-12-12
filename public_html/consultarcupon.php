@@ -71,13 +71,15 @@ if ($metodo == 1) {
             $_SESSION["cupon"] = $descuentos;
             $subtotal = 0;
             $cantidadtotal = 0;
+            $totnet = 0;
             $ocurrencias = array_count_values($_SESSION['carrito']);
             foreach ($ocurrencias as $producto_id => $cantidadEnCarrito) {
                 $sql = "SELECT * FROM productos WHERE ID = $producto_id AND Categoria='Sombra';";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     $producto = $result->fetch_assoc();
-                    $subtotal = $cantidadEnCarrito * ($producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']);
+                    $totnet = $cantidadEnCarrito * ($producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']);
+                    $subtotal += $totnet;
                     $cantidadtotal += $cantidadEnCarrito;
                 }
             }
@@ -112,13 +114,15 @@ if ($metodo == 2) {
             $_SESSION["cupon"] = $descuentos;
             $subtotal = 0;
             $cantidadtotal = 0;
+            $totnet = 0;
             $ocurrencias = array_count_values($_SESSION['carrito']);
             foreach ($ocurrencias as $producto_id => $cantidadEnCarrito) {
                 $sql = "SELECT * FROM productos WHERE ID = $producto_id AND Categoria='Sol';";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     $producto = $result->fetch_assoc();
-                    $subtotal = $cantidadEnCarrito * ($producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']);
+                    $totnet = $cantidadEnCarrito * ($producto['PrecioN'] == 0 ? $producto['Precio'] : $producto['PrecioN']);
+                    $subtotal += $totnet;
                     $cantidadtotal += $cantidadEnCarrito;
                 }
             }
