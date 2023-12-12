@@ -33,7 +33,7 @@
     <section class="contenido">
         <div class="contenedorII">
             <div class="parte1">
-                <h1>En el año 2020, dimos vida a BOTANICAL GARDEN con la firme convicción de convertir a las plantas en
+                <h1>En 2020 el año, dimos vida a BOTANICAL GARDEN con la firme convicción de convertir a las plantas en
                     el epicentro de la estética y vitalidad de cualquier espacio. Este proyecto nació con la promesa
                     fundamental de ofrecer plantas de la más alta calidad y frescura, respaldadas por nuestro compromiso
                     inquebrantable y colaboración directa con productores locales de confianza. Botanical Garden es más
