@@ -212,9 +212,16 @@ button.agotado {
     color: #ccb6a5;
 }
 
-.Movie {
-    text-align: center;
+.Movie h1{
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+.Movie:hover {
+    transform: scale(1.1);
 }
+  
 .Movie h5 {
     color: #968475;
 }
