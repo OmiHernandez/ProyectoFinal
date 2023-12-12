@@ -3,10 +3,12 @@
     width: 100%;
 }
 
+
+
 .contenedorI img {
     width: 100%;
     display: block;
-    height: 800px;
+    height: auto;
 }
 
 .textoarriba {
@@ -29,9 +31,9 @@
     text-align: justify;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "parte1        parte2"
-        "parte3        parte4"
-        "parte5        parte6"
-        "parte7        parte8";
+                         "parte3        parte4"
+                         "parte5        parte6"
+                         "parte7        parte8";
 }
 
 .parte1 {
@@ -65,7 +67,7 @@
 .parte4 {
     grid-area: parte4;
     padding: 60px;
-    width: 600px;
+    width: 100%;
     display: grid;
     place-items: center;
     font-family: 'Montserrat', sans-serif;
@@ -110,7 +112,7 @@
 .parte8 {
     grid-area: parte8;
     padding: 60px;
-    width: 600px;
+    width: 100%;
     display: grid;
     place-items: center;
     font-family: 'Montserrat', sans-serif;
@@ -148,4 +150,72 @@ a.Conoce:after {
 a.Conoce:hover {
     transform-origin: center bottom;
     transform: rotateX(-90deg) translateY(100%);
+}
+
+.logo {
+    display: none;
+}
+
+.about {
+    display: none;
+    transition: transform 0.3s ease-in-out;
+    max-width: 100%;
+}
+.about:hover {
+    transform: scale(1.2); 
+}
+@media only screen and (max-width: 853px) {
+    .parte2 {
+        display: none;
+    }
+    .contenedorII {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: "parte1"        
+                             "parte4"
+                             "parte3"
+                             "parte5"
+                             "parte6"
+                             "parte8"
+                             "parte7";
+    }
+    .parte1 p {
+        padding: 0px 30px;
+    }
+    
+    .parte3, .parte6, .parte7 {
+        width: 80%;
+        height: auto;
+        margin-left: 10%;
+        margin-top: -120px;
+    }
+
+    .logo2 {
+        display: none;
+    }
+    .logo {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .parte1 p {
+        left: 0px;
+    }
+    
+    .parte3, .parte6, .parte7 {
+        display: none;
+    }
+
+    .about {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+    .logo {
+        display: none;
+    }
+    .logo2 {
+        display: block;
+    }
 }

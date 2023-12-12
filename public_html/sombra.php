@@ -2,10 +2,10 @@
 <html lang="es_mx">
 
 <?php
-    $servidor='localhost';
-    $cuenta='root';
-    $password='';
-    $bd='botanical';
+$servidor = 'localhost:33065';
+$cuenta = 'root';
+$password = '';
+$bd = 'botanical';
 
 $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
@@ -194,23 +194,23 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "Filtrar") {
             <div class="redes">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                        <a class="nav-link" id="red" href="https://www.instagram.com/the.botanicalgarden/"><i class="fa-brands fa-instagram fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a class="nav-link" id="red" href="https://www.facebook.com/profile.php?id=61553949556849"><i class="fa-brands fa-facebook fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
                     </li>
@@ -238,36 +238,57 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "Filtrar") {
             var indice = parseInt(id);
             var boton = document.getElementById("buttonCarrito-" + id);
             var existenciaActual = parseInt(boton.dataset.existencia);
+            
+            var logueadojs = new XMLHttpRequest();
+            logueadojs.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText=="0") {
+                        console.log("SI LOGUEADO :D");
+                        if (!isNaN(existenciaActual) && existenciaActual > 0) {
+                            // Reducir la existencia de manera local
+                            boton.dataset.existencia = existenciaActual - 1;
 
-            if (!isNaN(existenciaActual) && existenciaActual > 0) {
-                // Reducir la existencia de manera local
-                boton.dataset.existencia = existenciaActual - 1;
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', 'agregar_al_carrito.php', true);
+                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'agregar_al_carrito.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                            xhr.onload = function() {
+                                if (xhr.status === 200) {
+                                    // Actualizar la interfaz de usuario y la cantidad en el carrito
+                                    actualizarInterfaz(id, boton);
+                                    // Actualizar la cantidad en el icono del carrito
+                                    $("#cantidad-en-carrito").text(xhr.responseText);
+                                } else {
+                                    console.error('Error al enviar el ID al servidor:', xhr.status);
 
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        // Actualizar la interfaz de usuario y la cantidad en el carrito
-                        actualizarInterfaz(id, boton);
-                        // Actualizar la cantidad en el icono del carrito
-                        $("#cantidad-en-carrito").text(xhr.responseText);
-                    } else {
-                        console.error('Error al enviar el ID al servidor:', xhr.status);
+                                    // Mostrar alerta de SweetAlert2 en caso de error
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: 'No fue posible agregar al carrito. Por favor, intenta de nuevo.',
+                                    });
+                                }
+                            };
 
-                        // Mostrar alerta de SweetAlert2 en caso de error
+                            var data = 'producto_id=' + id;
+                            xhr.send(data);
+                        }
+                    } else  {
+                        console.log("NOOOOOOOOOOO ENTRAAAA"+this.responseText);
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
-                            text: 'No fue posible agregar al carrito. Por favor, intenta de nuevo.',
+                            text: 'Por favor, inicie sesión para agregar productos al carrito.',
+                        }).then(() => {
+                            setTimeout(function () {
+                                AbrirModal1();
+                            }, 1000);
                         });
                     }
-                };
-
-                var data = 'producto_id=' + id;
-                xhr.send(data);
-            }
+                }
+            };
+            logueadojs.open("GET", "logueado.php?logueado=true", true);
+            logueadojs.send();
         }
 
 

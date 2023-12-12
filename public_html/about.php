@@ -30,7 +30,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="contenido">
         <div class="contenedorII">
             <div class="parte1">
                 <h1>En el año 2020, dimos vida a BOTANICAL GARDEN con la firme convicción de convertir a las plantas en
@@ -50,14 +50,16 @@
             </div>
 
             <div class="parte2">
-                <img src="img/about_img_2.png" alt="imagen plantas" width="500px">
+                <img src="img/about_img_2.png" alt="imagen plantas" width="100%">
             </div>
 
             <div class="parte3">
-                <img src="img/about_img_3.jpeg" alt="imagen plantas" width="500px">
+                <img src="img/about_img_3.jpeg" alt="imagen plantas" width="100%">
             </div>
 
             <div class="parte4">
+                <img class="about" src="img/about1.png" alt="Mision" width="100px">
+                <br>
                 <h1>Visión</h1>
                 <p>En Botanical Garden, nos sumergimos en la realización de nuestra visión al establecer colaboraciones
                     estrechas con productores locales. Este compromiso nos impulsa a trabajar de la mano con
@@ -70,6 +72,8 @@
             </div>
 
             <div class="parte5">
+                <img class="about" src="img/about2.png" alt="Mision" width="100px">
+                <br>
                 <h1>Objetivo</h1>
                 <p>En el contexto actual de transformación hacia prácticas empresariales más sostenibles y comprometidas
                     con la preservación del medio ambiente, Botanical Garden se destaca al impulsar un cultivo más
@@ -89,14 +93,16 @@
             </div>
 
             <div class="parte6">
-                <img src="img/about_img_4.png" alt="imagen plantas" width="700px">
+                <img src="img/about_img_4.png" alt="imagen plantas" width="100%">
             </div>
 
             <div class="parte7">
-                <img src="img/about_img_5.jpg" alt="imagen plantas" width="500px">
+                <img src="img/about_img_5.jpg" alt="imagen plantas" width="100%">
             </div>
 
             <div class="parte8">
+                <img class="about" src="img/about3.png" alt="Mision" width="100px">
+                <br>
                 <h1>Mision</h1>
                 <p>Nos conformamos como un equipo apasionado y diverso que trabaja con integridad, creatividad y energía
                     para alcanzar metas asombrosas, edificando así una empresa con visión de sostenibilidad a largo
@@ -111,8 +117,14 @@
     <br>
     <footer>
         <div class="foot">
-            <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+            <div class="logo">
                 <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
+                    <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
+                </a>
+                <br>
+            </div>
+            <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
+                <a class="flex-sm-fill text-sm-center nav-link logo2" href="index.php">
                     <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
                 </a>
                 <a class="flex-sm-fill text-sm-center nav-link text-light" href="index.php">Inicio</a>
@@ -122,23 +134,23 @@
             <div class="redes">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                        <a class="nav-link" id="red" href="https://www.instagram.com/the.botanicalgarden/"><i class="fa-brands fa-instagram fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="red" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a class="nav-link" id="red" href="https://www.facebook.com/profile.php?id=61553949556849"><i class="fa-brands fa-facebook fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" id="red" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
                     </li>
