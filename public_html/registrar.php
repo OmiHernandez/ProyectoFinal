@@ -172,8 +172,10 @@ if ($_POST["metodo"] == "registrar") {
         exit();
     }
 
+    $fecha_registro = date('Y-m-d');
+
     $sql = "INSERT INTO cuenta
-          VALUES(default, '$usuario', '$correo', '$hash', '$pregunta', '$respuesta', '$nombre', default, default)";
+          VALUES(default, '$usuario', '$correo', '$hash', '$pregunta', '$respuesta', '$nombre', default, default, '$fecha_registro')";
     $resultado = $conexion->query($sql);
 
     $_SESSION["nombre"] = $usuario;

@@ -38,7 +38,7 @@
     }
 
     // Realiza la consulta para obtener los productos más vendidos
-    $resultado = $conexion->query("SELECT IDproducto, COUNT(*) as total FROM ventas GROUP BY IDproducto ORDER BY total DESC LIMIT 6");
+    $resultado = $conexion->query("SELECT IDproducto, COUNT(IDproducto) as total FROM ventas GROUP BY IDproducto ORDER BY total DESC LIMIT 6");
     $productos_mas_vendidos = $resultado->fetch_all(MYSQLI_ASSOC);
 
     // Realiza la consulta para obtener los registros diarios
