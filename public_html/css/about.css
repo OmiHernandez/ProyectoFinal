@@ -1,26 +1,29 @@
 .contenedorI {
     position: relative;
+    overflow: hidden;
+  }
+  
+  .contenedorI img {
     width: 100%;
-}
-
-
-
-.contenedorI img {
-    width: 100%;
-    display: block;
     height: auto;
-}
-
-.textoarriba {
+    display: block;
+    transition: transform 0.5s ease-in-out; /* Agrega una transición suave a los cambios de transformación */
+  }
+  
+  .contenedorI:hover img {
+    transform: scale(1.1); /* Zoom in - Ajusta el valor según tus preferencias para el nivel de zoom */
+  }
+  
+  .textoarriba {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+    color: white;
+  }
+  
+  
 
 .contenedorII {
     width: 90%;
