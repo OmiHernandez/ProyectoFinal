@@ -32,7 +32,9 @@ if ($conn->connect_error) {
 <body>
 
     <?php include("login.php"); ?>
-
+    <script>
+        var sihay = 0;
+    </script>
     <header>
         <!-- Encabezado del carrito -->
         <h1>Carrito de Compras</h1>
@@ -99,12 +101,15 @@ if ($conn->connect_error) {
                                         </div>
                                     </div>
                                 </div>
+                                <script>
+                                    sihay = 1;
+                                </script>
                     <?php
                             }
                         }
                     } else {
                         // Muestra un mensaje si el carrito está vacío
-                        echo "<p class='text-center'>El carrito está vacío.</p>";
+                        echo "<p class='text-center'>El carrito está vacío.</p><script>sihay = 0;</script>";
                     }
                     ?>
                 </section>
@@ -184,9 +189,11 @@ if ($conn->connect_error) {
 
         // Agregar un controlador de eventos de cambio a cada entrada de cantidad
         function realizarCompra(){
-            if (!empty($_SESSION['carrito'])) {
-             location.href ="realizarcompra.php";   
+            
+            if (sihay == 1) {
+              location.href ="realizarcompra.php";  
             }
+            
         }
 
         cantidadInputs.forEach(input => {
