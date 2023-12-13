@@ -1,12 +1,12 @@
 <?php
 session_start();
-$servername = "localhost:3029";
-$username = "root";
-$password = "";
-$dbname = "botanical";
+$servidor = '127.0.0.1:3306';
+$cuenta = 'u690567133_admin';
+$password = 'MHVGLAZ_Botanical1.';
+$bd = 'u690567133_botanical';
+$conn = new mysqli($servidor, $cuenta, $password, $bd);
 $cupon = $_GET["cupon"];
-// Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+
 
 // Verificar la conexión
 if ($conn->connect_error) {

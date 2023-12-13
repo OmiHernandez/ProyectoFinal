@@ -1,12 +1,10 @@
 <?php
 // Configuración de la conexión a la base de datos
-$servername = "localhost:3029";
-$username = "root";
-$password = "";
-$dbname = "botanical";
-
-// Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+$servidor = '127.0.0.1:3306';
+$cuenta = 'u690567133_admin';
+$password = 'MHVGLAZ_Botanical1.';
+$bd = 'u690567133_botanical';
+$conn = new mysqli($servidor, $cuenta, $password, $bd);
 
 // Verificar la conexión
 if ($conn->connect_error) {
@@ -91,7 +89,7 @@ if ($conn->connect_error) {
                                                     <div class="input-group-prepend">
                                                         <label class="input-group-text" for="cantidad-<?php echo $producto_id; ?>">Cantidad</label>
                                                     </div>
-                                                    <input type="number" min="0" max="<?php echo $producto['Cantidad']; ?>" value="<?php echo $cantidadEnCarrito; ?>" name="cantidad[]" id="cantidad-<?php echo $producto_id; ?>" data-producto-id="<?php echo $producto_id; ?>" class="form-control cantidad-input text-center">
+                                                    <input type="number" min="0" max="<?php echo $producto['Cantidad']; ?>" value="<?php echo $cantidadEnCarrito; ?>" name="cantidad[]" id="cantidad-<?php echo $producto_id; ?>" data-producto-id="<?php echo $producto_id; ?>" class="form-control cantidad-input text-center" disabled>
                                                     <div class="input-group-append">
                                                         <button class="btn btn-outline-danger" type="button" onclick="eliminarProducto(<?php echo $producto_id; ?>)">Eliminar</button>
                                                     </div>

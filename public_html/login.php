@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="css/login-rd.css">
 <?php
 
-$servidor = 'localhost:3029';
-$cuenta = 'root';
-$password = '';
-$bd = 'botanical';
+$servidor = '127.0.0.1:3306';
+$cuenta = 'u690567133_admin';
+$password = 'MHVGLAZ_Botanical1.';
+$bd = 'u690567133_botanical';
 
 $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
@@ -373,7 +373,7 @@ session_start();
                         <?php } ?>
 
                         <?php
-                            $conexionS = new mysqli('localhost:3029', 'root', '', 'botanical');
+                            $conexionS = new mysqli('127.0.0.1:3306', 'u690567133_admin', 'MHVGLAZ_Botanical1.', 'u690567133_botanical');
 
                             if ($conexionS->connect_error) {
                                 die("Connection failed: " . $conexionS->connect_error);

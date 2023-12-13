@@ -1,17 +1,17 @@
 <?php
 session_start();
-$usuario = $_SESSION['nombre'];
 
-if (!isset($_SESSION['carrito'])) {
-    header("Location: index.php");
+if(!isset($_SESSION['nombre']) || !isset($_SESSION['carrito'])){
+    header('Location: index.php');
 }
 
+$usuario = $_SESSION['nombre'];
 if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-    $servidor = 'localhost:3029';
-    $cuenta = 'root';
-    $password = '';
-    $bd = 'botanical';
-    $conexion = new mysqli($servidor, $cuenta, $password, $bd);
+    $servidor = '127.0.0.1:3306';
+$cuenta = 'u690567133_admin';
+$password = 'MHVGLAZ_Botanical1.';
+$bd = 'u690567133_botanical';
+$conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
     $sql = "SELECT ID FROM cuenta WHERE usuario='$usuario'";
     $resultado = $conexion->query($sql);

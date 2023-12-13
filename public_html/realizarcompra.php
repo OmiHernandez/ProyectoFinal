@@ -1,13 +1,14 @@
 <?php
 
 session_start();
-$servername = "localhost:3029";
-$username = "root";
-$password = "";
-$dbname = "botanical";
-
-// Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+if(!isset($_SESSION['nombre']) || empty($_SESSION['carrito'])){
+    header('Location: index.php');
+}
+$servidor = '127.0.0.1:3306';
+$cuenta = 'u690567133_admin';
+$password = 'MHVGLAZ_Botanical1.';
+$bd = 'u690567133_botanical';
+$conn = new mysqli($servidor, $cuenta, $password, $bd);
 
 // Verificar la conexión
 if ($conn->connect_error) {
@@ -516,7 +517,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                                     <div class="form-group">
                                                         <label for="numtar">Numero de tarjeta (<span style="color:red;">*</span>)</label>
                                                         <input type="text" class="form-control" id="numtar" size="16" name="numeroTarjeta" required>
-                                                        <?php $_SESSION["metodoPago"] = 'Visa/Mastercard'; ?>
+                                                        <input type="text" class="form-control" id="numtar" size="16" name="metodoPago" value="Visa/Mastercard" required hidden>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -586,7 +587,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                                     <div class="form-group">
                                                         <label for="numtar">Numero de tarjeta (<span style="color:red;">*</span>)</label>
                                                         <input type="text" class="form-control" id="numtar" size="16" name="numeroTarjeta" required>
-                                                        <?php $_SESSION["metodoPago"] = 'American Express'; ?>
+                                                        <input type="text" class="form-control" id="numtar" size="16" name="metodoPago" value="American Express" required hidden>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -660,7 +661,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                                                 <p id="tercerpaso" hidden><i class="fa-solid fa-circle-check fa-lg" style="color: #258113;"></i></p>
                                             </div>
                                             <input type="text" name="metodo" value="desglose" hidden>
-                                            <?php $_SESSION["metodoPago"] = 'Oxxo'; ?>
+                                            <input type="text" class="form-control" id="numtar" size="16" name="metodoPago" value="Oxxo" required hidden>
                                             <input type="button" class="btn btn-primary" value="Siguiente" onclick="InterludioOXXO();" id="botoncup"></input>
                                             <div class="spinner-border text-success" role="status" id="spinners" style="text-align:center;border-color: brown; border-top:transparent;" hidden>
                                                 <span><i class="fa-solid fa-seedling fa-rotate-180" style="color: #24a800;"></i></span>
@@ -740,7 +741,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
                 } else if ($_POST["metodo"] == "desglose") {
                     if (isset($_POST['numeroTarjeta']))
                         $_SESSION['numeroTarjeta'] = $_POST['numeroTarjeta'];
-
+                    $_SESSION['metodoPago'] = $_POST['metodoPago'];
                     $carritoNuevo = array();
 
                     for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
@@ -802,7 +803,7 @@ if (!isset($_SESSION["impuesto"]) || !isset($_POST["metodo"])) {
 
                                         <div class="form-group">
                                             <label for="tel">Cobro por envío: </label>
-                                            <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php if($_SESSION["envio"] == 0){echo "¡Envío gratis!";}else{echo "$".$_SESSION['totalcar'];} ?>" disabled>
+                                            <input type="text" class="form-control" id="tel" aria-describedby="tel" value="<?php if($_SESSION["envio"] == 0){echo "¡Envío gratis!";}else{echo "$".$_SESSION['envio'];} ?>" disabled>
                                         </div>
 
                                         <div class="form-group">

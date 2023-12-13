@@ -28,9 +28,13 @@
 
 <body>
     <?php
+    session_start();
+    if(!isset($_SESSION['nombre']) || $_SESSION['nombre'] != "admin"){
+    header('Location: index.php');
+}
     include("login.php");
 
-    $conexion = new mysqli('localhost:3029', 'root', '', 'botanical');
+    $conexion = new mysqli('127.0.0.1:3306', 'u690567133_admin', 'MHVGLAZ_Botanical1.', 'u690567133_botanical');
 
     // Verifica la conexión
     if ($conexion->connect_error) {
@@ -247,6 +251,9 @@
 
     <footer>
         <div class="foot">
+            <div class="academico">
+                Página perteneciente a proyecto académico
+            </div>
             <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
                 <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
                     <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
@@ -522,6 +529,9 @@
             }
         });
     </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
 </body>
 

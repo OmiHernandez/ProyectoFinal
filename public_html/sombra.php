@@ -2,11 +2,10 @@
 <html lang="es_mx">
 
 <?php
-$servidor = 'localhost:3029';
-$cuenta = 'root';
-$password = '';
-$bd = 'botanical';
-
+$servidor = '127.0.0.1:3306';
+$cuenta = 'u690567133_admin';
+$password = 'MHVGLAZ_Botanical1.';
+$bd = 'u690567133_botanical';
 $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
 $sql = 'select * from productos where Categoria="Sombra";';
@@ -183,6 +182,9 @@ if (isset($_POST['submit']) && $_POST['metodo'] == "Filtrar") {
 
     <footer>
         <div class="foot">
+            <div class="academico">
+                Página perteneciente a proyecto académico
+            </div>
             <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
                 <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
                     <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">

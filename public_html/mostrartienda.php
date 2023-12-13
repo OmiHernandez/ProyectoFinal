@@ -1,10 +1,9 @@
 <?php
-    $servidor='localhost:3029';
-    $cuenta='root';
-    $password='';
-    $bd='botanical';
-
-    $conexion = new mysqli($servidor,$cuenta,$password,$bd);
+    $servidor = '127.0.0.1:3306';
+$cuenta = 'u690567133_admin';
+$password = 'MHVGLAZ_Botanical1.';
+$bd = 'u690567133_botanical';
+$conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
     $sql = 'select * from productos WHERE Categoria = ?';
     $resultado = $conexion -> query($sql);

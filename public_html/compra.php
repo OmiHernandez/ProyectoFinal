@@ -17,12 +17,14 @@
 <body>
     <?php
     session_start();
-
-    $servidor = 'localhost:3029';
-    $cuenta = 'root';
-    $password = '';
-    $bd = 'botanical';
-    $conexion = new mysqli($servidor, $cuenta, $password, $bd);
+if(!isset($_SESSION['nombre'])){
+    header('Location: index.php');
+}
+    $servidor = '127.0.0.1:3306';
+$cuenta = 'u690567133_admin';
+$password = 'MHVGLAZ_Botanical1.';
+$bd = 'u690567133_botanical';
+$conexion = new mysqli($servidor, $cuenta, $password, $bd);
     $conexion->set_charset("utf8");
 
 

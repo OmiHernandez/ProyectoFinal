@@ -1,6 +1,6 @@
 <?php
 // Tu lógica de conexión a la base de datos aquí
-$conexion = new mysqli("localhost:3029", "root", "", "botanical");
+$conexion = new mysqli('127.0.0.1:3306', 'u690567133_admin', 'MHVGLAZ_Botanical1.', 'u690567133_botanical');
 if ($conexion->connect_errno) {
     echo "Error de conexión: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
     exit();

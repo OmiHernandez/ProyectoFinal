@@ -20,7 +20,7 @@
         $nombre = $_POST["usuario"];
         $correo = $_POST["correosus"];
 
-        $conexion = new mysqli('localhost:3029', 'root', '', 'botanical');
+        $conexion = new mysqli('127.0.0.1:3306', 'u690567133_admin', 'MHVGLAZ_Botanical1.', 'u690567133_botanical');
 
         if ($conexion->connect_error) {
             die("Connection failed: " . $conexion->connect_error);
@@ -69,6 +69,9 @@
             <br>
             <footer>
                 <div class="foot">
+                    <div class="academico">
+                Página perteneciente a proyecto académico
+            </div>
                     <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
                         <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
                             <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
@@ -132,6 +135,9 @@
             <br>
             <footer>
                 <div class="foot">
+                    <div class="academico">
+                Página perteneciente a proyecto académico
+            </div>
                     <nav class="nav nav-pills flex-column flex-sm-row align-items-center justify-content-center" id="navfoot">
                         <a class="flex-sm-fill text-sm-center nav-link" href="index.php">
                             <img src="img/logoWF.png" alt="Logo de BotanicalG" height="130" width="130">
